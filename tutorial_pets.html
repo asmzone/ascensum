@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutoriales Pets</title>
+  <link rel="icon" type="image/png" href="imagenes/pets_universe.png"> <!-- Favicon -->
+
+  <style>
+    /* ===================== ESTILO GENERAL ===================== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ===================== ENCABEZADO ===================== */
+    .top-bar {
+      position: relative;
+      height: 40px; /* Altura de la franja verde */
+    }
+
+    /* Franja verde detrás de la barra negra */
+    .green-bar {
+      background-color: #3a8308;
+      height: 110px;
+      width: 100%;
+    }
+
+    /* Barra negra centrada y fija al top */
+    .nav-bar {
+      position: fixed; /* Barra negra fija */
+      top: 0; /* Pegada al margen superior */
+      left: 50%; /* Para centrar horizontalmente */
+      transform: translateX(-50%);
+      background-color: #000;
+      border-radius: 25px;
+      width: 95%;
+      max-width: 1200px;
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
+      z-index: 999; /* Para que quede encima de la franja verde */
+      transition: all 0.4s ease; /* Mejora scroll */
+    }
+
+    .nav-bar.scrolled {
+      min-height: 80px;
+      background-color: rgba(0,0,0,0.95);
+    }
+
+    /* Logo y texto al lado */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo img {
+      max-height: 60px;
+      width: auto;
+      transition: max-height 0.3s ease;
+    }
+    .nav-bar.scrolled .logo img {
+      max-height: 50px;
+    }
+    .logo-text {
+      color: yellow;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: font-size 0.3s ease;
+    }
+    .logo-text:hover {
+      color: #a8e6a3;
+    }
+    .nav-bar.scrolled .logo-text {
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      color: yellow;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #a8e6a3;
+    }
+
+    /* ===================== CONTENIDO PRINCIPAL ===================== */
+    main {
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 900px;
+      line-height: 1.2;
+      font-size: 18px;
+      margin-top: 120px;
+    }
+    main a {
+      color: red;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    main a:hover {
+      color: #3a8308;
+    }
+
+    h1 {
+      font-weight: 500;
+      margin-bottom: 12px;
+      font-size: 2em;
+    }
+
+    /* ===================== SECCIÓN TEXTO CON MARCO VERDE ===================== */
+    .text-box {
+      border: 2px solid #3a8308;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 40px 0;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .text-box p {
+      position: relative;
+      padding-left: 28px;
+      margin: 12px 0;
+    }
+    .text-box p::before {
+     content: "●";          /* Aquí definimos el símbolo (un punto sólido) */
+     color: #3a8308;        /* <<< CAMBIAR ESTE CÓDIGO HEX PARA MODIFICAR EL COLOR DEL PUNTO */
+     font-size: 1.2em;      /* Tamaño del punto */
+     position: absolute;
+     left: 0;
+     top: 0;
+    }
+
+
+    /* ===================== PIE DE PÁGINA ===================== */
+    .footer-top-green { background-color: #3a8308; height: 0.5cm; width: 100%; }
+    .footer-black {
+      background-color: #000;
+      height: 2.5cm;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+    }
+    .footer-black div { flex: 1; min-width: 200px; }
+    .footer-black .left { color: yellow; font-size: 18px; }
+    .footer-black .right { text-align: right; }
+    .footer-black .right a { color: yellow; margin-left: 15px; text-decoration: none; }
+    .footer-black .right a:hover { color: #a8e6a3; }
+    .footer-bottom-green { background-color: #3a8308; height: 0.6cm; width: 100%; }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 768px) {
+      .nav-bar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px; /* espacio más compacto entre links */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== ENCABEZADO ===================== -->
+  <div class="top-bar">
+    <div class="green-bar"></div>
+    <div class="nav-bar">
+      <div class="logo-container">
+    
+<a href="index.html" target="_blank"class="logo">
+          <img src="imagenes/Pets_Concilium.png" alt="Logo Concilium">
+        </a>
+
+        <a href="index.html" target="_blank"class="logo-text">Criptovision Marketing Global Ecom</a>
+
+      </div>
+      <div class="nav-links">
+      <a href="index.html" target="_blank">Preguntas Frecuentes</a>
+      <a href="contacto.html" target="_blank">Contacto</a>
+      <a href="embarque.html" target="_blank">Compra tu ticket</a>
+      
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  <main>
+    <h1>Preguntas Frecuentes sobre Pets Universe</h1>
+    <p>
+      A continuacion da click en el titulo de cada pregunta<br>
+      y seras dirigido a un tutorial, PDF o video explicativo
+    </p>
+    
+    </p>
+    <p>Si tienes alguna consulta o necesitas más información, ¡no dudes en preguntar!</p>
+
+    <!-- ===================== NUEVA SECCIÓN DE TEXTO ===================== -->
+    <div class="text-box">
+      
+
+      <p>
+  <a href="pets_universe.html" target="_blank">Estas listo para la nueva era Cripto?</a>
+</p>
+
+
+            <p>
+<a href="explicacion.html" target="_blank">Explicacion detallada de Pets Universe y Concilium</a>
+</p>
+    <p>  <a href="embarque.html" target="_blank">Como comprar los tickets de embarque</a>
+</p>
+      <p><a href="tickets.html" target="_blank">Como se reparten los tokens entre la comunidad</a></p>
+    
+    </div>
+  </main>
+
+  <!-- ===================== PIE DE PÁGINA ===================== -->
+  <section>
+    <div class="footer-top-green"></div>
+    <div class="footer-black">
+      <div class="left">© Copyright 2025 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
+      <div class="right">
+        <a href="https://t.me/pets_universe" target="_blank">Telegram</a>
+        <a href="https://wa.link/yekisn" target="_blank">Whatsapp</a>
+        <a href="https://facebook.com/networktoearn" target="_blank">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom-green"></div>
+  </section>
+
+  <!-- ===================== SCRIPT SCROLL ===================== -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const nav = document.querySelector(".nav-bar");
+      if (window.scrollY > 50) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+</body>
+</html>
