@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nodos ASM</title>
+    <link rel="icon" type="image/png" href="imagenes/pets_universe.png">
+
+    <style>
+        /* ======= RESET / SEGURIDAD LAYOUT ======= */
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            /* evita desplazamiento lateral */
+            -webkit-text-size-adjust: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        img,
+        iframe,
+        embed,
+        object,
+        video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===================== ENCABEZADO ===================== */
+        .top-bar {
+            position: relative;
+            height: 40px;
+        }
+
+        .green-bar {
+            background-color: #3a8308;
+            height: 110px;
+            width: 100%;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000;
+            border-radius: 25px;
+            width: 95%;
+            max-width: 1200px;
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 999;
+            transition: all 0.4s ease;
+            box-sizing: border-box;
+        }
+
+        .nav-bar.scrolled {
+            min-height: 80px;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            max-height: 60px;
+            width: auto;
+            transition: max-height .3s ease;
+        }
+
+        .nav-bar.scrolled .logo img {
+            max-height: 50px;
+        }
+
+        .logo-text {
+            color: yellow;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: font-size .3s ease;
+            white-space: nowrap;
+        }
+
+        .logo-text:hover {
+            color: #a8e6a3;
+        }
+
+        .nav-bar.scrolled .logo-text {
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: yellow;
+            text-decoration: none;
+            font-size: 0.98rem;
+            transition: color .3s;
+        }
+
+        .nav-links a:hover {
+            color: #a8e6a3;
+        }
+
+        /* ===================== CONTENIDO PRINCIPAL ===================== */
+        main {
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 900px;
+            width: 100%;
+            line-height: 1.4;
+            font-size: 18px;
+            margin-top: 120px;
+            /* espacio por la barra fija */
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+            /* evita desbordes por links largos */
+            word-break: break-word;
+        }
+
+        main a {
+            color: red;
+            text-decoration: none;
+            transition: color .3s;
+        }
+
+        main a:hover {
+            color: #3a8308;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        /* ===================== VIDEO RESPONSIVE ===================== */
+        .video-container {
+            text-align: center;
+            margin: 40px 0;
+            padding: 0 10px;
+            /* evita que el iframe quede pegado al borde en pantallas pequeñas */
+            box-sizing: border-box;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            border: 0;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* ===================== PIE DE PÁGINA ===================== */
+        .footer-top-green {
+            background-color: #3a8308;
+            height: 0.5cm;
+            width: 100%;
+        }
+
+        .footer-black {
+            background-color: #000;
+            min-height: 2.5cm;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        .footer-black div {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .footer-black .left {
+            color: yellow;
+            font-size: 16px;
+        }
+
+        .footer-black .right {
+            text-align: right;
+        }
+
+        .footer-black .right a {
+            color: yellow;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        .footer-black .right a:hover {
+            color: #a8e6a3;
+        }
+
+        .footer-bottom-green {
+            background-color: #3a8308;
+            height: 0.6cm;
+            width: 100%;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+                gap: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+            }
+
+            main {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            .video-container {
+                margin: 20px 0;
+                padding: 0 8px;
+            }
+
+            .footer-black {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-black .right {
+                margin-top: 10px;
+                text-align: center;
+            }
+        }
+
+        .img-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.img-main-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-main-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <div class="top-bar">
+        <div class="green-bar"></div>
+
+        <div class="nav-bar" role="navigation" aria-label="Menú principal">
+            <div class="logo-container">
+                <a href="" target="_blank" class="logo">
+                    <img src="imagenes/Pets_Concilium.png" alt="Logo Concilium">
+                </a>
+                <!-- Mantengo el texto al lado del logo tal como vos lo querés -->
+                <a href="" target="_blank" class="logo-text">Criptovision Marketing Global Ecom</a>
+            </div>
+
+            <div class="nav-links">
+            <a href="" target="_blank">Ascensum Dao</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <h3>👉 “Si llegaste hasta acá.... no es casualidad<br>
+        es porque realmente querés entender cómo funciona ASM”</h3>
+        
+        <div class="img-main-container"> 
+            <img src="imagenes/ascensum_dao1.png" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            
+           
+        <h1>Ascensum paso a paso</h1>
+        
+        <p>
+            Ascensum es un sistema basado en blockchain donde puedes participar mediante la compra de nodos que generan el token ASM durante 360 días.<br><br>
+            </p>
+            <br>
+         
+         
+            <h1>🔹 ¿Qué obtienes al participar?</h1>
+            <h2>El sistema está diseñado entre varias opciones,<br> 
+            con 3 pilares principales:</h2>
+            <br> 
+
+            <p>
+            <h2>✅ 1. Generación de ASM (minado del nodo)</h2><br>
+
+            ASM es una moneda que esta limitada solo para aquellas personas que compren nodos o para quienes la compren en Pancakeswap.<br><br>
+
+            Al activar un nodo, comienzas a recibir el token ASM de forma progresiva durante 360 días, puedes retirarlos y monetizarlos o reinvertirlos en el momento que lo desees..<br><br>
+
+            <h3>🔹 ASM tiene características particulares dentro del ecosistema:</h3>
+
+
+            Cada vez que se activa un nodo, el valor se distribuye dentro del ecosistema:
+            <br>
+            <br>
+            🔹 Una parte se utiliza para comprar ASM en el mercado<br>
+            🔹 Una parte se destina al Tesoro<br>
+            🔹 Otra parte sostiene el funcionamiento del sistema<br>
+            🔹 El sistema incluye un mecanismo de reducción de oferta:<br><br>
+
+            Cada vez que se activa un nodo, una parte de esa compra (20%) se utiliza para adquirir ASM en el mercado y retirarlo de circulación mediante el proceso de quema.<br>
+
+            Esto genera una dinámica donde la oferta disminuye a medida que el sistema crece, transformando a ASM en una moneda Hiperdeflacionaria.
+            <br><br>
+            
+            ✔ Hay movimiento constante<br>
+            ✔ La oferta se reduce con el crecimiento<br>
+            ✔ El sistema se retroalimenta con la participación
+            
+             <br>
+             <br>
+            🔹 La liquidez fue quemada<br>
+            🔹 El contrato de ASM fue renunciado<br>
+            <br>
+
+            Esto significa que los desarrolladores ya no pueden modificar el contrato ni retirar el dinero y hacer caer el valor del token como ha pasado en varios proyectos que hoy ya no existen mas.<br><br>
+            🔹 La quema de la liquidez y renuncia del contrato es totalmente comprobable ingresando en la blockchain
+            <br>
+            
+            Aqui tienes el contrato de ASM para que puedas comprobar lo que te estoy informando en:<br> https://bscscan.com<br><br>
+
+            <span style="color: green;">0x707F0f4a39a4a26239F7D00463B15AB5656861f9</span>
+
+            
+            <br>
+            </p>
+            
+
+            <p>
+            <br>
+            <div class="img-main-container">
+            <img src="imagenes/contrato_renunciado.jpg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+           </p> 
+           <br>
+            
+
+            
+
+            <h2>✅ 2. Opciones para potenciar tus resultados</h2>
+
+            <p>Los tokens ASM que vas generando dia a dia pueden ponerse a trabajar dentro del mismo ecosistema y el rendimiento mas el capital puedes ir retirandolo de manera diaria:<br><br>
+
+            🔹 Staking<br>
+            Permite obtener un rendimiento del 3% mensual + capital<br><br>
+            
+            🔹 Real Yield Farming<br>
+            Opción más avanzada que combina ASM con otros activos del ecosistema,<br>
+            con un rendimiento del 5% mensual + capital<br><br>
+
+            Además, puedes retirar o reinvertir los ASM que vas recibiendo diariamente junto con el capital invertido<br>
+            para potenciar resultados (interés compuesto).</p>
+
+            <br>
+            <h2>✅ 3. El Tesoro de Ascensum DAO</h2>
+
+            <h3>DAO significa Organizacion Autonoma Descentralizada.</h3>
+
+            <p>Somos una organizacion que tenemos autonomia descentralizada esto significa que no hay una concentracion de poder en una sola persona.<br><br>
+
+            El tesoro esta protegido por la comunidad en su totalidad, ya que es la que tiene la potestad completa de que es lo que se hara con esos fondos.<br><br>
+
+            Cada vez que se vende un nodo automaticamente una parte del valor de ese nodo (20%) se destina a un fondo común llamado Tesoro.<br>
+            <br>
+
+            El tesoro es mucho mas que un fondo: es una puerta directa a un sistema de inversion descentralizado, seguro y totalmente transparente, donde cada comprador de un nodo tiene voz y voto gracias a nuestra gobernanza comunitaria.<br><br>
+
+            
+
+            🔹 ¿Cómo funciona?<br><br>
+
+            ✔ Cada nodo representa un voto<br>
+            ✔ Los participantes deciden el destino de los fondos<br>
+            ✔ Se pueden financiar nuevas oportunidades dentro del ecosistema<br>
+            ✔ Obtendras del tesoro una cuota parte porcentual de tu inversion en la compra de nodos ASM<br><br> 
+
+            </p>
+
+            <p>
+                <h3><a href="https://bscscan.com/address/0x87Bc4Ae48CDae1127ccF8694F245FF013375cDeb" target="_blank">👉 Aqui podras comprobar cuantos usdt hay en el Tesoro</a></h3>
+            </p>
+
+           
+            <br>
+            <div class="img-main-container">
+            <img src="imagenes/desicion.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            
+            <br>
+            <br>
+             <h2>¿Por qué muchas personas están comprando nodos ahora?</h2>
+            
+            <p>El desarrollo de Ascensum está vinculado a la participación de su comunidad.<br>
+            A medida que más personas se suman y el sistema crece, se activan diferentes mecanismos internos que pueden impactar en su evolución.<br><br>
+
+            Por eso muchas personas están observando esta etapa inicial como un momento clave para entender cómo funciona y participar.<br><br>
+
+            </p>
+            
+            <p>
+            <h3>🔹 Todo el proceso es simple</h3>
+
+            👉 Puedes hacerlo desde tu celular<br>
+            👉 Sin conocimientos técnicos<br>
+            👉 Siguiendo un paso a paso<br>
+           
+            </p>
+            <br>
+                         
+
+            <p>🟢  Próximo paso<br>
+              
+
+            Si después de entender cómo funciona sientes que esto puede ser para ti, el siguiente paso es simple:</p>
+
+
+            <p>
+                <h3><a href="https://wa.link/n9qj3g" target="_blank">👉 Activar tu primer nodo y comenzar</a></h3>
+            </p>
+
+
+
+        <br><br><br><br>
+    </main>
+
+    
+
+    <!-- PIE DE PÁGINA -->
+    <section>
+        <div class="footer-top-green"></div>
+        <div class="footer-black">
+            <div class="left">© Copyright 2026 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
+            <div class="right">
+                <a href="https://t.me/nodos_ascensum" target="_blank">Telegram</a>
+                <a href="https://wa.link/n9qj3g" target="_blank">Whatsapp</a>
+                
+            </div>
+        </div>
+        <div class="footer-bottom-green"></div>
+    </section>
+
+    <!-- JS SCROLL EFECTO -->
+    <script>
+        window.addEventListener("scroll", function() {
+      const nav = document.querySelector(".nav-bar");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+    </script>
+
+    <!-- FUEGOS ARTIFICIALES (sin causar overflow) -->
+    <style>
+        .firework-star {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.9;
+            mix-blend-mode: screen;
+            box-shadow: 0 0 15px white, 0 0 30px white;
+            z-index: 1000;
+        }
+    </style>
+
+    <script>
+        const fwColors = ['gold', 'white', '#ffd700', '#ffa500'];
+    function createFirework() {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight * 0.4;
+      const particleCount = 30 + Math.floor(Math.random() * 40);
+
+      for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.classList.add('firework-star');
+        p.style.left = `${x}px`;
+        p.style.top = `${y}px`;
+        const color = fwColors[Math.floor(Math.random() * fwColors.length)];
+        p.style.backgroundColor = color;
+        p.style.boxShadow = `0 0 15px ${color}, 0 0 30px ${color}`;
+        document.body.appendChild(p);
+
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = 120 + Math.random() * 100;
+        const duration = 1500 + Math.random() * 1200;
+
+        setTimeout(() => {
+          p.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
+          const dx = radius * Math.cos(angle);
+          const dy = radius * Math.sin(angle);
+          p.style.transform = `translate(${dx}px, ${dy}px) scale(0)`;
+          p.style.opacity = 0;
+        }, 50);
+
+        setTimeout(() => p.remove(), duration + 120);
+      }
+    }
+    setInterval(createFirework, 2500 + Math.random() * 1500);
+    </script>
+
+</body>
+
+</html>
