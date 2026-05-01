@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comprar tu primer Nodo ASM</title>
+    <link rel="icon" type="image/png" href="imagenes/pets_universe.png">
+
+    <style>
+        /* ======= RESET / SEGURIDAD LAYOUT ======= */
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            /* evita desplazamiento lateral */
+            -webkit-text-size-adjust: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        img,
+        iframe,
+        embed,
+        object,
+        video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===================== ENCABEZADO ===================== */
+        .top-bar {
+            position: relative;
+            height: 40px;
+        }
+
+        .green-bar {
+            background-color: #3a8308;
+            height: 110px;
+            width: 100%;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000;
+            border-radius: 25px;
+            width: 95%;
+            max-width: 1200px;
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 999;
+            transition: all 0.4s ease;
+            box-sizing: border-box;
+        }
+
+        .nav-bar.scrolled {
+            min-height: 80px;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            max-height: 60px;
+            width: auto;
+            transition: max-height .3s ease;
+        }
+
+        .nav-bar.scrolled .logo img {
+            max-height: 50px;
+        }
+
+        .logo-text {
+            color: yellow;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: font-size .3s ease;
+            white-space: nowrap;
+        }
+
+        .logo-text:hover {
+            color: #a8e6a3;
+        }
+
+        .nav-bar.scrolled .logo-text {
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: yellow;
+            text-decoration: none;
+            font-size: 0.98rem;
+            transition: color .3s;
+        }
+
+        .nav-links a:hover {
+            color: #a8e6a3;
+        }
+
+        /* ===================== CONTENIDO PRINCIPAL ===================== */
+        main {
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 900px;
+            width: 100%;
+            line-height: 1.4;
+            font-size: 18px;
+            margin-top: 120px;
+            /* espacio por la barra fija */
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+            /* evita desbordes por links largos */
+            word-break: break-word;
+        }
+
+        main a {
+            color: red;
+            text-decoration: none;
+            transition: color .3s;
+        }
+
+        main a:hover {
+            color: #3a8308;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        /* ===================== VIDEO RESPONSIVE ===================== */
+        .video-container {
+            text-align: center;
+            margin: 40px 0;
+            padding: 0 10px;
+            /* evita que el iframe quede pegado al borde en pantallas pequeñas */
+            box-sizing: border-box;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            border: 0;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* ===================== PIE DE PÁGINA ===================== */
+        .footer-top-green {
+            background-color: #3a8308;
+            height: 0.5cm;
+            width: 100%;
+        }
+
+        .footer-black {
+            background-color: #000;
+            min-height: 2.5cm;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        .footer-black div {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .footer-black .left {
+            color: yellow;
+            font-size: 16px;
+        }
+
+        .footer-black .right {
+            text-align: right;
+        }
+
+        .footer-black .right a {
+            color: yellow;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        .footer-black .right a:hover {
+            color: #a8e6a3;
+        }
+
+        .footer-bottom-green {
+            background-color: #3a8308;
+            height: 0.6cm;
+            width: 100%;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+                gap: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+            }
+
+            main {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            .video-container {
+                margin: 20px 0;
+                padding: 0 8px;
+            }
+
+            .footer-black {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-black .right {
+                margin-top: 10px;
+                text-align: center;
+            }
+        }
+
+        .img-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.img-main-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-main-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <div class="top-bar">
+        <div class="green-bar"></div>
+
+        <div class="nav-bar" role="navigation" aria-label="Menú principal">
+            <div class="logo-container">
+                <a href="" target="_blank" class="logo">
+                    <img src="imagenes/Pets_Concilium.png" alt="Logo Concilium">
+                </a>
+                <!-- Mantengo el texto al lado del logo tal como vos lo querés -->
+                <a href="" target="_blank" class="logo-text">Criptovision Marketing Global Ecom</a>
+            </div>
+
+            <div class="nav-links">
+            <a href="" target="_blank">Ascensum Dao</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <h1>Como comprar tus Nodos ASM</h1>
+        <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/tesoro1.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+           </p> 
+           <br>
+        <h2>🔹 Lo primero es crear una nueva billetera</h2>
+        <p>
+        
+        Crear una billetera nueva para evitar el historial de cualquier antecedente malicioso que hayas podido tener en otro negocio.<br>
+        Siempre que inicies un nuevo proyecto sea el que sea hazlo desde una billetera nueva para comenzar de cero, de esta manera con el tiempo te estaras evitando posibles disgustos.
+        <br>
+        <br>
+        🔹 Utilizamos billeteras Descentralizadas.<br>
+            Recomendamos Safepal ya que es la mas practica y sencilla, pero tambien puedes utilizar Metamask
+        <br>
+        <br>
+        <br>
+        </p>
+
+        <h2>🔹 Debes tener en tu billetera USDT de la Red Bep-20</h2>
+        
+        <p>
+            En el mercado de criptomonedas vas a encontrar distintos usdt porque cada red tiene su propio usdt.<br>
+            En Ascensum operamos con el usdt de la red de binance conocida como la red Bep-20.<br>
+            Tambien necesitaras tener en tu billetera algo de BNB para pagar las comisiones, con 1 dolar es suficiente<br><br>
+
+            </p>
+            <br>
+         
+         
+            <h2>🔹 Lo segundo es tener un link de referencia</h2>
+
+            <p>El siguiente es mi link de referencia y el que debes utilizar para comprar tus Nodos<br>
+            Este link te permitira ingresar a mi equipo, recibir toda la informacion de Ascensum y mi apoyo en todo momento para solucionar las consultas que vayan surgiendo a traves del tiempo.<br><br>
+
+
+            <span style="color: green;">https://dao.ascensum.io/buy?ref=0xd530e078afe5d00060820a0dfd855781d47cbd80&index=0</span>
+
+            <br>
+
+            
+            </p>
+            
+            <p>Copias este link, ingresas a tu billetera, en la parte de abajo veras un icono que dice explorar.
+            </p>
+
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/1.1.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+            <p>Tocas ahi en explorar y se abre una nueva pantalla<br>
+            
+            arriba de todo veras una lupa y el texto que dice "Buscar DApp o introduzca un enlace"<br>
+            ahi es donde debes tocar y se abrira una nueva pantalla
+            </p>
+
+            <br>
+            <br>
+
+            <div class="img-main-container"> 
+            <img src="imagenes/1.2.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            
+            <p>En esta nueva pantalla veras arriba de todo otra vez la siguiente frase<br>
+            "Buscar DApp o introduzca un enlace"<br>
+             ahi es donde debes pegar el link de referencia que has copiado.
+             </p>
+
+             <br>
+            <br>
+
+            <div class="img-main-container"> 
+            <img src="imagenes/1.3.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+
+            <p>
+            Ni bien pegues el link veras que aparecen las distintas redes<br>
+            Lo que debes controlar es que este seleccionada la red BNB Chain que es lo mismo que decir Bep-20
+            <br>
+            En la imagen la ves con un tilde dentro de un circulo verde
+            </p>
+
+            <br>
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/1.4.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+            <p>
+            Si esta correcto como en la imagen, bajas hasta el tilde que aparece en el recuadro de escritura<br>
+            y tocas ahi para continuar o tambien puedes hacerlo tocando BNB Chain
+            </p>
+
+            <br>
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/1.5.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            
+            <p>
+            Te aparecera una advertencia de seguridad das click en confirmar<br>
+            y ya ingresas al panel de ascensum
+            </p>
+
+            <br>
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/1.6.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            
+            <p>
+            Veras un recuadro azul que dice "Your Sponsor" y debajo un Codigo<br>
+            Debes controlar que el codigo que alli aparece sea el siguiente:
+            
+            <br>
+                <h3><span style="color: green;">0xd530e078afe5d00060820a0dfd855781d47cbd80</span></h3>
+
+            <br>
+            Si no aparece ese codigo sales y vuelves a repetir todos los pasos hasta aqui.<br>
+            <br>
+            Una vez que confirmas que esta todo correcto<br>
+
+            das click en el boton amarillo "Connect" para conectar la billetera a Ascensum.
+            <br>
+            <br>
+            <br>
+            Veras la siguiente imagen
+            </p>
+
+            
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/1.7.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+            <p>
+            En el recuadro "Connect Wallet" aparecera tu billetera, en mi caso es Safepal<br>
+            tocas el logo de tu billetera, se abre una nueva pantalla y ya estaras conectado al panel de Ascensum.
+            </p>
+
+
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.6.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+                     
+
+            <p>Es posible que en esta pantalla no se haya conectado la billetera,<br>
+            si eso ocurre para poder continuar deberas eliminar la capa que esta superpuesta sobre la pantalla.
+            <br><br>
+
+            Para poder continuar simplemente tocando el Boton amarillo "Connect" esa capa desaparece y estara todo listo para que puedas comprar tu primer Nodo ASM.
+            <br>
+            <br>
+            En la siguiente imagen puedes ver como es el panel de Ascensum con los 11 niveles de Nodos.
+
+            </p>
+
+
+
+            <br>
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/1.8.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            
+
+            <h2>🔹 Antes de que compres tu primer Nodo<br>
+            debo informarte como es la forma correcta de hacerlo</h2>
+
+            <p>En la proxima imagen tienes los valores de los distintos Nodos.<br>
+            Son 11 en total y puedes comprar uno solo, todos, o mas de uno.
+            <br><br>
+            El Nodo mas economico es el de 25 usdt<br>
+            Y el de mayor valor tiene un costo de 25.600 usdt
+            <br><br>
+            No puedes comprar cualquier nodo<br>
+            El primero que debes comprar es el Nodo de 25 usdt<br><br>
+            Luego si deseas comprar mas Nodos debes continuar con el Nodo de 50 usdt,<br>
+            a continuacion con el de 100 usdt, luego con el Nodo de 200 usdt<br>
+            y asi sucesivamente en orden cronologico ascendente.
+            <p>
+            
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/recompensas_nodos.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+
+
+
+
+
+
+
+            <p>En la columna "Nivel de Nodo" te indica el valor de cada Nodo<br><br>
+            En la columna "Inversion (ASM)"  te indica la cantidad de monedas ASM que recibiras en 360 dias de minado<br><br>
+            En la columna Recompensa Mensual (ASM) te indica la cantidad de Monedas ASM que recibiras en un mes.
+            </p>
+
+            <br><br>
+
+            <p>
+            🔹 Ahora que ya conoces como debes proceder para comprar los Nodos,<br>
+            comencemos con tu primer Nodo, el de 25 usdt<br><br>
+            habiamos quedado en la siguiente imagen
+            </p>
+
+            
+            
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/1.8.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+            <p>
+            Aqui debes dar click en el boton azul "Selected Node - Node 25"<br>
+            <br>
+            se abre la siguiente pantalla
+            </p>
+
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/1.9.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+             <p>
+            Aqui debes dar click en el recuadro amarillo "Node 25" - 25 usdt
+            <br>
+            <br>
+            se abre la siguiente pantalla
+            </p>
+
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.0.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+             <p>
+            Aqui debes dar click en el Boton violeta "Approve Contract"
+            <br>
+            <br>
+            se abre la siguiente pantalla
+            </p>
+
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.1.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+            <p>
+            Aqui debes dar click en "Confirmar" para aprobar el contrato
+            <br>
+            <br>
+            se abre la siguiente Pantalla
+            </p>
+
+
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.5.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+
+            <p>
+            Aqui la billetera Safepal por seguridad pide que ingreses la clave para autorizar que la billetera pueda interactuar con el contrato
+            <br>
+            <br>
+            se abre la siguiente Pantalla
+            </p>
+
+
+
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.2.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+            <p>
+            Aqui debes dar click en el Boton amarillo "Buy Node"
+            <br>
+            <br>
+            se abre la siguiente Pantalla
+            </p>
+
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.3.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+            <p>
+            Aqui debes dar click en el Boton amarillo "Confirm"
+            <br>
+            <br>
+            se abre la siguiente Pantalla
+            </p>
+
+
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.4.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+            <p>
+            Aqui debes dar click en el Boton Celeste "Confirmar" para finalizar la compra del Nodo
+            <br>
+            <br>
+            se abre la siguiente Pantalla
+            </p>
+
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.5.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+
+            <p>
+            Aqui otra ves la billetera Safepal por seguridad pide que ingreses la clave para autorizar el envio de los usdt
+            <br>
+            <br>
+            se abre la siguiente Pantalla 
+            </p>
+
+            
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.6.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+                     
+
+            <p>Aqui debes esperar 20/30 segundos aprox<br>
+            hasta que arriba a la derecha aparezca la frase "Donacion Realizada" y listo ya tienes tu primer nodo
+            <br>
+            <br>
+            Para poder verlo deberas tocar el Boton amarillo con los datos de la billetera o si se desconecto tocas "Connect" para que puedas eliminar la capa que esta superpuesta sobre la pantalla y puedas continuar.
+            <br>
+            <br>
+            Al tocar el boton amarillo veras la pantalla donde aparece tu Nodo 1
+            </p>
+
+            <br>
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.7.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+            <p>Para comprar el Nodo 2 tocas el boton azul "Next Node"<br>
+            se abre la siguiente Pantalla
+            </p>
+              
+
+            <br>
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.8.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+
+            <p>Tocas el cuadro "Node 50" - 50 usdt<br>
+            se abre la siguiente Pantalla
+            </p>
+
+
+            <br>
+            <br>
+            <br>
+            <div class="img-main-container"> 
+            <img src="imagenes/2.9.jpeg" alt="Ascensum DAO Nodos"> 
+            </div>
+            <br>
+            <br>
+
+
+            <p>Aqui tocas "Buy Next Node" para comprar el Nodo de 50 usdt<br>
+            y a continuacion repites los mismos pasos anteriores para continuar comprando mas Nodos
+            </p>
+
+
+
+        <br><br><br><br>
+    </main>
+
+    
+
+    <!-- PIE DE PÁGINA -->
+    <section>
+        <div class="footer-top-green"></div>
+        <div class="footer-black">
+            <div class="left">© Copyright 2026 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
+            <div class="right">
+                <a href="https://t.me/nodos_ascensum" target="_blank">Telegram</a>
+                <a href="https://wa.link/sqqlx0" target="_blank">Whatsapp</a>
+                
+            </div>
+        </div>
+        <div class="footer-bottom-green"></div>
+    </section>
+
+    <!-- JS SCROLL EFECTO -->
+    <script>
+        window.addEventListener("scroll", function() {
+      const nav = document.querySelector(".nav-bar");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+    </script>
+
+    <!-- FUEGOS ARTIFICIALES (sin causar overflow) -->
+    <style>
+        .firework-star {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.9;
+            mix-blend-mode: screen;
+            box-shadow: 0 0 15px white, 0 0 30px white;
+            z-index: 1000;
+        }
+    </style>
+
+    <script>
+        const fwColors = ['gold', 'white', '#ffd700', '#ffa500'];
+    function createFirework() {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight * 0.4;
+      const particleCount = 30 + Math.floor(Math.random() * 40);
+
+      for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.classList.add('firework-star');
+        p.style.left = `${x}px`;
+        p.style.top = `${y}px`;
+        const color = fwColors[Math.floor(Math.random() * fwColors.length)];
+        p.style.backgroundColor = color;
+        p.style.boxShadow = `0 0 15px ${color}, 0 0 30px ${color}`;
+        document.body.appendChild(p);
+
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = 120 + Math.random() * 100;
+        const duration = 1500 + Math.random() * 1200;
+
+        setTimeout(() => {
+          p.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
+          const dx = radius * Math.cos(angle);
+          const dy = radius * Math.sin(angle);
+          p.style.transform = `translate(${dx}px, ${dy}px) scale(0)`;
+          p.style.opacity = 0;
+        }, 50);
+
+        setTimeout(() => p.remove(), duration + 120);
+      }
+    }
+    setInterval(createFirework, 2500 + Math.random() * 1500);
+    </script>
+
+</body>
+
+</html>
