@@ -313,8 +313,10 @@
     <!-- CONTENIDO PRINCIPAL -->
     <main>
         
-        <br>
-        <br>
+        
+        <h1>“Ganá hasta 40% por cada venta sin invertir”</h1>            
+        <h3>Este video de unos 4 minutos te da una idea general de lo que es Ascensum</h3>
+        <p>Después te explicamos paso a paso cómo funciona y qué podés esperar</p>
 
 
         
@@ -436,8 +438,8 @@ function enableSound(e) {
         <br>
         <br>
         <br>
-        <h1>Te invitamos a formar parte de Ascensum Dao<br>
-        como nuestro Vendedor </h1>
+        <h1>Te invitamos a sumarte como vendedor<br>
+        dentro de Ascensum DAO</h1>
         <br>
         
 
@@ -451,12 +453,10 @@ function enableSound(e) {
         <h1>Nuestro principal Producto: Nodos de Mineria</h1>
         
         <p>
-            Los Nodos de Mineria de Ascensum generan el token ASM durante 360 días.<br>
-            Tu puedes vender Nodos ASM y obtener hasta el 40 % del valor de cada nodo <br>
+            Estos nodos generan el token ASM durante 360 días.<br>
+            Como vendedor, podés ganar hasta un 40% por cada nodo que vendas.<br>
             <br>
-            <br>
-            Ascensum tiene disponible 11 nodos y los valores son los siguientes:<br>
-            El mas economico es el nodo 1.- y su costo es de 25 usdt<br>
+            Existen 11 opciones disponibles, comenzando desde solo 25 USDT<br>
             A continuacion tienes la lista completa con los valores de cada Nodo
             <br>
             <br>
@@ -539,11 +539,13 @@ VALOR DE NODOS
             <br>
          
          
-            <h2>🔹 ¿Como funciona para ti?</h2>
+            <h2>🔹 ¿Como funciona para vos?</h2>
              <p>
             
-            Tu cliente compra un nodo y en el momento de realizar el pago a los pocos minutos estas cobrando tu comision directamente a tu billetera.<br>
-            El pago de tu comision por la venta de un nodo es practicamente de inmediato.<br>
+            Tu cliente compra un nodo y, una vez realizado el pago,<br>
+            en pocos minutos recibís tu comisión directamente en tu billetera.<br>
+            <br>
+            Es un proceso simple y el cobro es prácticamente inmediato.<br>
 
             <br><br><br><br> 
 
@@ -606,9 +608,9 @@ VALOR DE NODOS
             
             🔹 Porque al comprar un nodo el 20% del valor de ese nodo se destina al Tesoro de Ascensum<br>
             🔹 Otro 20% se destina a compra del token ASM en el Dex y se queman aumentando la escasez<br>
-            🔹 Un 5% va a la billetera de un Robot estabilizador del precio de ASM en el Dex<br>
+            🔹 Un 5% va a un sistema automatizado que ayuda a estabilizar el precio de ASM<br>
             🔹 Un 5% va para Publicidad, Desarrollo y Marketing<br>
-            🔹 Por ultimo el 50% restante de la venta de un nodo va a la billetera de tu cliente si es que ademas de invertir en ASM tambien aprovecha a full este negocio y vende nodos a sus conocidos<br>
+            🔹 Por ultimo el 50% restante de la venta de un nodo va a la billetera de tu cliente si es que ademas de invertir en ASM decide también vender nodos<br>
             <br>
 
             Como puedes ver el 100x100 del valor total de un nodo se distribuye en la DAO de Ascensum.<br>
@@ -840,29 +842,111 @@ VALOR DE NODOS
                          
 
 
-             <!-- ===================== VIDEO RESPONSIVE ===================== -->
+              <!-- ===================== VIDEO RESPONSIVE ===================== -->
 
-        <div style="display: flex; justify-content: center;">
-        <div style="position: relative; width: 560px; max-width: 100%; cursor: pointer;">
-       
-        <a href="https://www.youtube.com/watch?v=nC8ni62JEHI" target="_blank">
+        <div style="position:relative;max-width:800px;margin:auto;cursor:pointer;" onclick="loadVideo(this)">
+  
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+    
+    <!-- Miniatura -->
+    <img src="https://img.youtube.com/vi/-pDlzPNBm8A/hqdefault.jpg"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Botón Play animado -->
+    <div class="play-button"></div>
+
+  </div>
+
+</div>
+
+<style>
+.play-button {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:pulse 1.5s infinite;
+}
+
+.play-button::before {
+  content:'';
+  width:0;
+  height:0;
+  border-left:25px solid white;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+}
+
+@keyframes pulse {
+  0% { transform:translate(-50%,-50%) scale(1); }
+  50% { transform:translate(-50%,-50%) scale(1.1); }
+  100% { transform:translate(-50%,-50%) scale(1); }
+}
+
+/* Fade-in */
+.fade-in {
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+
+.fade-in.show {
+  opacity:1;
+}
+
+/* Botón sonido */
+.sound-btn {
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  background:rgba(0,0,0,0.7);
+  color:white;
+  padding:8px 12px;
+  border-radius:20px;
+  font-size:14px;
+  cursor:pointer;
+  z-index:10;
+}
+</style>
+
+<script>
+function loadVideo(el) {
+  el.innerHTML = `
+    <div style="position:relative;padding-bottom:56.25%;height:0;">
       
-        <img src="https://img.youtube.com/vi/nC8ni62JEHI/hqdefault.jpg" 
-           style="width: 100%; display: block;" />
+      <iframe id="ytvideo"
+      class="fade-in"
+      src="https://www.youtube.com/embed/-pDlzPNBm8A?autoplay=1&mute=1&controls=1&rel=0&enablejsapi=1"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen></iframe>
 
-        <div style="
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 60px;
-        color: white;
-        text-shadow: 0 0 10px black;
-        ">
-        ▶
-        </div>
+      <div class="sound-btn" onclick="enableSound(event)">🔊 Activar sonido</div>
 
-        </a>
+    </div>
+  `;
+
+  setTimeout(() => {
+    document.getElementById("ytvideo").classList.add("show");
+  }, 100);
+}
+
+function enableSound(e) {
+  e.stopPropagation();
+  const iframe = document.getElementById("ytvideo");
+  iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+}
+</script>
+
+
+
         </div>
         </div>
 
