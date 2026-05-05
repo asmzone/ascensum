@@ -319,26 +319,60 @@
 
          <!-- ===================== VIDEO RESPONSIVE ===================== -->
 
-        <div style="position:relative;max-width:800px;margin:auto;">
+        <div style="position:relative;max-width:800px;margin:auto;cursor:pointer;" onclick="loadVideo(this)">
   
   <!-- Miniatura -->
   <img src="https://img.youtube.com/vi/VTScn8Kd6bI/hqdefault.jpg" 
-  style="width:100%;cursor:pointer;" 
-  onclick="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  style="width:100%;display:block;">
 
-  <!-- Botón Play -->
-  <div onclick="this.style.display='none'; this.previousElementSibling.click();"
-  style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-size:60px;color:white;cursor:pointer;">
-  ▶
-  </div>
+  <!-- Botón Play animado -->
+  <div class="play-button"></div>
 
-  <!-- Video oculto -->
-  <div style="display:none;position:relative;padding-bottom:56.25%;height:0;">
-    <iframe src="https://www.youtube.com/embed/VTScn8Kd6bI?autoplay=1"
-    style="position:absolute;top:0;left:0;width:100%;height:100%;"
-    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
+</div>
+
+<style>
+.play-button {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:pulse 1.5s infinite;
+}
+
+.play-button::before {
+  content:'';
+  width:0;
+  height:0;
+  border-left:25px solid white;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+}
+
+@keyframes pulse {
+  0% { transform:translate(-50%,-50%) scale(1); }
+  50% { transform:translate(-50%,-50%) scale(1.1); }
+  100% { transform:translate(-50%,-50%) scale(1); }
+}
+</style>
+
+<script>
+function loadVideo(el) {
+  el.innerHTML = `
+    <div style="position:relative;padding-bottom:56.25%;height:0;">
+      <iframe src="https://www.youtube.com/embed/VTScn8Kd6bI?autoplay=1&mute=1&controls=0&rel=0"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;"
+      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  `;
+}
+</script>
 
     </div>
 
