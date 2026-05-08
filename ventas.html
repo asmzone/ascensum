@@ -322,20 +322,26 @@
         
         <!-- ===================== VIDEO RESPONSIVE ===================== -->
 
-        <div style="position:relative;max-width:800px;margin:auto;cursor:pointer;" onclick="loadVideo(this)">
-  
-  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
-    
-    <!-- Miniatura -->
-    <img src="https://img.youtube.com/vi/VTScn8Kd6bI/hqdefault.jpg"
-    style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
 
-    <!-- Botón Play animado -->
+     <div class="video-box"
+     data-video="VTScn8Kd6bI"         
+     style="position:relative;max-width:800px;margin:auto;cursor:pointer;"
+     onclick="loadVideo(this)">
+
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+
+    <!-- Miniatura -->
+    <img src="https://img.youtube.com/vi/VTScn8Kd6bI/hqdefault.jpg"    
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Botón Play -->
     <div class="play-button"></div>
 
   </div>
 
 </div>
+
+
 
 <style>
 .play-button {
@@ -393,35 +399,52 @@
 }
 </style>
 
+
+
 <script>
 function loadVideo(el) {
+
+  const videoId = el.getAttribute("data-video");
+
   el.innerHTML = `
     <div style="position:relative;padding-bottom:56.25%;height:0;">
-      
-      <iframe id="ytvideo"
-      class="fade-in"
-      src="https://www.youtube.com/embed/VTScn8Kd6bI?autoplay=1&mute=1&controls=1&rel=0&enablejsapi=1"
-      style="position:absolute;top:0;left:0;width:100%;height:100%;"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen></iframe>
 
-      <div class="sound-btn" onclick="enableSound(event)">🔊 Activar sonido</div>
+      <iframe
+        class="ytvideo fade-in"
+        src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1&rel=0&enablejsapi=1"
+        style="position:absolute;top:0;left:0;width:100%;height:100%;"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+
+      <div class="sound-btn" onclick="enableSound(event,this)">
+        🔊 Activar sonido
+      </div>
 
     </div>
   `;
 
   setTimeout(() => {
-    document.getElementById("ytvideo").classList.add("show");
+    el.querySelector(".ytvideo").classList.add("show");
   }, 100);
 }
 
-function enableSound(e) {
+function enableSound(e, btn) {
+
   e.stopPropagation();
-  const iframe = document.getElementById("ytvideo");
-  iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+
+  const iframe = btn.parentElement.querySelector(".ytvideo");
+
+  iframe.contentWindow.postMessage(
+    '{"event":"command","func":"unMute","args":""}',
+    '*'
+  );
+
+  btn.style.display = "none";
 }
 </script>
+
 
 
 
@@ -438,8 +461,7 @@ function enableSound(e) {
         <br>
         <br>
         <br>
-        <h1>Te invitamos a sumarte como vendedor<br>
-        dentro de Ascensum DAO</h1>
+        <h2>Te invitamos a sumarte como vendedor desde Ascensum DAO</h2>
         <br>
         
 
@@ -457,7 +479,7 @@ function enableSound(e) {
             Como vendedor, podés ganar hasta un 40% por cada nodo que vendas.<br>
             <br>
             Existen 11 opciones disponibles, comenzando desde solo 25 USDT<br>
-            A continuacion tienes la lista completa con los valores de cada Nodo
+            ▪️ A continuacion tienes la lista completa con los valores de cada Nodo
             <br>
             <br>
             <br>
@@ -545,9 +567,9 @@ VALOR DE NODOS
             Tu cliente compra un nodo y, una vez realizado el pago,<br>
             en pocos minutos recibís tu comisión directamente en tu billetera.<br>
             <br>
-            Es un proceso simple y el cobro es prácticamente inmediato.<br>
+            ▪️ Es un proceso simple y el cobro es prácticamente inmediato.<br>
 
-            <br><br><br><br> 
+            <br><br> 
 
             </p>
 
@@ -610,7 +632,7 @@ VALOR DE NODOS
             🔹 Otro 20% se destina a compra del token ASM en el Dex y se queman aumentando la escasez<br>
             🔹 Un 5% va a un sistema automatizado que ayuda a estabilizar el precio de ASM<br>
             🔹 Un 5% va para Publicidad, Desarrollo y Marketing<br>
-            🔹 Por ultimo el 50% restante de la venta de un nodo va a la billetera de tu cliente si es que ademas de invertir en ASM decide también vender nodos<br>
+            🔹 Por ultimo el 50% restante de la venta de un nodo va a la billetera de tu cliente si es que ademas de invertir en ASM decide también vender algun nodo<br>
             <br>
 
             Como puedes ver el 100x100 del valor total de un nodo se distribuye en la DAO de Ascensum.<br>
@@ -622,17 +644,24 @@ VALOR DE NODOS
 
 
 
-            <h3>El sistema está diseñado entre varias opciones, con 3 pilares principales:</h3>
+            <h3>El sistema funciona sobre 3 pilares principales:</h3>
             
             <p>
-            <h3>🔹 1. Generación de ASM (minado del nodo)</h3><br>
+            <h3>🔹 1. Generación de ASM (minado del nodo)</h3>
 
-            ASM es una moneda que esta limitada solo para aquellas personas que compren nodos o para quienes la compren en Pancakeswap.<br><br>
+            ASM es un token digital al que se puede acceder de dos formas:<br>
+            <br>
+            ASM es una moneda que esta limitada solo para aquellas personas que compren nodos o para quienes la compren directamente en Pancakeswap.<br>
+            <br>
 
-            Al activar un nodo, tu cliente comienza a recibir el token ASM de forma progresiva durante 360 días.<br> Puede retirarlos y monetizarlos o reinvertirlos en staking o farming en el momento que lo desee.<br><br>
+            Al activar un nodo, tu cliente comienza a recibir el token ASM de forma progresiva durante 360 días.<br> Puede retirarlos y monetizarlos o reinvertirlos en staking o farming en el momento que lo desee.<br>
+            <br>
 
-            Tu cliente puede comprarte un Nodo ASM a ti y minar ASM durante 360 dias<br> 
-            o comprar los ASM directamente en Pancakeswap<br><br> 
+            Tu cliente puede comprarte un Nodo ASM a ti y minar ASM durante 360 dias<br>
+            o comprar los ASM directamente en Pancakeswap
+            <br>
+            
+            <br>
             <br>
             <br>
             
@@ -663,21 +692,27 @@ VALOR DE NODOS
             ¿Entonces porque comprarte a ti un Nodo ASM?
             </div>
 
-            <div style="margin-bottom:18px;">✅ Si lo compra en Pancakeswap, hoy 3 de mayo el token ASM cuesta 6.22 usdt.</div>
+            <div style="margin-bottom:18px;">✅ Si lo compra en Pancakeswap, hoy 5 de mayo el token ASM cuesta 6.28 usdt.</div>
 
             <div style="margin-bottom:18px;">✅ Si vos le vendes un Nodo va a pagar 5.00 usdt por cada token ASM.</div>
 
-            <div style="margin-bottom:18px;">✅ Eso significa que en el mismo momento de la compra del nodo obtuvo un rendimiento superior al 24.4%</div>
+            <div style="margin-bottom:18px;">✅ Esto representa una ventaja de entrada frente al precio actual de mercado</div>
+
+            <div style="margin-bottom:18px;">✅ Al momento de realizar la compra del nodo obtiene un rendimiento superior al 25%</div>
+
+
 
             </div>
 
             <br><br> 
-            <br> <br> 
+            <br> 
 
-            Puedes comprobar el valor de ASM en estos momentos en dextools.io:<br> 
+            Puedes comprobar el valor actual del token ASM en:
+            <br> 
+            
 
             <p>
-            Da click en el link para ingresar a <b>Dextools</b>.<br>
+            👉 <b>Dextools</b>.<br>
             <a href="https://www.dextools.io/app/bnb/pair-explorer/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81"
                 target="_blank">
                 https://www.dextools.io/app/bnb/pair-explorer/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81
@@ -686,39 +721,72 @@ VALOR DE NODOS
 
             <br> 
             <br> 
-            <h3>🔹 ASM tiene características particulares dentro del ecosistema:</h3>
+            <br> 
+            <br> 
+
+            <h3>🔹 ¿Cómo funciona ASM dentro del ecosistema cada vez que se vende un Nodo?</h3>
 
 
-            Cada vez que se activa un nodo, el valor se distribuye dentro del ecosistema:
+            ▪️ Una parte se utiliza para comprar ASM en el mercado<br>
+            ▪️ Una parte se destina al Tesoro<br>
+            ▪️ Otra parte sostiene el funcionamiento del sistema<br>
             <br>
             <br>
-            🔹 Una parte se utiliza para comprar ASM en el mercado<br>
-            🔹 Una parte se destina al Tesoro<br>
-            🔹 Otra parte sostiene el funcionamiento del sistema<br>
-            🔹 El sistema incluye un mecanismo de reducción de oferta:<br><br>
+            <br>
 
-            Cada vez que se activa un nodo, una parte de esa compra (20%) se utiliza para adquirir ASM en el mercado y retirarlo de circulación mediante el proceso de quema.<br>
 
-            Esto genera una dinámica donde la oferta disminuye a medida que el sistema crece, transformando a ASM en una moneda Hiperdeflacionaria.
-            <br><br>
-            
+            🔥 Mecanismo de reducción de oferta
+            <br>
+            El sistema incluye un proceso automático:<br>
+            <br>
+
+            👉 El 20% de cada activación de nodo se utiliza para comprar ASM en el mercado<br>
+            👉 Ese ASM luego es retirado de circulación mediante quema<br>
+            <br>
+
+            Esto genera una dinámica donde:<br>
+            <br>
             ✔ Hay movimiento constante<br>
-            ✔ La oferta se reduce con el crecimiento<br>
-            ✔ El sistema se retroalimenta con la participación
-            
-             <br>
-             <br>
-            🔹 La liquidez fue quemada<br>
-            🔹 El contrato de ASM fue renunciado<br>
+            ✔ La oferta disminuye con el crecimiento<br>
+            ✔ El sistema se retroalimenta con la participación<br>
             <br>
 
-            Esto significa que los desarrolladores ya no pueden modificar el contrato ni retirar el dinero y hacer caer el valor del token como ha pasado en varios proyectos que hoy ya no existen mas.<br><br>
-            🔹 La quema de la liquidez y renuncia del contrato es totalmente comprobable ingresando en la blockchain
+            👉 A medida que el ecosistema crece, la cantidad de ASM disponible se reduce<br>
             <br>
             
-            Aqui tienes el contrato de ASM para que puedas comprobar en 
+            🔹 Un modelo diseñado para sostenerse<br>
+            Este comportamiento convierte a ASM en un token con características hiperdeflacionarias, donde la oferta tiende a disminuir con el tiempo.<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            🔐 Seguridad y transparencia del contrato<br>
+            El sistema fue configurado para limitar riesgos comunes en este tipo de proyectos:<br>
+            <br>
+
+            🔹 La liquidez fue quemada<br>
+            🔹 El contrato fue renunciado<br>
+            <br>
+
+            Esto significa que:<br>
+            <br>
+
+            👉 Los desarrolladores ya no pueden modificar el contrato<br>
+            👉 No pueden retirar la liquidez del sistema<br>
+            (Prácticas que en otros proyectos han generado caídas abruptas o desaparición del token)<br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            🔍 Verificación en blockchain<br>
+            Toda esta información es pública y puede comprobarse directamente en la blockchain a través de BscScan<br>
+            <br>
+
+            Aqui tienes el contrato de ASM para que puedas comprobarlo en 
             <a href="https://bscscan.com" target="_blank"> https://bscscan.com
-            </a> lo que te estoy informando:<br><br>
+            </a> <br><br>
             <br>
             
 
@@ -749,12 +817,9 @@ VALOR DE NODOS
             0x707F0f4a39a4a26239F7D00463B15AB5656861f9
             </div>
             </div>
-            <br>
-            
-            
+                                           
 
             <p>
-            <br>
             <div class="img-main-container">
             <img src="imagenes/contrato_renunciado.jpg" alt="Ascensum DAO Nodos"> 
             </div>
@@ -775,9 +840,21 @@ VALOR DE NODOS
             🔹 Real Yield Farming<br>
             Opción más avanzada que combina ASM con otros activos del ecosistema,<br>
             con un rendimiento del 5% mensual + capital<br><br>
+            <br>
 
-            Además, puede retirar o reinvertir los ASM que va recibiendo diariamente junto con el capital invertido<br>
-            para potenciar resultados (interés compuesto).</p>
+            🔹 Gestión diaria<br>
+            Los ASM que se reciben pueden:<br>
+            <br>
+            ✔ Retirarse diariamente<br>
+            ✔ Reinvertirse para aumentar la posición<br>
+            ✔ Utilizarse para generar un mayor efecto de crecimiento (interes compuesto)<br>
+            <br>
+            👉 Esto permite que cada usuario decida cómo escalar su participación dentro del ecosistema<br>
+            <br>
+            </p>
+
+
+
 
             <br>
             <h2>🔹 3. El Tesoro de Ascensum DAO</h2>
@@ -788,7 +865,7 @@ VALOR DE NODOS
 
             El tesoro esta protegido por la comunidad en su totalidad, ya que es la que tiene la potestad completa de que es lo que se hara con esos fondos.<br><br>
 
-            Cada vez que se vende un nodo automaticamente una parte del valor de ese nodo (20%) se destina a un fondo común llamado Tesoro.<br>
+            Cada vez que se vende un nodo automaticamente una parte del valor de ese nodo (20%) se destina a un fondo común llamado Tesoro que va creciendo con cada venta.<br>
             <br>
 
             El tesoro es mucho mas que un fondo: es una puerta directa a un sistema de inversion descentralizado, seguro y totalmente transparente, donde cada comprador de un nodo tiene voz y voto gracias a nuestra gobernanza comunitaria.<br><br>
@@ -798,19 +875,22 @@ VALOR DE NODOS
             🔹 ¿Cómo funciona?<br><br>
 
             ✔ Cada nodo representa un voto<br>
-            ✔ Los participantes deciden el destino de los fondos<br>
+            ✔ La comunidad decide el destino de los fondos<br>
             ✔ Se pueden financiar nuevas oportunidades dentro del ecosistema<br>
-            ✔ Tu cliente obtendra del tesoro una cuota parte porcentual de la inversion en la compra de nodos ASM<br><br> 
+            ✔ Tu cliente accede a una participación proporcional dentro del Tesoro<br><br> 
 
             </p>
 
             <p>
                 <h3><a href="https://bscscan.com/address/0x87Bc4Ae48CDae1127ccF8694F245FF013375cDeb" target="_blank">👉 Da click aqui y podras comprobar cuantos usdt hay en el Tesoro</a></h3>
                 
-                Debes fijarte debajo de Token Holdings<br> 
+                Debes fijarte el valor debajo de Token Holdings<br> 
                 En estos momentos hay 168.780 usdt <br><br>
                 Al comprar un nodo de 25 usdt tu cliente estara aportando al tesoro de Ascensum 5 usdt, con el nodo de 50 usdt estara aportando 10 usdt, con el de 100 usdt aportara 20 usdt al tesoro y asi sucesivamente con cada compra de nodo.<br>
-                Ese dinero adicional que aporta al tesoro le pertenece a tu cliente, es de por vida y hereditario.<br> 
+                Ese dinero adicional que aporta al tesoro le pertenece a tu cliente, es de por vida y hereditario.
+                <br> 
+                <br>
+                ✅ Estos 3 pilares son los que sostienen el funcionamiento y crecimiento del ecosistema Ascensum.<br>
             </p>
 
            
@@ -823,41 +903,53 @@ VALOR DE NODOS
             <br>
              <h2>¿Por qué muchas personas están comprando nodos ahora?</h2>
             
-            <p>El desarrollo de Ascensum está vinculado a la participación de su comunidad.<br>
-            A medida que más personas se suman y el sistema crece, se activan diferentes mecanismos internos que impactan en su evolución.<br><br>
+            <p>El crecimiento de Ascensum está directamente relacionado con la participación de su comunidad.<br>
+            A medida que más personas se suman, el ecosistema se expande y se activan distintos mecanismos internos que forman parte de su evolución.<br>
 
-            Por eso muchas personas están observando esta etapa inicial como un momento clave para entender cómo funciona y participar.<br><br>
+            👉 Por eso, muchas personas están observando esta etapa como un momento clave para entender cómo funciona y decidir participar.<br><br>
 
             </p>
             
             <p>
             <h3>🔹 Todo el proceso es simple</h3>
+            Está pensado para que cualquier persona pueda comenzar inmediatamente:<br>
+            <br>
 
-            👉 Es muy sencillo todo se maneja desde el celular<br>
-            👉 Sin conocimientos técnicos<br>
-            👉 Siguiendo un paso a paso<br>
-           
+            👉 Es muy sencillo todo se gestiona desde el celular<br>
+            👉 No se necesitan conocimientos técnicos<br>
+            👉 Solo hay que seguir un paso a paso<br>
+            <br>
+            <br>
+            <h3>🔹 Mira este video de 7 minutos<br>
+            Aqui tienes mas informacion sobre lo que es Ascensum Dao y como funciona</h3>
+           👉 activa el boton de sonido en el video
             </p>
             <br>
                          
 
 
-              <!-- ===================== VIDEO RESPONSIVE ===================== -->
+             <!-- ===================== VIDEO RESPONSIVE ===================== -->
 
-        <div style="position:relative;max-width:800px;margin:auto;cursor:pointer;" onclick="loadVideo(this)">
-  
+
+     <div class="video-box"
+     data-video="-pDlzPNBm8A"         
+     style="position:relative;max-width:800px;margin:auto;cursor:pointer;"
+     onclick="loadVideo(this)">
+
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
-    
-    <!-- Miniatura -->
-    <img src="https://img.youtube.com/vi/-pDlzPNBm8A/hqdefault.jpg"
-    style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
 
-    <!-- Botón Play animado -->
+    <!-- Miniatura -->
+    <img src="https://img.youtube.com/vi/-pDlzPNBm8A/hqdefault.jpg"    
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Botón Play -->
     <div class="play-button"></div>
 
   </div>
 
 </div>
+
+
 
 <style>
 .play-button {
@@ -915,33 +1007,49 @@ VALOR DE NODOS
 }
 </style>
 
+
+
 <script>
 function loadVideo(el) {
+
+  const videoId = el.getAttribute("data-video");
+
   el.innerHTML = `
     <div style="position:relative;padding-bottom:56.25%;height:0;">
-      
-      <iframe id="ytvideo"
-      class="fade-in"
-      src="https://www.youtube.com/embed/-pDlzPNBm8A?autoplay=1&mute=1&controls=1&rel=0&enablejsapi=1"
-      style="position:absolute;top:0;left:0;width:100%;height:100%;"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen></iframe>
 
-      <div class="sound-btn" onclick="enableSound(event)">🔊 Activar sonido</div>
+      <iframe
+        class="ytvideo fade-in"
+        src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1&rel=0&enablejsapi=1"
+        style="position:absolute;top:0;left:0;width:100%;height:100%;"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+
+      <div class="sound-btn" onclick="enableSound(event,this)">
+        🔊 Activar sonido
+      </div>
 
     </div>
   `;
 
   setTimeout(() => {
-    document.getElementById("ytvideo").classList.add("show");
+    el.querySelector(".ytvideo").classList.add("show");
   }, 100);
 }
 
-function enableSound(e) {
+function enableSound(e, btn) {
+
   e.stopPropagation();
-  const iframe = document.getElementById("ytvideo");
-  iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+
+  const iframe = btn.parentElement.querySelector(".ytvideo");
+
+  iframe.contentWindow.postMessage(
+    '{"event":"command","func":"unMute","args":""}',
+    '*'
+  );
+
+  btn.style.display = "none";
 }
 </script>
 
@@ -952,17 +1060,120 @@ function enableSound(e) {
 
         <br>
         <br>
-        
+        <br>
 
             <p>🟢  Próximo paso<br>
               
 
-            Si después de entender cómo funciona sientes que esto puede ser para ti, el siguiente paso es simple:</p>
+            Si después de entender cómo funciona sientes que esto puede ser para ti, el siguiente paso es muy simple:</p>
 
 
             <p>
-                <h3><a href="https://wa.link/n9qj3g" target="_blank">👉 Quiero conocer los ultimos detalles y comenzar a vender Nodos ASM</a></h3>
+                👇
             </p>
+            
+            
+
+
+            
+
+<!-- BOTÓN CTA PRO -->
+<a href="TU_LINK_AQUI" class="cta-pro" id="ctaPro">
+  <span>Ver últimos detalles y comenzar</span>
+  <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+    <path d="M5 12h14M13 5l7 7-7 7" stroke="white" stroke-width="2" fill="none"/>
+  </svg>
+</a>
+
+<style>
+.cta-pro {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 30px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #00c853, #00e676);
+  border-radius: 14px;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Hover */
+.cta-pro:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 200, 83, 0.6);
+}
+
+/* Click */
+.cta-pro:active {
+  transform: scale(0.96);
+}
+
+/* Flecha animada */
+.cta-pro .arrow {
+  transition: transform 0.3s ease;
+}
+
+.cta-pro:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* Efecto "respira" */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 200, 83, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
+}
+
+.cta-pro {
+  animation: pulse 2.5s infinite;
+}
+
+/* Mostrar con scroll */
+.cta-pro.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<script>
+// Mostrar botón al hacer scroll
+document.addEventListener("DOMContentLoaded", function() {
+  const btn = document.getElementById("ctaPro");
+
+  function showOnScroll() {
+    const trigger = window.innerHeight * 0.8;
+    const rect = btn.getBoundingClientRect();
+
+    if (rect.top < trigger) {
+      btn.classList.add("visible");
+    }
+  }
+
+  window.addEventListener("scroll", showOnScroll);
+  showOnScroll();
+});
+</script>
+
+
+
+
+            <br>
+            <br>
+            <p>▪️ Acceso inmediato desde tu celular</p>
+
+
+
+
+
+
+
+
 
 
 
