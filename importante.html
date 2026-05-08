@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Importante - Lo que tenes que saber</title>
+  <link rel="icon" type="image/png" href="imagenes/pets_universe.png"> <!-- Favicon -->
+
+  <style>
+    /* ===================== ESTILO GENERAL ===================== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ===================== ENCABEZADO ===================== */
+    .top-bar {
+      position: relative;
+      height: 40px;
+      /* Altura de la franja verde */
+    }
+
+    /* Franja verde detrás de la barra negra */
+    .green-bar {
+      background-color: #3a8308;
+      height: 110px;
+      width: 100%;
+    }
+
+    /* Barra negra centrada y fija al top */
+    .nav-bar {
+      position: fixed;
+      /* Barra negra fija */
+      top: 0;
+      /* Pegada al margen superior */
+      left: 50%;
+      /* Para centrar horizontalmente */
+      transform: translateX(-50%);
+      background-color: #000;
+      border-radius: 25px;
+      width: 95%;
+      max-width: 1200px;
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
+      z-index: 999;
+      /* Para que quede encima de la franja verde */
+      transition: all 0.4s ease;
+      /* Mejora scroll */
+    }
+
+    /* Cuando hacemos scroll la barra se achica un poquito */
+    .nav-bar.scrolled {
+      min-height: 80px;
+      /* un poco más baja */
+      background-color: rgba(0, 0, 0, 0.95);
+      /* efecto sutil de transparencia */
+    }
+
+    /* Logo y texto al lado */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* Logo */
+    .logo img {
+      max-height: 60px;
+      width: auto;
+      transition: max-height 0.3s ease;
+      /* Mejora scroll */
+    }
+
+    .nav-bar.scrolled .logo img {
+      max-height: 50px;
+      /* achica el logo al bajar */
+    }
+
+    /* Texto al lado del logo */
+    .logo-text {
+      color: yellow;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: font-size 0.3s ease;
+      /* Mejora scroll */
+    }
+
+    .logo-text:hover {
+      color: #a8e6a3;
+    }
+
+    .nav-bar.scrolled .logo-text {
+      font-size: 1.1rem;
+      /* texto un poquito más delicado al bajar */
+    }
+
+    /* Contenedor de links a la derecha */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: yellow;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #a8e6a3;
+    }
+
+    /* ===================== CONTENIDO PRINCIPAL ===================== */
+    main {
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 900px;
+      line-height: 1.2;
+      font-size: 18px;
+      margin-top: 120px;
+      /* Para que el contenido no quede oculto detrás de la barra negra */
+    }
+
+    main a {
+      color: red;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    main a:hover {
+      color: #3a8308;
+    }
+
+    /* Estilos para títulos */
+    h1 {
+      font-family: Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      font-size: 2em;
+    }
+
+    h2 {
+      font-family: Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      font-size: 1.6em;
+    }
+
+    h3 {
+      font-family: Arial, sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      margin-bottom: 8px;
+      font-size: 1.3em;
+    }
+
+    /* ===================== VIDEO RESPONSIVE ===================== */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      width: 70%;
+      max-width: 800px;
+      height: auto;
+      aspect-ratio: 16/9;
+    }
+
+    /* ===================== PIE DE PÁGINA ===================== */
+    .footer-top-green {
+      background-color: #3a8308;
+      height: 0.5cm;
+      width: 100%;
+    }
+
+    .footer-black {
+      background-color: #000;
+      height: 2.5cm;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+    }
+
+    .footer-black div {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-black .left {
+      color: yellow;
+      font-size: 18px;
+    }
+
+    .footer-black .right {
+      text-align: right;
+    }
+
+    .footer-black .right a {
+      color: yellow;
+      margin-left: 15px;
+      text-decoration: none;
+    }
+
+    .footer-black .right a:hover {
+      color: #a8e6a3;
+    }
+
+    .footer-bottom-green {
+      background-color: #3a8308;
+      height: 0.6cm;
+      width: 100%;
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 768px) {
+      .nav-bar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px; /* espacio más compacto entre links */
+      }
+
+      .video-container iframe {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===================== ENCABEZADO ===================== -->
+  <div class="top-bar">
+    <div class="green-bar"></div>
+    <div class="nav-bar">
+      <div class="logo-container">
+
+        <a href="importante.html" target="_blank" class="logo">
+          <img src="imagenes/Pets_Concilium.png" alt="Logo Concilium">
+        </a>
+
+
+
+        <a href="importante.html" target="_blank" class="logo-text">Criptovision Marketing Global Ecom</a>
+
+      </div>
+      <div class="nav-links">
+        <a href="importante.html" target="_blank">Preguntas Frecuentes</a>
+        <a href="https://wa.link/mj9reh" target="_blank">Contacto</a>
+        <a href="importante.html" target="_blank">Ascensum Dao</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  <main>
+    
+     
+    <br>
+
+
+    <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-12 col-lg-4 image-wrapper">
+        <a href="importante.html" target="_blank"><img class="w-100" src="imagenes/construyendo_el_futuro.jpeg" alt="Mas que una DAO - Un Movimiento"></a>
+      </div>
+
+          <br>
+          <br>
+      <h1>Informacion Importante</h1>
+      <h3>Lo que debes saber</h3>
+
+    
+      <br>
+      <br>
+      <p>
+      🔹 ¿Cómo crecen tus comisiones?<br>
+      <br>
+
+      Puedes comenzar a vender nodos desde el primer momento, sin necesidad de invertir.<br>
+      A medida que realizas ventas, tu comisión va aumentando de forma progresiva.</p>
+      <br>
+      <br>
+      <br>
+    
+      
+      
+    <p>
+      🔹 Progresión de comisiones por cada tipo de nodo<br>
+      <br>
+
+      Cada tipo de nodo tiene su propia escala de crecimiento.<br>
+      Ejemplo:<p>
+      <br>
+     
+
+
+       <div style="
+background: linear-gradient(145deg,#0f0f0f,#1a1a1a);
+color: #ffffff;
+padding: 22px;
+border-radius: 16px;
+font-family: Arial, sans-serif;
+font-size: clamp(14px,2vw,18px);
+line-height: 1.9;
+width: 100%;
+max-width: 460px;
+margin: auto;
+box-sizing: border-box;
+box-shadow: 0 0 25px rgba(0,255,120,0.15);
+border: 1px solid rgba(0,255,120,0.15);
+">
+
+<div style="
+text-align:center;
+font-size:22px;
+font-weight:bold;
+color:#00ff99;
+margin-bottom:15px;
+letter-spacing:1px;
+">
+Ventas del mismo Nodo - Comision
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>1ra. Venta  -  Nodo 1</span><span>20 %</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>2da. Venta  -  Nodo 1</span><span>25 %</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>3ra. Venta  -  Nodo 1</span><span>30 %</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>4ta. Venta  -  Nodo 1</span><span>35 %</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>5ta. Venta  -  Nodo 1 en adelante </span><span>40 %</span>
+</div>
+
+
+</div>
+      <br>
+      <br>
+      <br>
+      <br>
+
+     
+
+     <p>
+      🔹 Importante:<br>
+      <br>
+
+      ▪️ Cada tipo de nodo tiene su propia progresión de comisiones<br>
+      ▪️ Las ventas no se combinan entre distintos valores de nodos<br>
+      ▪️ Esto permite un crecimiento más ordenado y sostenible dentro del ecosistema<br>
+      <br>
+      <br>
+
+
+      🔹 Ejemplo simple<br>
+      <br>
+
+      👉 Si vendes 5 nodos de 25 USDT:<br>
+      ✔ Alcanzas la comisión máxima para ese tipo de nodo<br>
+      <br>
+      <br>
+      👉 Luego vendes un nodo de 50 USDT:<br>
+      ✔ Como es tu primera venta de ese valor, comienzas nuevamente con el 20% de comisión para ese nodo
+
+
+
+    </p>
+
+      <br>
+    <p>
+      🔹 En pocas palabras<br>
+      <br>
+
+      ✔ Puedes comenzar sin inversión<br>
+      ✔ Puedes generar ingresos desde tu primera venta<br>
+      ✔ Y puedes aumentar tus comisiones con el tiempo</p>
+    <br>
+    <br>
+      
+      
+      <p>
+      Cada tipo de nodo tiene su propia escala de comisiones.<br>
+      Las ventas no se combinan entre los diferentes valores de Nodos.<br>
+      <br>
+      <br>
+      Para alcanzar la comisión máxima en un tipo de nodo, es necesario haber realizado<br>
+      5 ventas de Nodos de ese mismo valor.<br>
+      <br>
+      <br>
+      <br>
+      🔹 Ejemplo para el Nodo 2 (50 USDT)<br>
+      A continuación puedes ver el mismo ejemplo aplicado al Nodo 2, que tiene un valor de 50 USDT.<br>
+      <br>
+
+      En los demás nodos el funcionamiento es exactamente igual.<br>
+      Lo único que cambia es el valor del nodo.<br>
+      Los porcentajes de comisión siempre son los mismos.</p>
+      <br>
+      <br>
+      <br>
+
+       <div style="
+background: linear-gradient(145deg,#0f0f0f,#1a1a1a);
+color: #ffffff;
+padding: 22px;
+border-radius: 16px;
+font-family: Arial, sans-serif;
+font-size: clamp(14px,2vw,18px);
+line-height: 1.9;
+width: 100%;
+max-width: 460px;
+margin: auto;
+box-sizing: border-box;
+box-shadow: 0 0 25px rgba(0,255,120,0.15);
+border: 1px solid rgba(0,255,120,0.15);
+">
+
+<div style="
+text-align:center;
+font-size:22px;
+font-weight:bold;
+color:#00ff99;
+margin-bottom:15px;
+letter-spacing:1px;
+">
+Ventas del mismo Nodo - Comision
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>1ra. Venta  -  Nodo 2</span><span>20 %</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>2da. Venta  -  Nodo 2</span><span>25 %</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>3ra. Venta  -  Nodo 2</span><span>30 %</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>4ta. Venta  -  Nodo 2</span><span>35 %</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>5ta. Venta  -  Nodo 2   en adelante </span><span>40 %</span>
+</div>
+
+
+</div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      <h2>🔹 Nodos disponibles en esta promoción</h2>
+
+      <h3>Estos son los 5 nodos actualmente disponibles para vender dentro de esta promoción especial.</h3>
+      <br>
+      <br>
+      <br>
+          
+      
+
+      <div style="
+background: linear-gradient(145deg,#0f0f0f,#1a1a1a);
+color: #ffffff;
+padding: 22px;
+border-radius: 16px;
+font-family: Arial, sans-serif;
+font-size: clamp(14px,2vw,18px);
+line-height: 1.9;
+width: 100%;
+max-width: 460px;
+margin: auto;
+box-sizing: border-box;
+box-shadow: 0 0 25px rgba(0,255,120,0.15);
+border: 1px solid rgba(0,255,120,0.15);
+">
+
+<div style="
+text-align:center;
+font-size:22px;
+font-weight:bold;
+color:#00ff99;
+margin-bottom:15px;
+letter-spacing:1px;
+">
+VALOR DE NODOS
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>Nodo 1</span><span>25 USDT</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>Nodo 2</span><span>50 USDT</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>Nodo 3</span><span>100 USDT</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>Nodo 4</span><span>200 USDT</span>
+</div>
+
+<div style="display:flex; justify-content:space-between; border-bottom:1px solid #333; padding:6px 0;">
+<span>Nodo 5</span><span>400 USDT</span>
+</div>
+
+
+
+</div>
+      
+      
+      <h3 style="text-align:center;">
+
+      ▪️ Los nodos de valores superiores requieren<br>
+
+      <span style="display:inline-block; margin-left:40px;">
+      otro nivel de participación dentro del ecosistema.
+      </span>
+
+      </h3>
+
+
+
+    
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>🔹 ¿Cómo funciona esta promoción?</h2>
+
+        <h3>Esta promoción fue creada de manera independiente para permitir que cualquier persona pueda comenzar a vender nodos sin necesidad de realizar una inversión inicial.<br>
+        <br>
+
+        Gracias a esta modalidad, puedes generar comisiones desde tus primeras ventas utilizando una estructura ya habilitada dentro del ecosistema.<br>
+        <br>
+        El objetivo es que puedas generar tus primeras comisiones,<br>
+        adquirir experiencia y si lo deseas,<br>
+        utilizar esas ganancias para comenzar a construir tu propia cartera de nodos.</h3>
+        <br>
+        <br>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        
+
+
+        <h2>🔹 Ciclo de comisiones</h2>
+        
+        <h3>▪️ Dentro de esta modalidad promocional, las comisiones funcionan mediante ciclos.
+        <br>
+        <br>
+        ✔ La 1° y 2° venta generan comisión directa para el vendedor<br>
+        ✔ La 3° venta reinicia el ciclo de comisiones dentro de la estructura utilizada para esta promoción<br>
+        <br>
+        Luego el proceso vuelve a comenzar nuevamente.</h3>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>🔹 Importante</h2>
+
+        <h3>Esta promoción es una iniciativa independiente<br>
+        Fue creada para permitirte comenzar sin inversión <br>
+        <br>
+        El objetivo es que puedas empezar a generar ingresos desde tus primeras ventas utilizando una estructura ya habilitada.<br>
+        <br>
+                
+        ▪️ Esta promocion no representa la totalidad de los beneficios disponibles para quienes participan directamente con nodos propios dentro de Ascensum.</h3>
+        
+        <br>
+        <br>
+              
+      
+        <div style="text-align:center; margin:30px auto;">
+
+  <a href="importante.html" target="_blank">
+    <img src="imagenes/personas_correctas.jpeg"
+         alt="Mas que una DAO - Un Movimiento"
+         style="max-width:500px; width:100%; height:auto;">
+  </a>
+
+</div>
+        
+        
+        <br>
+
+        
+        <h2>
+
+        🔹 Ahora ya tienes toda la información.<br>
+
+        <span style="margin-left:45px; display:inline-block;">
+        El siguiente paso depende de ti.
+        </span>
+
+        </h2>
+
+
+
+        <br>
+        
+        <h3>
+
+        👉 Decidir si quieres formar parte de Ascensum<br>
+
+        <span style="margin-left:45px; display:inline-block;">
+         y comenzar tu camino dentro del proyecto.
+        </span>
+
+        </h3>
+
+
+        <br>
+        <br>
+            
+
+      <!-- ===================================================== -->
+<!-- ================= BOTÓN CTA PRO ===================== -->
+<!-- ===================================================== -->
+
+<!--
+PERSONALIZACIÓN RÁPIDA
+
+CAMBIAR POSICIÓN:
+center = centro
+left = izquierda
+right = derecha
+
+CAMBIAR COLOR:
+Busca:
+background: linear-gradient(...)
+
+CAMBIAR TAMAÑO:
+padding: 16px 30px;
+font-size: 18px;
+
+CAMBIAR TEXTO:
+Quiero vender Nodos Ascensum
+
+CAMBIAR LINK:
+Reemplazar TU_LINK_AQUI
+
+-->
+
+<!-- CONTENEDOR DEL BOTÓN -->
+<div class="cta-container">
+
+    <!-- BOTÓN -->
+    <a href="https://wa.link/mj9reh" class="cta-pro" id="ctaPro">
+
+        <!-- TEXTO DEL BOTÓN -->
+        <span>Quiero vender Nodos Ascensum</span>
+
+        <!-- FLECHA -->
+        <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"
+                  stroke="white"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+    </a>
+
+</div>
+
+<style>
+
+/* ===================================================== */
+/* ================= POSICIÓN BOTÓN ==================== */
+/* ===================================================== */
+
+.cta-container {
+
+    /* CAMBIAR:
+       center = centro
+       left = izquierda
+       right = derecha
+    */
+
+    text-align: center;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* ===================================================== */
+/* ==================== BOTÓN ========================== */
+/* ===================================================== */
+
+.cta-pro {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    /* TAMAÑO BOTÓN */
+    padding: 16px 30px;
+
+    /* TAMAÑO TEXTO */
+    font-size: 18px;
+
+    font-weight: 600;
+    color: #121211;
+
+    /* COLOR BOTÓN */
+    background: linear-gradient(135deg, #00c853, #00e676);
+
+    border-radius: 14px;
+    text-decoration: none;
+
+    /* SOMBRA */
+    box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: pulse 2.5s infinite;
+}
+
+/* ===================================================== */
+/* ===================== HOVER ========================= */
+/* ===================================================== */
+
+.cta-pro:hover {
+
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow: 0 15px 35px rgba(0, 200, 83, 0.6);
+}
+
+/* ===================================================== */
+/* ===================== CLICK ========================= */
+/* ===================================================== */
+
+.cta-pro:active {
+    transform: scale(0.96);
+}
+
+/* ===================================================== */
+/* ================= FLECHA ANIMADA ==================== */
+/* ===================================================== */
+
+.cta-pro .arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-pro:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ===================================================== */
+/* ================= EFECTO PULSE ====================== */
+/* ===================================================== */
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 200, 83, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+    }
+}
+
+/* ===================================================== */
+/* ============== APARECER CON SCROLL ================= */
+/* ===================================================== */
+
+.cta-pro.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
+
+<script>
+
+/* ===================================================== */
+/* ========= MOSTRAR BOTÓN AL HACER SCROLL ============ */
+/* ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const btn = document.getElementById("ctaPro");
+
+    function showOnScroll() {
+
+        const trigger = window.innerHeight * 0.8;
+        const rect = btn.getBoundingClientRect();
+
+        if (rect.top < trigger) {
+            btn.classList.add("visible");
+        }
+    }
+
+    window.addEventListener("scroll", showOnScroll);
+
+    showOnScroll();
+});
+
+</script>
+
+
+
+
+
+            <br>
+            <br>
+            
+            <h3 style="text-align:center;">
+
+            🔹 Acceso inmediato desde tu celular<br>
+
+            <span style="display:inline-block; margin-left:40px;">
+            </span>
+
+            </h3>
+
+
+
+
+
+
+
+
+
+        <br><br><br><br>
+
+
+  </main>
+
+  
+
+  <!-- ===================== PIE DE PÁGINA ===================== -->
+  <section>
+    <div class="footer-top-green"></div>
+    <div class="footer-black">
+      <div class="left">© Copyright 2026 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
+      <div class="right">
+        <a href="https://t.me/nodos_ascensum" target="_blank">Telegram</a>
+        <a href="https://wa.link/mj9reh" target="_blank">Whatsapp</a>
+        <a href="https://facebook.com/networktoearn" target="_blank">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom-green"></div>
+  </section>
+
+  <!-- ===================== SCRIPT PARA EFECTO SCROLL ===================== -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const nav = document.querySelector(".nav-bar");
+      if (window.scrollY > 50) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+</body>
+
+</html>
