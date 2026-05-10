@@ -302,12 +302,11 @@
                 </a>
                 <!-- Mantengo el texto al lado del logo tal como vos lo querés -->
                 <a href="" target="_blank" class="logo-text">Criptovision Marketing Global Ecom</a>
-            </div>
 
-            <div class="nav-links">
-            <a href="" target="_blank">Ascensum Dao</a>
+
             </div>
-        </div>
+            </div>
+           
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
@@ -319,7 +318,7 @@
         <p>👉 Debes activar el boton de sonido en el video<br>
         Después te explicamos paso a paso cómo funciona y qué podés esperar
          </p>
-
+         <br>
 
         
         <!-- ===================== VIDEO RESPONSIVE ===================== -->
@@ -565,8 +564,7 @@ VALOR DE NODOS
             <h2>🔹 ¿Como funciona para vos?</h2>
              
             
-            <p>Tu cliente compra un nodo y, una vez realizado el pago,<br>
-            en pocos minutos recibís tu comisión directamente en tu billetera.<br>
+            <p>Tu cliente compra un nodo y una vez realizado el pago, informas sus datos y en pocos minutos recibís tu comisión directamente en tu billetera.<br>
             <br>
             ▪️ Es un proceso simple y el cobro es prácticamente inmediato.</p>
             <br>
@@ -631,13 +629,18 @@ VALOR DE NODOS
              
             <p>
             🔹 Porque al comprar un nodo el 20% del valor de ese nodo se destina al Tesoro de Ascensum<br>
+            <br>
             🔹 Otro 20% se destina a compra del token ASM en el Dex y se queman aumentando la escasez<br>
+            <br>
             🔹 Un 5% va a un sistema automatizado que ayuda a estabilizar el precio de ASM<br>
+            <br>
             🔹 Un 5% va para Publicidad, Desarrollo y Marketing<br>
+            <br>
             🔹 Por ultimo el 50% restante de la venta de un nodo va a la billetera de tu cliente si es que ademas de invertir en ASM decide también vender algun nodo<br>
             <br>
 
             Como puedes ver el 100x100 del valor total de un nodo se distribuye en la DAO de Ascensum.<br>
+            <br>
             En Ascensum no hay un dueño, todos somos Propietarios y nos beneficiamos por igual cada vez que se vende un nodo y se queman tokens.</p>
             <br><br><br>
 
@@ -710,17 +713,18 @@ VALOR DE NODOS
 
             <br><br> 
             <br> 
-            <p>
-            Puedes comprobar el valor actual del token ASM en:
-            <br> 
-            
-
-            
-            👉 <b>Dextools</p></b>.<br>
-            <a href="https://www.dextools.io/app/bnb/pair-explorer/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81"
-                target="_blank" rel="noopener noreferrer">
-                https://www.dextools.io/app/bnb/pair-explorer/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81
-            </a>
+           <p>
+          Puedes comprobar el valor actual del token ASM en:
+         <br> 
+                
+         👉 <b>Dextools</b>.
+         <br>
+         <br>  
+         <a href="https://www.dextools.io/app/bnb/pair-explorer/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81"
+        target="_blank" rel="noopener noreferrer">
+        https://www.dextools.io/app/bnb/pair-explorer/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81
+         </a>
+        </p>
             
 
             <br> 
@@ -794,45 +798,77 @@ VALOR DE NODOS
             <br>
             
 
-            <div style="
-            background: linear-gradient(145deg,#0f0f0f,#1a1a1a);
-            color:#ffffff;
-            padding:24px;
-            border-radius:16px;
-            font-family:Arial, sans-serif;
-            font-size:clamp(15px,2vw,18px);
-            line-height:1.8;
-            width:100%;
-            max-width:760px;
-            margin:auto;
-            box-sizing:border-box;
-            box-shadow:0 0 25px rgba(0,255,120,0.15);
-            border:1px solid rgba(0,255,120,0.15);
-            ">
 
-            <div style="
-            text-align:center;
-            font-size:26px;
-            font-weight:bold;
-            color:#F1C40F;
-            margin-bottom:24px;
-            letter-spacing:0.5px;
-            ">
-            0x707F0f4a39a4a26239F7D00463B15AB5656861f9
-            </div>
-            </div>
-                                           
 
-            <br>
+                        <div style="
+background:#111;
+padding:15px;
+border-radius:12px;
+text-align:center;
+margin-top:20px;
+">
+
+<span id="refLink" style="
+color:#00ff88;
+font-size:16px;
+word-break:break-all;
+display:block;
+margin-bottom:15px;
+">
+0x707F0f4a39a4a26239F7D00463B15AB5656861f9
+</span>
+
+<button onclick="copiarLink()" style="
+background:#00c3ff;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+">
+📋 Copiar Link
+</button>
+
+<p id="mensajeCopiado" style="
+color:#00ff88;
+margin-top:10px;
+display:none;
+font-weight:bold;
+">
+✅ Link copiado correctamente
+</p>
+
+</div>
+
+<script>
+function copiarLink() {
+
+const texto =
+document.getElementById("refLink").innerText;
+
+navigator.clipboard.writeText(texto);
+
+document.getElementById("mensajeCopiado").style.display = "block";
+
+setTimeout(() => {
+document.getElementById("mensajeCopiado").style.display = "none";
+}, 2500);
+
+}
+</script>
+
+
+<br>
             <br>
             <div class="img-main-container">
             <img src="imagenes/contrato_renunciado.jpg" alt="Ascensum DAO Nodos"> 
             </div>
             <br>
-            <br>
             
 
-            
 
             <h2>🔹 2. Opciones para potenciar resultados</h2>
 
@@ -894,6 +930,7 @@ VALOR DE NODOS
                 Debes fijarte el valor debajo de Token Holdings<br> 
                 En estos momentos hay 168.780 usdt <br><br>
                 Al comprar un nodo de 25 usdt tu cliente estara aportando al tesoro de Ascensum 5 usdt, con el nodo de 50 usdt estara aportando 10 usdt, con el de 100 usdt aportara 20 usdt al tesoro y asi sucesivamente con cada compra de nodo.<br>
+                <br>
                 Ese dinero adicional que aporta al tesoro le pertenece a tu cliente, es de por vida y hereditario.
                 <br> 
                 <br>
@@ -913,7 +950,8 @@ VALOR DE NODOS
             
             <p>El crecimiento de Ascensum está directamente relacionado con la participación de su comunidad.<br>
             A medida que más personas se suman, el ecosistema se expande y se activan distintos mecanismos internos que forman parte de su evolución.<br>
-
+            <br>
+            
             👉 Por eso, muchas personas están observando esta etapa como un momento clave para entender cómo funciona y decidir participar.</p>
             <br>
             <br>
@@ -1079,8 +1117,8 @@ function enableSound(e, btn) {
 
             Si después de entender cómo funciona sientes que esto puede ser para ti, el siguiente paso es muy simple:<br>
             Da click en el Boton y accede a los detalles finales</p>
-
-
+            <br>
+            
               
             
 
@@ -1089,7 +1127,7 @@ function enableSound(e, btn) {
 
 
 
-      <!-- ===================================================== -->
+<!-- ===================================================== -->
 <!-- ================= BOTÓN CTA PRO ===================== -->
 <!-- ===================================================== -->
 
