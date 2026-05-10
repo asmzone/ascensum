@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comenzar</title>
+  <link rel="icon" type="image/png" href="imagenes/pets_universe.png"> <!-- Favicon -->
+
+  <style>
+    /* ===================== ESTILO GENERAL ===================== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ===================== ENCABEZADO ===================== */
+    .top-bar {
+      position: relative;
+      height: 40px;
+      /* Altura de la franja verde */
+    }
+
+    /* Franja verde detrás de la barra negra */
+    .green-bar {
+      background-color: #3a8308;
+      height: 110px;
+      width: 100%;
+    }
+
+    /* Barra negra centrada y fija al top */
+    .nav-bar {
+      position: fixed;
+      /* Barra negra fija */
+      top: 0;
+      /* Pegada al margen superior */
+      left: 50%;
+      /* Para centrar horizontalmente */
+      transform: translateX(-50%);
+      background-color: #000;
+      border-radius: 25px;
+      width: 95%;
+      max-width: 1200px;
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
+      z-index: 999;
+      /* Para que quede encima de la franja verde */
+      transition: all 0.4s ease;
+      /* Mejora scroll */
+    }
+
+    /* Cuando hacemos scroll la barra se achica un poquito */
+    .nav-bar.scrolled {
+      min-height: 80px;
+      /* un poco más baja */
+      background-color: rgba(0, 0, 0, 0.95);
+      /* efecto sutil de transparencia */
+    }
+
+    /* Logo y texto al lado */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* Logo */
+    .logo img {
+      max-height: 60px;
+      width: auto;
+      transition: max-height 0.3s ease;
+      /* Mejora scroll */
+    }
+
+    .nav-bar.scrolled .logo img {
+      max-height: 50px;
+      /* achica el logo al bajar */
+    }
+
+    /* Texto al lado del logo */
+    .logo-text {
+      color: yellow;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: font-size 0.3s ease;
+      /* Mejora scroll */
+    }
+
+    .logo-text:hover {
+      color: #a8e6a3;
+    }
+
+    .nav-bar.scrolled .logo-text {
+      font-size: 1.1rem;
+      /* texto un poquito más delicado al bajar */
+    }
+
+    /* Contenedor de links a la derecha */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: yellow;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #a8e6a3;
+    }
+
+    /* ===================== CONTENIDO PRINCIPAL ===================== */
+    main {
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 900px;
+      line-height: 1.2;
+      font-size: 18px;
+      margin-top: 120px;
+      /* Para que el contenido no quede oculto detrás de la barra negra */
+    }
+
+    main a {
+      color: red;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    main a:hover {
+      color: #3a8308;
+    }
+
+    /* Estilos para títulos */
+    h1 {
+      font-family: Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      font-size: 2em;
+    }
+
+    h2 {
+      font-family: Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      font-size: 1.6em;
+    }
+
+    h3 {
+      font-family: Arial, sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      margin-bottom: 8px;
+      font-size: 1.3em;
+    }
+
+    /* ===================== VIDEO RESPONSIVE ===================== */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      width: 70%;
+      max-width: 800px;
+      height: auto;
+      aspect-ratio: 16/9;
+    }
+
+    /* ===================== PIE DE PÁGINA ===================== */
+    .footer-top-green {
+      background-color: #3a8308;
+      height: 0.5cm;
+      width: 100%;
+    }
+
+    .footer-black {
+      background-color: #000;
+      height: 2.5cm;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+    }
+
+    .footer-black div {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-black .left {
+      color: yellow;
+      font-size: 18px;
+    }
+
+    .footer-black .right {
+      text-align: right;
+    }
+
+    .footer-black .right a {
+      color: yellow;
+      margin-left: 15px;
+      text-decoration: none;
+    }
+
+    .footer-black .right a:hover {
+      color: #a8e6a3;
+    }
+
+    .footer-bottom-green {
+      background-color: #3a8308;
+      height: 0.6cm;
+      width: 100%;
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 768px) {
+      .nav-bar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px; /* espacio más compacto entre links */
+      }
+
+      .video-container iframe {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===================== ENCABEZADO ===================== -->
+  <div class="top-bar">
+    <div class="green-bar"></div>
+    <div class="nav-bar">
+      <div class="logo-container">
+
+        <a href="comenzar.html" target="_blank" class="logo">
+          <img src="imagenes/Pets_Concilium.png" alt="Logo Concilium">
+        </a>
+
+
+
+        <a href="comenzar.html" target="_blank" class="logo-text">Criptovision Marketing Global Ecom</a>
+
+      </div>
+      <div class="nav-links">
+        <a href="ecosistema.html" target="_blank">Preguntas Frecuentes</a>
+        <a href="contacto.html" target="_blank">Contacto</a>
+        <a href="ascensum_dao.html" target="_blank">Ascensum Dao</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  <main>
+
+
+    <h1 style="text-align:center; line-height:1.5;"> 🚀 Bienvenido al equipo Ascensum </h1> 
+    
+    <hr style="width:70%;">
+    <br>
+    <br>
+    
+
+    <div style="text-align:center; margin:30px auto;">
+
+  <a href="importante.html" target="_blank">
+    <img src="imagenes/lo_construimos_juntos.jpeg"
+         alt="Mas que una DAO - Un Movimiento"
+         style="max-width:600px; width:100%; height:auto;">
+  </a>
+
+</div>
+
+<br>
+<p>
+Estás a punto de conocer una oportunidad pensada para personas que quieren crecer, aprender y desarrollar una actividad desde internet con herramientas reales y acompañamiento constante.<br>
+<br>
+
+Aquí no estarás solo.<br>
+Vas a recibir material listo para usar, incluyendo imágenes y videos publicitarios diseñados para ayudarte a compartir el proyecto de forma profesional y sencilla.<br>
+<br>
+
+Además, contarás con mi apoyo y asesoramiento en cada paso:<br>
+<br>
+
+🔹 Cómo funciona Ascensum.<br>
+🔹 Cómo comprar Nodos.<br>
+🔹 Cómo utilizar una billetera digital.<br>
+🔹 Cómo comprar en PancakeSwap.<br>
+🔹 Cómo compartir la oportunidad correctamente.<br>
+🔹 Y toda la información necesaria para avanzar con seguridad y confianza.<br>
+<br>
+
+No necesitas ser experto ni tener experiencia previa.<br>
+Solo ganas de aprender y crecer paso a paso.<br>
+<br>
+
+Tómate unos minutos para recorrer toda la informacion.<br>
+Tal vez hoy estés comenzando algo importante.<br>
+</p>
+
+      <br>
+      <br>
+      <br>
+
+
+
+<h2 style="
+font-family:Arial; 
+font-size:32px;
+color:#192261;
+letter-spacing:1px;
+">
+🔹 Lo primero que debes recomendarle a tu cliente
+</h2>
+
+
+
+<hr style="
+width:70%;
+margin:35px auto;
+border:none;
+height:1px;
+background:linear-gradient(to right, transparent, #00c3ff, transparent);
+">
+
+
+
+<p>👉 Es crear una billetera nueva y exclusiva para Ascensum.<br>
+Esto es muy importante para comenzar de manera segura y organizada.<br>
+  <br>
+
+Muchas personas ya han utilizado billeteras en otros proyectos, plataformas o contratos inteligentes, y en algunos casos esas billeteras pueden haber quedado vinculadas a permisos antiguos o actividades desconocidas.<br>
+<br>
+
+Por esa razón, recomendamos iniciar siempre con una billetera completamente nueva, creada exclusivamente para este proyecto.<br>
+<br>
+
+✅ Mayor seguridad.<br>
+✅ Mejor organización.<br>
+✅ Menos riesgos futuros.<br>
+✅ Un comienzo limpio desde cero.<br>
+<br>
+
+Adoptar esta práctica desde el principio puede evitar inconvenientes y brindar mayor tranquilidad a largo plazo.<br>
+<br>
+</p>
+
+
+ <hr style="margin:25px 0;">
+
+<br>
+
+
+ <h2 style="
+font-family:Arial; 
+font-size:32px;
+color:#192261;
+letter-spacing:1px;
+">
+
+🔹 ¿Qué billetera recomendamos?
+</h2>
+
+
+<p>
+▪️ Trabajamos con billeteras descentralizadas.<br>
+<br>
+👉 Recomendamos utilizar <strong>SafePal</strong> porque es una de las opciones más prácticas, simples y amigables para quienes están comenzando.<br>
+<br>
+
+Sin embargo, también puedes utilizar otras billeteras compatibles, como <strong>MetaMask</strong>.<br>
+
+Lo importante es que tu cliente tenga control total de sus fondos y de sus claves de acceso.
+</p>
+<br>
+      
+        
+        
+        <hr style="margin:25px 0;">
+        <br>
+        <br>
+        
+        <h2 style="
+font-family:Arial; 
+font-size:32px;
+color:#192261;
+letter-spacing:1px;
+">
+🔹  Debe tener en su billetera USDT de la Red Bep-20
+</h2>
+
+
+
+<hr style="
+width:70%;
+margin:35px auto;
+border:none;
+height:1px;
+background:linear-gradient(to right, transparent, #00c3ff, transparent);
+">
+
+
+        
+        
+            <p>
+            En el mercado de criptomonedas vas a encontrar distintos usdt porque cada red tiene su propio usdt.<br>
+            En Ascensum operamos con el usdt de la red de binance conocida como la red Bep-20.<br>
+            Tambien necesitara tener en la billetera algo de BNB para pagar las comisiones, con 1 dolar es suficiente</p>
+            <br>
+            <br>
+
+            
+            <br>
+         
+            
+
+                  <h2 style="
+font-family:Arial; 
+font-size:32px;
+color:#192261;
+letter-spacing:1px;
+">
+🔹 Importante: Debes entregarle este Link de referencia
+</h2>
+
+        
+
+          <p>
+          El siguiente es el link de referencia que utilizarás para tus ventas.<br>
+          Es el link que tu cliente debe utilizar para comprar los Nodos y para que puedas cobrar tus comisiones.<br>
+          <br>
+
+          Este link le permitirá ingresar a mi equipo, recibir toda la información de Ascensum y contar con mi apoyo para resolver cualquier consulta.<br>
+          <br>
+
+          Dale click a copiar link y enviaselo por whatsapp, telegram o por el sistema que prefieras
+          </p>
+          <br>
+
+<div style="
+background:#111;
+padding:15px;
+border-radius:12px;
+text-align:center;
+margin-top:20px;
+">
+
+<span id="refLink" style="
+color:#00ff88;
+font-size:16px;
+word-break:break-all;
+display:block;
+margin-bottom:15px;
+">
+https://dao.ascensum.io/buy?ref=0xd530e078afe5d00060820a0dfd855781d47cbd80&index=0
+</span>
+
+<button onclick="copiarLink()" style="
+background:#00c3ff;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+">
+📋 Copiar Link
+</button>
+
+<p id="mensajeCopiado" style="
+color:#00ff88;
+margin-top:10px;
+display:none;
+font-weight:bold;
+">
+✅ Link copiado correctamente
+</p>
+
+</div>
+
+<script>
+function copiarLink() {
+
+const texto =
+document.getElementById("refLink").innerText;
+
+navigator.clipboard.writeText(texto);
+
+document.getElementById("mensajeCopiado").style.display = "block";
+
+setTimeout(() => {
+document.getElementById("mensajeCopiado").style.display = "none";
+}, 2500);
+
+}
+</script>
+
+            
+            
+            
+            
+
+
+
+    <p style="
+line-height:1.8;
+font-size:18px;
+">
+
+El siguiente es el link de referencia que utilizarás para tus ventas.<br>
+Es el link que tu cliente debe utilizar para comprar los Nodos y para que puedas cobrar tus comisiones.<br><br>
+
+Este link le permitirá ingresar a mi equipo, recibir toda la información de Ascensum y contar con mi apoyo para resolver cualquier consulta.
+
+</p>
+
+<div style="
+background:#111;
+padding:25px;
+border-radius:18px;
+text-align:center;
+margin-top:25px;
+box-shadow:0 0 20px rgba(0,195,255,0.25);
+">
+
+<span id="refLink" style="
+color:#FBFF00;
+font-size:16px;
+word-break:break-all;
+display:block;
+margin-bottom:20px;
+line-height:1.6;
+font-weight:bold;
+">
+https://dao.ascensum.io/buy?ref=0xd530e078afe5d00060820a0dfd855781d47cbd80&index=0
+</span>
+
+<div style="
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+">
+
+<button onclick="copiarLink()" class="botonAscensum">
+📋 Copiar Link
+</button>
+
+<a href="https://dao.ascensum.io/buy?ref=0xd530e078afe5d00060820a0dfd855781d47cbd80&index=0"
+target="_blank"
+class="botonAscensum"
+style="text-decoration:none;">
+🚀 Abrir Ascensum
+</a>
+
+<a href="https://wa.me/?text=https://dao.ascensum.io/buy?ref=0xd530e078afe5d00060820a0dfd855781d47cbd80&index=0"
+target="_blank"
+class="botonAscensum"
+style="text-decoration:none;">
+📱 WhatsApp
+</a>
+
+<a href="https://t.me/share/url?url=https://dao.ascensum.io/buy?ref=0xd530e078afe5d00060820a0dfd855781d47cbd80&index=0"
+target="_blank"
+class="botonAscensum"
+style="text-decoration:none;">
+✈️ Telegram
+</a>
+
+</div>
+
+<p id="mensajeCopiado" style="
+color:#00ff88;
+margin-top:18px;
+display:none;
+font-weight:bold;
+font-size:16px;
+">
+✅ Link copiado correctamente
+</p>
+
+</div>
+
+<style>
+
+.botonAscensum{
+
+background:#378B18;
+color:white;
+border:none;
+padding:12px 22px;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:170px;
+
+}
+
+.botonAscensum:hover{
+
+transform:translateY(-3px);
+box-shadow:0 8px 20px rgba(0,195,255,0.5);
+background:#00a7db;
+
+}
+
+</style>
+
+<script>
+
+function copiarLink(){
+
+const texto =
+document.getElementById("refLink").innerText;
+
+navigator.clipboard.writeText(texto);
+
+document.getElementById("mensajeCopiado").style.display = "block";
+
+setTimeout(() => {
+
+document.getElementById("mensajeCopiado").style.display = "none";
+
+},2500);
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h3>A continuacion te redirijo a otra pagina donde tienes un tutorial que te guia paso a paso en la forma correcta de comprar un Nodo Ascensum</h3>
+    
+    <br>
+    <br>
+    <br>
+
+
+
+    <!-- ===================================================== -->
+<!-- ================= BOTÓN CTA PRO ===================== -->
+<!-- ===================================================== -->
+
+<!--
+PERSONALIZACIÓN RÁPIDA
+
+CAMBIAR POSICIÓN:
+center = centro
+left = izquierda
+right = derecha
+
+CAMBIAR COLOR:
+Busca:
+background: linear-gradient(...)
+
+CAMBIAR TAMAÑO:
+padding: 16px 30px;
+font-size: 18px;
+
+CAMBIAR TEXTO:
+Quiero vender Nodos Ascensum
+
+CAMBIAR LINK:
+Reemplazar TU_LINK_AQUI
+
+-->
+
+<!-- CONTENEDOR DEL BOTÓN -->
+<div class="cta-container">
+
+    <!-- BOTÓN -->
+    <a href="comprar_nodo.html" target="_blank" rel="noopener noreferrer" class="cta-pro" id="ctaPro">
+
+        <!-- TEXTO DEL BOTÓN -->
+        <span>Tutorial para la compra de Nodos</span>
+
+        <!-- FLECHA -->
+        <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"
+                  stroke="white"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+    </a>
+
+</div>
+
+<style>
+
+/* ===================================================== */
+/* ================= POSICIÓN BOTÓN ==================== */
+/* ===================================================== */
+
+.cta-container {
+
+    /* CAMBIAR:
+       center = centro
+       left = izquierda
+       right = derecha
+    */
+
+    text-align: center;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* ===================================================== */
+/* ==================== BOTÓN ========================== */
+/* ===================================================== */
+
+.cta-pro {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    /* TAMAÑO BOTÓN */
+    padding: 16px 30px;
+
+    /* TAMAÑO TEXTO */
+    font-size: 18px;
+
+    font-weight: 600;
+    color: #121211;
+
+    /* COLOR BOTÓN */
+    background: linear-gradient(135deg, #00c853, #00e676);
+
+    border-radius: 14px;
+    text-decoration: none;
+
+    /* SOMBRA */
+    box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: pulse 2.5s infinite;
+}
+
+/* ===================================================== */
+/* ===================== HOVER ========================= */
+/* ===================================================== */
+
+.cta-pro:hover {
+
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow: 0 15px 35px rgba(0, 200, 83, 0.6);
+}
+
+/* ===================================================== */
+/* ===================== CLICK ========================= */
+/* ===================================================== */
+
+.cta-pro:active {
+    transform: scale(0.96);
+}
+
+/* ===================================================== */
+/* ================= FLECHA ANIMADA ==================== */
+/* ===================================================== */
+
+.cta-pro .arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-pro:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ===================================================== */
+/* ================= EFECTO PULSE ====================== */
+/* ===================================================== */
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 200, 83, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+    }
+}
+
+/* ===================================================== */
+/* ============== APARECER CON SCROLL ================= */
+/* ===================================================== */
+
+.cta-pro.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
+
+<script>
+
+/* ===================================================== */
+/* ========= MOSTRAR BOTÓN AL HACER SCROLL ============ */
+/* ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const btn = document.getElementById("ctaPro");
+
+    function showOnScroll() {
+
+        const trigger = window.innerHeight * 0.8;
+        const rect = btn.getBoundingClientRect();
+
+        if (rect.top < trigger) {
+            btn.classList.add("visible");
+        }
+    }
+
+    window.addEventListener("scroll", showOnScroll);
+
+    showOnScroll();
+});
+
+</script>
+
+
+
+
+    <br>
+    <br>
+    
+  </main>
+
+  
+
+  <!-- ===================== PIE DE PÁGINA ===================== -->
+  <section>
+    <div class="footer-top-green"></div>
+    <div class="footer-black">
+      <div class="left">© Copyright 2025 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
+      <div class="right">
+        <a href="https://t.me/pets_universe" target="_blank">Telegram</a>
+        <a href="https://wa.link/c9eab2" target="_blank">Whatsapp</a>
+        <a href="https://facebook.com/networktoearn" target="_blank">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom-green"></div>
+  </section>
+
+  <!-- ===================== SCRIPT PARA EFECTO SCROLL ===================== -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const nav = document.querySelector(".nav-bar");
+      if (window.scrollY > 50) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+</body>
+
+</html>
