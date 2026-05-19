@@ -297,17 +297,15 @@
 
         <div class="nav-bar" role="navigation" aria-label="Menú principal">
             <div class="logo-container">
-                <a href="" target="_blank" class="logo">
+                <div class="logo">
                     <img src="imagenes/Pets_Concilium.png" alt="Logo Concilium">
-                </a>
+                </div>
                 <!-- Mantengo el texto al lado del logo tal como vos lo querés -->
-                <a href="" target="_blank" class="logo-text">Criptovision Marketing Global Ecom</a>
+                <div class="logo-text">
+                    Criptovision Marketing Global Ecom
             </div>
-
-            <div class="nav-links">
-            <a href="tutoriales_ascensum.html" target="_blank">Ascensum Dao</a>
-            </div>
-        </div>
+    </div>
+    </div>
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
@@ -319,13 +317,136 @@
             <img src="imagenes/tesoro1.jpeg" alt="Ascensum DAO Nodos"> 
             </div>
             <br>
-            
+            <h3>🔹 Lo ideal seria que antes de comprar tu primer nodo me contactes para que pueda ayudarte con el proceso de compra y darte mas informacion sobre los beneficios que podras obtener.</h3>
            <br>
-        <h2>🔹 Lo primero es crear una nueva billetera</h2>
+
+
+
+            <h3>🔹 Ahora si estas acostumbrado a manejarte en el mundo cripto a continuacion te dejo un video que te explica paso a paso como tienes que hacer para comprar tu primer nodo.
+            <br>
+            <br>
+            Tambien tienes un tutorial con imagenes que te indica paso a paso como comprar los nodos.</h3>
+            <br>       
+           <br>
+
+
+
+           <!-- ===================== VIDEO RESPONSIVE ===================== -->
+
+
+     <div class="video-box"
+     data-video="pzK3o4ggH04"         
+     style="position:relative;max-width:800px;margin:auto;cursor:pointer;"
+     onclick="loadVideo(this)">
+
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+
+    <!-- Miniatura -->
+    <img src="https://img.youtube.com/vi/pzK3o4ggH04/hqdefault.jpg"    
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Botón Play -->
+    <div class="play-button"></div>
+
+  </div>
+
+</div>
+
+
+
+<style>
+.play-button {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:videopulse 1.5s infinite;
+}
+
+.play-button::before {
+  content:'';
+  width:0;
+  height:0;
+  border-left:25px solid white;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+}
+
+@keyframes videopulse {
+  0% { transform:translate(-50%,-50%) scale(1); }
+  50% { transform:translate(-50%,-50%) scale(1.1); }
+  100% { transform:translate(-50%,-50%) scale(1); }
+}
+
+/* Fade-in */
+.fade-in {
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+
+.fade-in.show {
+  opacity:1;
+}
+
+
+</style>
+
+
+
+<script>
+function loadVideo(el) {
+
+  const videoId = el.getAttribute("data-video");
+
+  el.innerHTML = `
+   <div style="position:relative;padding-bottom:56.25%;height:0;">
+
+  <iframe
+    class="ytvideo fade-in"
+    src="https://www.youtube.com/embed/${videoId}?controls=1&rel=0&playsinline=1"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+</div>
+  `;
+
+  setTimeout(() => {
+    el.querySelector(".ytvideo").classList.add("show");
+  }, 100);
+}
+</script>
+
+
+
+        
+
+
+         <!-- ===================== FIN DEL VIDEO RESPONSIVE ===================== -->
+
+
+
+
+
+
+         <div style="margin-top:80px; margin-bottom:50px;">
+                <h2>🔹 Lo primero es crear una nueva billetera</h2>
+                </div>
+
+        
         <p>
         
         Crear una billetera nueva para evitar el historial de cualquier antecedente malicioso que hayas podido tener en otro negocio.<br>
-        <br>
+        <br> 
         Siempre que inicies un nuevo proyecto sea el que sea hazlo desde una billetera nueva para comenzar de cero, de esta manera con el tiempo te estaras evitando posibles disgustos.
         <br>
         <br>
@@ -362,14 +483,80 @@
             <br>
 
 
-            <span style="color: green;">https://dao.ascensum.io/buy?ref=0xd530e078afe5d00060820a0dfd855781d47cbd80&index=0</span>
+            <!-- ===================== COMIENZA BOTON COPIAR ===================== -->
+            
 
-            <br>
 
+
+            <div style="
+background:#111;
+padding:15px;
+border-radius:12px;
+text-align:center;
+margin-top:20px;
+">
+
+<span id="refLink" style="
+color:#FBFF00;
+font-size:16px;
+word-break:break-all;
+display:block;
+margin-bottom:15px;
+">
+https://dao.ascensum.io/buy?ref=0xd530e078afe5d00060820a0dfd855781d47cbd80&index=0
+</span>
+
+<button onclick="copiarLink()" style="
+background:#378B18;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+">
+📋 Copiar Link
+</button>
+
+<p id="mensajeCopiado" style="
+color:#00ff88;
+margin-top:10px;
+display:none;
+font-weight:bold;
+">
+✅ Link copiado correctamente
+</p>
+
+</div>
+
+<script>
+function copiarLink() {
+
+const texto =
+document.getElementById("refLink").innerText;
+
+navigator.clipboard.writeText(texto);
+
+document.getElementById("mensajeCopiado").style.display = "block";
+
+setTimeout(() => {
+document.getElementById("mensajeCopiado").style.display = "none";
+}, 2500);
+
+}
+</script>
+
+
+        <!-- ===================== FIN DEL BOTON COPIAR ===================== -->
+        
+        <br>
+        <br>
+    
             
-            
-            
-            <p>Copias este link, ingresas a tu billetera, en la parte de abajo veras un icono que dice explorar.
+            <p>Copias este link, ingresas a tu billetera, en la parte de abajo veras un icono que dice explorar.<br>
+            A continuacion sigue las imagenes                
             </p>
 
             <br>
@@ -777,8 +964,8 @@
         <div class="footer-black">
             <div class="left">© Copyright 2026 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
             <div class="right">
-                <a href="https://t.me/nodos_ascensum" target="_blank">Telegram</a>
-                <a href="https://wa.link/sqqlx0" target="_blank">Whatsapp</a>
+                <a href="https://t.me/nodos_ascensum" target="_blank" rel="noopener noreferrer">Telegram</a>
+                <a href="https://wa.link/sqqlx0" target="_blank" rel="noopener noreferrer">Whatsapp</a>
                 
             </div>
         </div>
