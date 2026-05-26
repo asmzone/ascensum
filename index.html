@@ -332,6 +332,21 @@
             🔹 Es lo que te permite estar dentro y participar
 
             </p>
+
+
+            <div style="margin-top:60px; margin-bottom:60px;">
+
+                <img src="imagenes/todos_los_dias.jpg"
+                alt="Gana dinero todos los dias con los nodos de Ascensum"
+                style="max-width:600px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
             <br>
          
          
@@ -433,11 +448,11 @@
             
 
 
-                <div style="margin-top:80px; margin-bottom:80px;">
+                <div style="margin-top:60px; margin-bottom:80px;">
 
     <img src="imagenes/Smartphone.jpeg"
          alt="La mayor riqueza del siglo XXI esta en tu bolsillo, pero pocos saben usarla"
-         style="max-width:550px;
+         style="max-width:600px;
                 width:100%;
                 height:auto;
                 display:block;
@@ -449,18 +464,15 @@
 
 
                
-               <div style="margin-top:80px; margin-bottom:50px;">
+               <div style="margin-top:80px; margin-bottom:30px;">
                 <h3>👉 “Si llegaste hasta acá.... no es casualidad"<br>
                 Es porque realmente querés entender cómo funciona ASM</h3>
 
                 </div>
               
-            
-
                
                 <p>
                 Este video de unos 4 minutos te da una idea general de lo que es Ascensum<br>
-                👉 Debes activar el boton de sonido en el video<br>
                 Después te explicamos paso a paso cómo funciona Ascensum detalladamente y qué puedes esperar
          </p>
          <br>
@@ -658,79 +670,116 @@ function loadVideo(el) {
             Toda esta información es pública y puedes comprobarla directamente en la blockchain a través de BscScan<br>
             <br>
 
-            Aqui tienes el contrato de ASM para que puedas comprobarlo por ti mismo.<br>
-            Copia el contrato, luego ingresa a https://bscscan.com y en el buscador pega el contrato + enter y tendras toda la informacion
+            Aqui tienes el contrato de ASM para que puedas comprobarlo por ti mismo, da click en el boton y te llevara directamente a https://bscscan.com.<br>
+            (Si no sabes como realizar el chequeo contactame y te lo explico paso a paso)
             </p> 
+            <br>
+           
 
-            <p>
-            👉 <a href="https://bscscan.com" target="_blank" rel="noopener noreferrer">
-            https://bscscan.com
-            </a>
-            </p>
+                   
+
+                <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
 
 
-
-                        <div style="
-background:#111;
-padding:15px;
-border-radius:12px;
+                   <div style="
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:25px;
+border-radius:18px;
 text-align:center;
 margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.08);
+width:100%;
+box-sizing:border-box;
 ">
 
-<span id="refLink" style="
-color:#FBFF00;
-font-size:16px;
-word-break:break-all;
-display:block;
-margin-bottom:15px;
-">
-0x707F0f4a39a4a26239F7D00463B15AB5656861f9
-</span>
-
-<button onclick="copiarLink()" style="
-background:#378B18;
+<h3 style="
 color:white;
-border:none;
-padding:12px 25px;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
-font-weight:bold;
-transition:0.3s;
+margin-bottom:18px;
+font-size:22px;
 ">
-📋 Copiar Link
-</button>
+📜 Contrato Oficial Ascensum DAO
+</h3>
 
-<p id="mensajeCopiado" style="
-color:#00ff88;
-margin-top:10px;
-display:none;
-font-weight:bold;
+<div style="
+background:#0d0d0d;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:20px;
 ">
-✅ Link copiado correctamente
-</p>
+
+<span style="
+color:#FBFF00;
+font-size:15px;
+word-break:break-all;
+line-height:1.6;
+font-family:monospace;
+">
+0x75f16b49403712b17f7072baea7ab725f89f5644
+</span>
 
 </div>
 
+<button onclick="abrirContrato()" class="btnContrato">
+🔗 Ver Contrato en BscScan
+</button>
+
+</div>
+
+<style>
+
+.btnContrato{
+width:100%;
+max-width:400px;    
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+letter-spacing:0.5px;
+}
+
+.btnContrato:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
+.btnContrato:active{
+transform:scale(0.97);
+}
+
+</style>
+
 <script>
-function copiarLink() {
 
-const texto =
-document.getElementById("refLink").innerText;
+function abrirContrato(){
 
-navigator.clipboard.writeText(texto);
-
-document.getElementById("mensajeCopiado").style.display = "block";
-
-setTimeout(() => {
-document.getElementById("mensajeCopiado").style.display = "none";
-}, 2500);
+window.open(
+"https://bscscan.com/address/0x75f16b49403712b17f7072baea7ab725f89f5644",
+"_blank"
+);
 
 }
+
 </script>
 
-            
+
+
+
+            <!-- ===================== FIN DEL BOTON ENVIAR ===================== -->
+                     
+         
+                    
+
+
+
 
 
 
@@ -738,7 +787,7 @@ document.getElementById("mensajeCopiado").style.display = "none";
 
     <img src="imagenes/contrato_renunciado.jpg"
          alt="Mas Seguridad - Contrato Renunciado - Token libre y seguro"
-         style="max-width:350px;
+         style="max-width:450px;
                 width:100%;
                 height:auto;
                 display:block;
@@ -782,9 +831,9 @@ document.getElementById("mensajeCopiado").style.display = "none";
 
             <div style="margin-top:60px; margin-bottom:60px;">
 
-                <img src="imagenes/todos_los_dias.jpg"
+                <img src="imagenes/gana_en_automatico.jpeg"
                 alt="Gana dinero todos los dias con los nodos de Ascensum"
-                style="max-width:500px;
+                style="max-width:600px;
                 width:100%;
                 height:auto;
                 display:block;
@@ -835,9 +884,7 @@ document.getElementById("mensajeCopiado").style.display = "none";
 
                 ✅ Estos 3 pilares son los que sostienen el funcionamiento y crecimiento del ecosistema Ascensum.
                 </p>
-                <br>
-
-            
+                          
 
 
             <div style="margin-top:60px; margin-bottom:80px;">
@@ -1047,10 +1094,47 @@ VALOR DE NODOS
             🔹 Por ultimo el 50% restante de la venta de un nodo va a tu propia billetera si es que ademas de invertir en Nodos decides también promocionar y vender Nodos ASM<br>
             <br>
 
-            Como puedes ver el 100x100 del valor total de un nodo se distribuye en la DAO de Ascensum.<br>
+            <h3>Como puedes ver el 100x100 del valor total de un nodo se distribuye dentro de la DAO de Ascensum.</h3>
+        
+            En Ascensum no hay un dueño, todos somos Propietarios y nos beneficiamos por igual cada vez que se vende un nodo y se queman tokens.
             <br>
-            En Ascensum no hay un dueño, todos somos Propietarios y nos beneficiamos por igual cada vez que se vende un nodo y se queman tokens.</p>
-            <br><br>
+            <br>
+
+            Lo mas importante es entender que cada nuevo nodo vendido fortalece todo el ecosistema:
+            <br>
+            ✔️ aumenta el Tesoro<br>
+            ✔️ aumenta la escasez del token<br>
+            ✔️ fortalece la estabilidad del precio<br>
+            ✔️ impulsa el crecimiento del proyecto mediante publicidad y desarrollo<br>
+            ✔️ genera oportunidades para todos los participantes de la comunidad<br>
+            <br>
+            🔹 “El dinero no sale del ecosistema… vuelve constantemente a fortalecer tu propia inversión.”
+            <br>
+            <br>
+            Mientras mas crece Ascensum, mas fuerte se vuelve el ecosistema y mayor puede ser el beneficio para quienes poseen Nodos Ascensum.
+            <br>
+            <br>
+            🔹 No estas comprando simplemente un producto… estas participando en la construccion y crecimiento de un negocio descentralizado donde tu tambien eres parte del crecimiento.
+            </p>
+            
+
+
+
+            <div style="margin-top:60px; margin-bottom:80px;">
+
+    <img src="imagenes/asi_funciona.jpeg"
+         alt="Ascensum Dao - Como funciona el Ecosistema"
+         style="max-width:800px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+</div>
+
+
+
+            
 
             
 
@@ -1116,6 +1200,10 @@ VALOR DE NODOS
 
             </div>
 
+
+
+
+
             <p style="margin-top:80px;">
            Puedes comprobar el valor actual del token ASM en:
            <br> 
@@ -1123,23 +1211,114 @@ VALOR DE NODOS
                 
          👉 <b>Dextools</b>.</p>
                     
-         <a href="https://www.dextools.io/app/bnb/pair-explorer/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81"
-   target="_blank"
-   rel="noopener noreferrer"
-   style="
-      display:block;
-      text-align:center;
-      font-size:18px;
-      line-height:1.8;
-      max-width:950px;
-      margin:auto;
-   ">
-   https://www.dextools.io/app/bnb/pair-explorer/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81
-</a>
+            <br>
+
+
+
+
+          <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
+
+
+                   <div style="
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:25px;
+border-radius:18px;
+text-align:center;
+margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.08);
+width:100%;
+box-sizing:border-box;
+">
+
+<h3 style="
+color:white;
+margin-bottom:18px;
+font-size:22px;
+">
+⭐ Valor actual de ASM ⭐
+</h3>
+
+<div style="
+background:#0d0d0d;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:20px;
+">
+
+<span style="
+color:#FBFF00;
+font-size:15px;
+word-break:break-all;
+line-height:1.6;
+font-family:monospace;
+">
+https://www.dextools.io
+</span>
+
+</div>
+
+<button onclick="abrirContrato()" class="btnContrato">
+🔗 Valor actual de ASM
+</button>
+
+</div>
+
+<style>
+
+.btnContrato{
+width:100%;
+max-width:400px;    
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+letter-spacing:0.5px;
+}
+
+.btnContrato:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
+.btnContrato:active{
+transform:scale(0.97);
+}
+
+</style>
+
+<script>
+
+function abrirContrato(){
+
+window.open(
+"https://www.dextools.io/app/bnb/pair-explorer/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81",
+"_blank"
+);
+
+}
+
+</script>
+
+
+
+
+            <!-- ===================== FIN DEL BOTON ENVIAR ===================== -->
+
+
+
 
         
 
-         <hr style="margin-top:20px;">
+         <hr style="margin-top:60px;">
 
 
 
@@ -1292,7 +1471,7 @@ VALOR DE NODOS
 
                 <br>
                 ¿Estás listo para dar el siguiente paso?<br>
-                 Haz clic abajo y asegura tu Nodo ahora.<br>
+                 Haz click abajo y asegura tu Nodo ahora.<br>
                 </p>
 
                 
@@ -1514,9 +1693,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
 
             <p>
-            En este video de unos 7 minutos tienes mas informacion sobre lo que es Ascensum Dao y como se pueden reescribir las reglas del juego para que de verdad todos podamos ganar<br>
-            <br>
-            👉 activa el boton de sonido en el video
+            En este video de unos 7 minutos tienes mas informacion sobre lo que es Ascensum Dao y como se pueden reescribir las reglas del juego para que de verdad todos podamos ganar
             </p>
             <br>
             <br>
