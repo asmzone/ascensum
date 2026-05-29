@@ -292,7 +292,10 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <main>
-        <h1>Convierte tu celular<br> en una fuente de oportunidades reales</h1>
+        <h1>💲💰💲 Necesitas un ingreso adicional?
+            <br>
+            <br>
+            Convierte tu celular<br> en una fuente de oportunidades reales</h1>
         
         <h3>Descubre Ascensum,<br> 
         una forma simple de participar en el mundo cripto<br>
@@ -666,21 +669,25 @@ function loadVideo(el) {
 
             <p style="margin-top:100px;">
 
-            🔍 Verificación en blockchain<br>
-            Toda esta información es pública y puedes comprobarla directamente en la blockchain a través de BscScan<br>
+            <p> 🔍 Verificación en blockchain<br>
+            Toda esta información es pública y puede comprobarse directamente en la blockchain a través de BscScan
             <br>
-
-            Aqui tienes el contrato de ASM para que puedas comprobarlo por ti mismo, da click en el boton y te llevara directamente a https://bscscan.com.<br>
+            <br>
+            Aqui tienes el contrato de ASM para que puedas comprobarlo por ti mismo, da click en el boton y te llevara directamente a https://bscscan.com
+            <br>
+            <br>
+            Si no sabes como realizar el chequeo a continuacion tienes un video que te explica como hacerlo.<br>
+            Tambien tienes otro boton para que puedas chequear toda la informacion del token en DexScreener tal como se explica en el video.
             </p> 
             <br>
            
 
-                   
-
-                <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
+               
 
 
-                   <div style="
+                        <!-- ===================== COMIENZA BOTONES ===================== -->
+
+<div style="
 background:linear-gradient(145deg,#111,#1b1b1b);
 padding:25px;
 border-radius:18px;
@@ -697,7 +704,7 @@ color:white;
 margin-bottom:18px;
 font-size:22px;
 ">
-📜 Contrato Oficial Ascensum DAO
+📜 Información Oficial Ascensum DAO
 </h3>
 
 <div style="
@@ -720,19 +727,27 @@ font-family:monospace;
 
 </div>
 
+<!-- BOTON BSC -->
 <button onclick="abrirContrato()" class="btnContrato">
 🔗 Ver Contrato en BscScan
+</button>
+
+<!-- ESPACIO -->
+<div style="height:15px;"></div>
+
+<!-- BOTON DEXSCREENER -->
+<button onclick="abrirDex()" class="btnDex">
+📈 Ver Token en DexScreener
 </button>
 
 </div>
 
 <style>
 
-.btnContrato{
+.btnContrato,
+.btnDex{
 width:100%;
-max-width:400px;    
-background:linear-gradient(135deg,#46b51f,#2f7e15);
-color:white;
+max-width:400px;
 border:none;
 padding:14px 28px;
 border-radius:12px;
@@ -740,8 +755,15 @@ font-size:16px;
 font-weight:bold;
 cursor:pointer;
 transition:all 0.3s ease;
-box-shadow:0 6px 18px rgba(55,139,24,0.35);
 letter-spacing:0.5px;
+color:white;
+}
+
+/* BOTON BSC */
+
+.btnContrato{
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
 }
 
 .btnContrato:hover{
@@ -750,7 +772,21 @@ box-shadow:0 10px 25px rgba(55,139,24,0.55);
 background:linear-gradient(135deg,#52d323,#378B18);
 }
 
-.btnContrato:active{
+/* BOTON DEX */
+
+.btnDex{
+background:linear-gradient(135deg,#1f6fb5,#154b7e);
+box-shadow:0 6px 18px rgba(24,92,139,0.35);
+}
+
+.btnDex:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(24,92,139,0.55);
+background:linear-gradient(135deg,#2790e8,#1c5f9e);
+}
+
+.btnContrato:active,
+.btnDex:active{
 transform:scale(0.97);
 }
 
@@ -767,19 +803,28 @@ window.open(
 
 }
 
+function abrirDex(){
+
+window.open(
+"https://dexscreener.com/bsc/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81",
+"_blank"
+);
+
+}
+
 </script>
 
+<!-- ===================== FIN BOTONES ===================== -->
 
 
 
-            <!-- ===================== FIN DEL BOTON ENVIAR ===================== -->
-                     
-         
-            
-            <p style="margin-top:80px; margin-bottom:30px;">
-            Si no sabes como realizar el chequeo aqui tienes un video que te explica paso a paso como hacerlo    
+               
+         <p style="margin-top:80px; margin-bottom:30px;">
+            Video Tutorial que te indica como comprobar que toda la información es pública<br>
+            y que puedes analizarla por ti mismo. 
            </p>
-
+            
+            
 
 
             <!-- ===================== VIDEO RESPONSIVE ===================== -->
@@ -892,7 +937,7 @@ function loadVideo(el) {
 
     <img src="imagenes/contrato_renunciado.jpg"
          alt="Mas Seguridad - Contrato Renunciado - Token libre y seguro"
-         style="max-width:450px;
+         style="max-width:350px;
                 width:100%;
                 height:auto;
                 display:block;
@@ -1310,11 +1355,11 @@ VALOR DE NODOS
 
 
             <p style="margin-top:80px;">
-           Puedes comprobar el valor actual del token ASM en Dextools dando click en el siguiente Boton:
+           Puedes comprobar el valor actual del token ASM en Dexscreener dando click en el siguiente Boton:
            <br> 
 
                 
-         👉 <b>Dextools</b>.</p>
+         👉 <b>Dexscreener</b>.</p>
                     
             <br>
 
@@ -1359,12 +1404,12 @@ word-break:break-all;
 line-height:1.6;
 font-family:monospace;
 ">
-https://www.dextools.io
+https://www.dexscreener.com
 </span>
 
 </div>
 
-<button onclick="abrirDextools()" class="btnContrato">
+<button onclick="abrirDexscreener()" class="btnContrato">
 🔗 Valor actual de ASM
 </button>
 
@@ -1402,10 +1447,10 @@ transform:scale(0.97);
 
 <script>
 
-function abrirDextools(){
+function abrirDexscreener(){
 
 window.open(
-"https://www.dextools.io/app/bnb/pair-explorer/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81",
+"https://dexscreener.com/bsc/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81",
 "_blank"
 );
 
