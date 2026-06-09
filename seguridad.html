@@ -401,6 +401,222 @@ function loadVideo(el) {
 
 
 
+                     <div style="margin-top:60px;">
+                <h2>Estás a una decisión de cambiar tu posición en el mundo cripto</h2>
+
+                </div>
+                
+                
+
+                <p style="text-align:center; font-size:18px; line-height:1.8; max-width:950px; margin:auto;">
+
+
+                <br>
+                ¿Estás listo para dar el siguiente paso?<br>
+                 Haz click abajo y asegura tu Nodo ahora.<br>
+                </p>
+
+                
+
+
+                <!-- ===================================================== -->
+<!-- ================= BOTÓN CTA PRO ===================== -->
+<!-- ===================================================== -->
+
+<!--
+PERSONALIZACIÓN RÁPIDA
+
+CAMBIAR POSICIÓN:
+center = centro
+left = izquierda
+right = derecha
+
+CAMBIAR COLOR:
+Busca:
+background: linear-gradient(...)
+
+CAMBIAR TAMAÑO:
+padding: 16px 30px;
+font-size: 18px;
+
+CAMBIAR TEXTO:
+Quiero vender Nodos Ascensum
+
+CAMBIAR LINK:
+Reemplazar TU_LINK_AQUI
+
+-->
+
+<!-- CONTENEDOR DEL BOTÓN -->
+<div class="cta-container">
+
+    <!-- BOTÓN -->
+    <a href="https://wa.link/tikzvz" target="_blank" rel="noopener noreferrer" class="cta-pro" id="ctaPro">
+
+        <!-- TEXTO DEL BOTÓN -->
+        <span>Quiero comprar mi primer Nodo y comenzar</span>
+
+        <!-- FLECHA -->
+        <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"
+                  stroke="white"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+    </a>
+
+</div>
+
+<style>
+
+/* ===================================================== */
+/* ================= POSICIÓN BOTÓN ==================== */
+/* ===================================================== */
+
+.cta-container {
+
+    /* CAMBIAR:
+       center = centro
+       left = izquierda
+       right = derecha
+    */
+
+    text-align: center;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* ===================================================== */
+/* ==================== BOTÓN ========================== */
+/* ===================================================== */
+
+.cta-pro {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    /* TAMAÑO BOTÓN */
+    padding: 16px 30px;
+
+    /* TAMAÑO TEXTO */
+    font-size: 18px;
+
+    font-weight: 600;
+    color: #121211;
+
+    /* COLOR BOTÓN */
+    background: linear-gradient(135deg, #00c853, #00e676);
+
+    border-radius: 14px;
+    text-decoration: none;
+
+    /* SOMBRA */
+    box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: pulse 2.5s infinite;
+}
+
+/* ===================================================== */
+/* ===================== HOVER ========================= */
+/* ===================================================== */
+
+.cta-pro:hover {
+
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow: 0 15px 35px rgba(0, 200, 83, 0.6);
+}
+
+/* ===================================================== */
+/* ===================== CLICK ========================= */
+/* ===================================================== */
+
+.cta-pro:active {
+    transform: scale(0.96);
+}
+
+/* ===================================================== */
+/* ================= FLECHA ANIMADA ==================== */
+/* ===================================================== */
+
+.cta-pro .arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-pro:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ===================================================== */
+/* ================= EFECTO PULSE ====================== */
+/* ===================================================== */
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 200, 83, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+    }
+}
+
+/* ===================================================== */
+/* ============== APARECER CON SCROLL ================= */
+/* ===================================================== */
+
+.cta-pro.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
+
+<script>
+
+/* ===================================================== */
+/* ========= MOSTRAR BOTÓN AL HACER SCROLL ============ */
+/* ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const btn = document.getElementById("ctaPro");
+
+    function showOnScroll() {
+
+        const trigger = window.innerHeight * 0.8;
+        const rect = btn.getBoundingClientRect();
+
+        if (rect.top < trigger) {
+            btn.classList.add("visible");
+        }
+    }
+
+    window.addEventListener("scroll", showOnScroll);
+
+    showOnScroll();
+});
+
+</script>
+
+        
+
+
+        <!-- ===================== FIN DEL BOTON ===================== -->
+
 
          <hr style="margin-top:60px; margin-bottom:60px;">
 
