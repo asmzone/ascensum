@@ -288,7 +288,7 @@
     <div class="video-container">
         <iframe
             id="videoPlayer"
-            src="https://www.youtube.com/embed/VIDEO1"
+            src="https://www.youtube.com/embed/O-ujDzec-bc?rel=0"
             allowfullscreen>
         </iframe>
     </div>
@@ -343,7 +343,7 @@
 
 
 
-
+<style>
 
 .academy-section{
     max-width:1000px;
@@ -407,7 +407,7 @@
 }
 
 
-
+      </style>
 
 
             <script>
@@ -430,7 +430,8 @@ buttons.forEach(button => {
 
         player.src =
             "https://www.youtube.com/embed/" +
-            button.dataset.video;
+            button.dataset.video +
+            "?rel=0";
 
         title.textContent =
             button.dataset.title;
@@ -442,6 +443,7 @@ buttons.forEach(button => {
 });
 
 </script>
+
 
 
 
