@@ -303,7 +303,7 @@
           <!-- ================= COMIENZA ACADEMIA ===================== -->
 <section class="academy-section">
 
-    <h2>🎓 Academia Ascensum prueba 15-5.35</h2>
+    <h2>🎓 Academia Ascensum prueba 15-7.09</h2>
 
     <div class="video-container">
         <iframe
@@ -525,8 +525,18 @@ buttons.forEach(button => {
         const video =
 document.querySelector(".video-container");
 
+
+      let offset = 120;
+
+// Si es celular en horizontal
+if (window.innerWidth <= 1000 &&
+    window.innerWidth > window.innerHeight) {
+
+    offset = 0;
+}
+
 window.scrollTo({
-    top: video.offsetTop - 120,
+    top: video.offsetTop - offset,
     behavior: "smooth"
 });
 
