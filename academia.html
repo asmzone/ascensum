@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explora la Seguridad de ASM</title>
+  <title>Academia Ascensum</title>
   <link rel="icon" type="image/png" href="imagenes/pets_universe.png"> <!-- Favicon -->
 
   <style>
@@ -275,13 +275,7 @@
   <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
   
   <main>
-
-        
-   
           <!-- ================= COMIENZA ACADEMIA ===================== -->
-
-            
-
 <section class="academy-section">
 
     <h2>🎓 Academia Ascensum</h2>
@@ -490,11 +484,14 @@ buttons.forEach(button => {
         description.textContent =
             button.dataset.description;
 
-        document.querySelector(".video-container")
-.scrollIntoView({
+        const video =
+document.querySelector(".video-container");
+
+window.scrollTo({
+    top: video.offsetTop - 120,
     behavior: "smooth"
 });
-            
+
     });
 
 });
