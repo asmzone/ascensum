@@ -489,6 +489,12 @@ buttons.forEach(button => {
 
         description.textContent =
             button.dataset.description;
+
+        document.querySelector(".video-container")
+.scrollIntoView({
+    behavior: "smooth"
+});
+            
     });
 
 });
