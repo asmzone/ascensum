@@ -257,11 +257,23 @@
 
 }
 
-@media screen and (max-width: 1000px) and (orientation: landscape) {
+/* Ocultar barras en celular horizontal */
+@media screen and (max-width:1000px) and (orientation:landscape) {
 
     .nav-bar,
     .green-bar {
-        display: none !important;
+        display:none !important;
+    }
+
+}
+
+/* Ajustar tamaño del video en celular horizontal */
+@media screen and (max-width:1000px) and (orientation:landscape) {
+
+    .video-container {
+        width:80% !important;
+        margin:0 auto !important;
+        padding-bottom:45% !important;
     }
 
 }
@@ -304,7 +316,7 @@
           <!-- ================= COMIENZA ACADEMIA ===================== -->
 <section class="academy-section">
 
-    <h2>🎓 Academia Ascensum prueba 15-7.47</h2>
+    <h2>🎓 Academia Ascensum prueba 15-8.38</h2>
 
     <div class="video-container">
         <iframe
