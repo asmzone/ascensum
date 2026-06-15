@@ -280,6 +280,7 @@
    
           <!-- ================= COMIENZA ACADEMIA ===================== -->
 
+            
 
 <section class="academy-section">
 
@@ -300,44 +301,78 @@
         </p>
     </div>
 
-    <div class="playlist">
+<div class="playlist">
 
-        <button class="video-btn active"
-            data-video="O-ujDzec-bc"
-            data-title="Cómo crear una Wallet"
-            data-description="Aprende a instalar y configurar MetaMask paso a paso.">
-            ▶ Tutorial 1 - Crear Wallet
-        </button>
+       <button class="category-btn">
+        📚 Primeros Pasos
 
-        <button class="video-btn"
-            data-video="v_0p6m2KLRM"
-            data-title="Cómo comprar Ascensum"
-            data-description="Guía completa para comprar Ascensum desde PancakeSwap.">
-            ▶ Tutorial 2 - Comprar Ascensum
-        </button>
+    </button>
 
-        <button class="video-btn"
-            data-video="pzK3o4ggH04"
-            data-title="Cómo crear un Nodo"
-            data-description="Aprende cómo funciona el sistema de nodos.">
-            ▶ Tutorial 3 - Crear Nodo
-        </button>
+    <div class="category-content">
 
-        <button class="video-btn"
-            data-video="-pDlzPNBm8A"
-            data-title="Cómo verificar el contrato"
-            data-description="Verifica por ti mismo toda la información en BscScan.">
-            ▶ Tutorial 4 - Verificar Contrato
-        </button>
+    <button class="video-btn active"
+        data-video="O-ujDzec-bc"
+        data-title="Cómo crear una Wallet"
+        data-description="Aprende a instalar MetaMask.">
 
-        <button class="video-btn"
-            data-video="VTScn8Kd6bI"
-            data-title="Cómo auditar la liquidez"
-            data-description="Aprende a revisar la liquidez bloqueada.">
-            ▶ Tutorial 5 - Auditar Liquidez
-        </button>
+        ▶ Crear Wallet
+
+    </button>
+
+    <button class="video-btn"
+        data-video="v_0p6m2KLRM"
+        data-title="Cómo comprar Ascensum"
+        data-description="Guía completa de compra.">
+
+        ▶ Comprar Ascensum
+
+    </button>
+
+</div>
 
     </div>
+
+    <button class="category-btn">
+        ⚙️ Nodos
+    </button>
+
+    <div class="category-content">
+
+        
+
+    <button class="video-btn active"
+        data-video="9i0lQmt52PQ"
+        data-title="Cómo comprar usdt"
+        data-description="Aprende a comprar usdt">
+
+        ▶ Crear Wallet
+
+    </button>
+
+    <button class="video-btn"
+        data-video="k57nU20lKWE"
+        data-title="Presentacion Detallada"
+        data-description="Guía completa de Pets.">
+
+        ▶ Comprar Ascensum
+
+    </button>
+
+</div>
+
+    </div>
+
+    <button class="category-btn">
+        🛡️ Seguridad y Auditoría
+    </button>
+
+    <div class="category-content">
+
+        <!-- Tutoriales -->
+
+    </div>
+
+</div>
 
 </section>
 
@@ -406,6 +441,22 @@
     font-weight:bold;
 }
 
+.category-btn{
+    width:100%;
+    text-align:left;
+    padding:18px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.category-content{
+    display:none;
+    padding:10px 0;
+}
 
       </style>
 
@@ -438,6 +489,35 @@ buttons.forEach(button => {
 
         description.textContent =
             button.dataset.description;
+    });
+
+});
+
+const categoryButtons =
+document.querySelectorAll(".category-btn");
+
+categoryButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const content =
+        button.nextElementSibling;
+
+        document
+        .querySelectorAll(".category-content")
+        .forEach(item => {
+
+            if(item !== content){
+                item.style.display = "none";
+            }
+
+        });
+
+        content.style.display =
+            content.style.display === "block"
+            ? "none"
+            : "block";
+
     });
 
 });
