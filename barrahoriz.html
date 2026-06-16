@@ -280,7 +280,14 @@
 
 }
 
-/* Video más pequeño en celular horizontal */
+/* Ajustar videos en celular horizontal */
+@media screen and (max-width:1000px) and (orientation:landscape) {
+
+    .video-box {
+        max-width: 650px !important;
+    }
+
+}
 
 
     </style>
@@ -605,7 +612,7 @@
 
      <div class="video-box"
      data-video="VTScn8Kd6bI"         
-     style="position:relative;max-width:600px;margin:auto;cursor:pointer;"
+     style="position:relative;max-width:800px;margin:auto;cursor:pointer;"
      onclick="loadVideo(this)">
 
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
