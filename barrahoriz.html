@@ -281,10 +281,19 @@
 }
 
 /* Video más pequeño en celular horizontal */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
 @media screen and (max-width:1000px) and (orientation:landscape) {
 
-    .video-container iframe {
-        width: 55% !important;
+    .video-wrapper {
+        width: 80% !important;
+        margin: 0 auto;
+        padding-bottom: 45% !important;
     }
 
 }
@@ -314,7 +323,7 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <main>
-        <h1>Esta imagen refleja una realidad que muchos viven al ingresar al mundo digital 01.43</h1>
+        <h1>Esta imagen refleja una realidad que muchos viven al ingresar al mundo digital 02.04</h1>
             
             
             <!---------  COMIENZA IMAGEN  --------->
@@ -681,7 +690,7 @@ function loadVideo(el) {
   const videoId = el.getAttribute("data-video");
 
   el.innerHTML = `
-   <div style="position:relative;padding-bottom:56.25%;height:0;">
+   <div class="video-wrapper">
 
   <iframe
     class="ytvideo fade-in"
