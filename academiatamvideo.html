@@ -328,7 +328,7 @@
           <!-- ================= COMIENZA ACADEMIA ===================== -->
 <section class="academy-section">
 
-    <h2>🎓 Academia Ascensum prueba 19-00.03</h2>
+    <h2>🎓 Academia Ascensum</h2>
 
     <div class="video-container">
         <iframe
@@ -339,9 +339,9 @@
     </div>
 
     <div class="video-info">
-        <h3 id="videoTitle">Cómo crear una Wallet</h3>
+        <h3 id="videoTitle">Academia Ascensum DAO 19-18.44</h3>
         <p id="videoDescription">
-            Aprende a instalar y configurar MetaMask paso a paso.
+            Explora los temas disponibles y accede a los videos paso a paso para aprender a utilizar el ecosistema Ascensum DAO.
         </p>
     </div>
 
@@ -352,7 +352,7 @@
     <!-- Comienza Boton Comunidad  -->
 
     <button class="category-btn">
-        📚 Comunidad
+        👥 Comunidad
     </button>
 
     <div class="category-content">
@@ -406,10 +406,10 @@
 
         <button class="video-btn active"
             data-video="ZXohKFlgtb0"
-            data-title="Cómo crear una Wallet"
+            data-title="Como descargar la billetera Safepal"
             data-description="Aprende a instalar la billetera Safepal.">
 
-            ▶ Crear Wallet 
+            ▶ Como descargar la billetera Safepal
 
         </button>
 
@@ -522,7 +522,7 @@
 
        <!-- PRIMEROS PASOS 2-->
     <button class="category-btn">
-        📚 Testimonios
+        🗣️ Lo que dicen los usuarios
     </button>
 
     <div class="category-content">
@@ -633,6 +633,23 @@
     font-weight:bold;
 }
 
+.category-btn.active{
+    background:#162447;
+    color:#ffffff;
+    border-left:5px solid #00d4ff;
+    transform:translateX(5px);
+    transition:all .3s ease;
+}
+
+
+.category-btn.active{
+    background:#162447;
+    color:#ffffff;
+    border-left:5px solid #00d4ff;
+    transform:translateX(5px);
+    transition:all .3s ease;
+}
+
 .category-content{
     display:none;
     padding:10px 0;
@@ -712,23 +729,23 @@ categoryButtons.forEach(button => {
 
     button.addEventListener("click", () => {
 
-        const content =
-        button.nextElementSibling;
+        const content = button.nextElementSibling;
+        const isOpen = content.style.display === "block";
 
         document
         .querySelectorAll(".category-content")
         .forEach(item => {
-
-            if(item !== content){
-                item.style.display = "none";
-            }
-
+            item.style.display = "none";
         });
 
-        content.style.display =
-            content.style.display === "block"
-            ? "none"
-            : "block";
+        categoryButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        if (!isOpen) {
+            content.style.display = "block";
+            button.classList.add("active");
+        }
 
     });
 
