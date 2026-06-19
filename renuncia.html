@@ -184,13 +184,13 @@
         /* ===================== PIE DE PÁGINA ===================== */
         .footer-top-green {
             background-color: #3a8308;
-            height: 0.5cm;
+            height: 20px;
             width: 100%;
         }
 
         .footer-black {
             background-color: #000;
-            min-height: 2.5cm;
+            min-height: 95px;
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -226,7 +226,7 @@
 
         .footer-bottom-green {
             background-color: #3a8308;
-            height: 0.6cm;
+            height: 25px;
             width: 100%;
         }
 
@@ -286,6 +286,17 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
+
+        /* Ocultar barras en celular horizontal */
+@media screen and (max-width:1000px) and (orientation:landscape) {
+
+    .nav-bar,
+    .green-bar {
+        display:none !important;
+    }
+
+}
+
     </style>
 </head>
 
