@@ -435,6 +435,111 @@
 
 
 
+                          <!-- ===================== VIDEO RESPONSIVE ===================== -->
+
+
+     <div class="video-box"
+     data-video="2mM0jSKLJkY"         
+     style="position:relative;max-width:800px;margin:auto;cursor:pointer;"
+     onclick="loadVideo(this)">
+
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+
+    <!-- Miniatura -->
+    <img src="https://img.youtube.com/vi/2mM0jSKLJkY/hqdefault.jpg"    
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Botón Play -->
+    <div class="play-button"></div>
+
+  </div>
+
+</div>
+
+
+
+<style>
+.play-button {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:videopulse 1.5s infinite;
+}
+
+.play-button::before {
+  content:'';
+  width:0;
+  height:0;
+  border-left:25px solid white;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+}
+
+@keyframes videopulse {
+  0% { transform:translate(-50%,-50%) scale(1); }
+  50% { transform:translate(-50%,-50%) scale(1.1); }
+  100% { transform:translate(-50%,-50%) scale(1); }
+}
+
+/* Fade-in */
+.fade-in {
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+
+.fade-in.show {
+  opacity:1;
+}
+
+
+</style>
+
+
+
+<script>
+function loadVideo(el) {
+
+  const videoId = el.getAttribute("data-video");
+
+  el.innerHTML = `
+   <div style="position:relative;padding-bottom:56.25%;height:0;">
+
+  <iframe
+    class="ytvideo fade-in"
+    src="https://www.youtube.com/embed/${videoId}?controls=1&rel=0&playsinline=1"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+</div>
+  `;
+
+  setTimeout(() => {
+    el.querySelector(".ytvideo").classList.add("show");
+  }, 100);
+}
+</script>
+
+
+
+        
+
+
+         <!-- ===================== FIN DEL VIDEO RESPONSIVE ===================== -->
+
+
+
+
             <div style="margin-top:80px;">
             <h1>Descubre Ascensum</h1> 
         <h3>Un proyecto que está próximo a cumplir 2 años de crecimiento constante.<br> 
