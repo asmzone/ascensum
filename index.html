@@ -1113,43 +1113,131 @@ function loadVideo(el) {
                 
 
             
-            <p>
+            <p style="margin-bottom:60px;">
             ℹ️ <b>Nota:</b> En algunos dispositivos móviles, BscScan puede realizar una verificación de seguridad antes de mostrar la información.<br>
             Si observas el mensaje <b>"Verificación de seguridad en curso"</b>, no te preocupes es normal, espera unos segundos mientras finaliza el proceso.
-            <br>
-            <br>
+            </p>
 
-
+                <p style="margin-bottom:40px;">
                 Para conocer la cantidad de usdt que hay en el fondo común <b>"Tesoro"</b> debes mirar debajo de Token Holdings<br> 
                 En estos momentos hay 160.775 usdt <br><br>
                 Al comprar un nodo de 25 usdt estaras aportando al tesoro de Ascensum 5 usdt, con el nodo de 50 usdt estaras aportando 10 usdt, con el de 100 usdt aportaras 20 usdt al tesoro y asi sucesivamente con cada compra de nodo.<br>
                 <br>
                 Ese dinero adicional que aportas al tesoro te pertenece, es de por vida y hereditario.
-                <br> 
-                <br>
+                </p>
 
-
+                <p style="margin-bottom:60px;">
                 ✅ Estos 3 pilares son los que sostienen el funcionamiento y crecimiento del ecosistema Ascensum.
                 </p>
                           
 
 
-            <div style="margin-top:60px; margin-bottom:80px;">
 
-    <img src="imagenes/el_tesoro_ascensum_dao.jpeg"
-         alt="Tesoro ascensum dao - El seguro de nuestras inversiones"
-         style="max-width:600px;
-                width:100%;
-                height:auto;
-                display:block;
-                margin:auto;">
+                             <!-- ===================== VIDEO RESPONSIVE ===================== -->
+
+
+     <div class="video-box"
+     data-video="b2vQJcVjHw8"         
+     style="position:relative;max-width:800px;margin:auto;cursor:pointer;"
+     onclick="loadVideo(this)">
+
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+
+    <!-- Miniatura -->
+    <img src="https://img.youtube.com/vi/b2vQJcVjHw8/hqdefault.jpg"    
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Botón Play -->
+    <div class="play-button"></div>
+
+  </div>
 
 </div>
 
 
 
+<style>
+.play-button {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:videopulse 1.5s infinite;
+}
+
+.play-button::before {
+  content:'';
+  width:0;
+  height:0;
+  border-left:25px solid white;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+}
+
+@keyframes videopulse {
+  0% { transform:translate(-50%,-50%) scale(1); }
+  50% { transform:translate(-50%,-50%) scale(1.1); }
+  100% { transform:translate(-50%,-50%) scale(1); }
+}
+
+/* Fade-in */
+.fade-in {
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+
+.fade-in.show {
+  opacity:1;
+}
+
+
+</style>
+
+
+
+<script>
+function loadVideo(el) {
+
+  const videoId = el.getAttribute("data-video");
+
+  el.innerHTML = `
+   <div style="position:relative;padding-bottom:56.25%;height:0;">
+
+  <iframe
+    class="ytvideo fade-in"
+    src="https://www.youtube.com/embed/${videoId}?controls=1&rel=0&playsinline=1"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+</div>
+  `;
+
+  setTimeout(() => {
+    el.querySelector(".ytvideo").classList.add("show");
+  }, 100);
+}
+</script>
+
+
+
+         <!-- ===================== FIN DEL VIDEO RESPONSIVE ===================== -->
+
+
+
+            <div style="margin-top:80px;">
              <h2>¿Por qué muchas personas están comprando nodos ahora?</h2>
-            
+            </div>
+
             <p>El desarrollo de Ascensum está vinculado a la participación de su comunidad.<br>
             A medida que más personas se suman y el sistema crece, se activan diferentes mecanismos internos que impactan en su evolución.<br><br>
 
@@ -1170,31 +1258,22 @@ function loadVideo(el) {
             
            
             
-               
-
-                <div style="margin-top:60px; margin-bottom:80px;">
-
-    <img src="imagenes/ascensum_dao1.png"
-         alt="Ecosistema Ascensum Dao"
-         style="max-width:650px;
-                width:100%;
-                height:auto;
-                display:block;
-                margin:auto;">
-
-                </div>
 
 
 
-        <div style="margin-top:100px; margin-bottom:60px;">
+        <div style="margin-top:80px;">
         <h1>Nuestro principal Producto: Nodos de Mineria</h1>
-        
-        <p>
+        </div>
+
+
+
+
+            <p style="margin-bottom:50px;">
             Estos nodos generan el token ASM durante 360 días.<br>
             Existen 11 opciones disponibles, comenzando desde solo 25 USDT<br>
             ▪️ A continuacion tienes la lista completa con los valores de cada Nodo
             </p>
-            </div>
+            
            
 
             
@@ -1659,10 +1738,8 @@ window.open(
 
             🎁 Tu propio sitio web (para que puedas promocionar tu negocio)<br>
             🎁 Hosting donde alojar las paginas del sitio web.<br>
-            🎁 Capacitacion basica en diseño web (html, css y java).<br>
             🎁 Configuración de links y autoresponder<br>
             🎁 Material de promoción listo para usar (imágenes, videos, textos)<br>
-            🎁 Guía práctica de uso de: ✨ Sublime Text
             <br>
             <br>
             La idea es clara: no pierdas meses probando y equivocándote.
