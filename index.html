@@ -268,24 +268,27 @@
             }
         }
 
-        /* Ocultar barras en celular horizontal */
+
+
+      /* Celular horizontal */
 @media screen and (max-width:1000px) and (orientation:landscape) {
 
+    /* Ocultar barras superiores */
     .nav-bar,
     .green-bar {
-        display:none !important;
+        display: none !important;
+    }
+
+    /* Reducir tamaño del video */
+    .video-box {
+        max-width: 75% !important;
     }
 
 }
 
 
-@media screen and (max-width:1000px) and (orientation:landscape) {
 
-  .video-box {
-      max-width: 75% !important;
-  }
 
-}
 
 
     </style>
