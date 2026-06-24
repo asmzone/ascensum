@@ -334,15 +334,16 @@
     <main>
         
         
-        <h1>“Ganá hasta 400% por cada venta sin invertir”</h1>            
+        <h1>“Ganá hasta 40% por cada venta sin invertir”</h1>            
         <h3>Este video de unos 4 minutos te da una idea general de lo que es Ascensum</h3>
         <p>
         Después te explicamos paso a paso cómo funciona y qué podés esperar
          </p>
          
 
-        
-       <!-- ===================== VIDEO RESPONSIVE ===================== -->
+
+
+        <!-- ===================== VIDEO RESPONSIVE ===================== -->
 
 
      <div class="video-box"
@@ -437,9 +438,6 @@ function loadVideo(el) {
 }
 </script>
 
-
-
-        
 
 
          <!-- ===================== FIN DEL VIDEO RESPONSIVE ===================== -->
@@ -852,12 +850,8 @@ window.open(
             </p> 
             </div>
 
-           
-            
-            <hr style="margin-top:60px; margin-bottom:100px;">
 
-
-            <p> 
+            <p style="margin-bottom:50px;">
             🔥 Mecanismo de reducción de oferta
             <br>
             El sistema incluye un proceso automático:
@@ -885,9 +879,112 @@ window.open(
             
 
 
-           <hr style="margin-top:60px; margin-bottom:100px;"> 
+
+            <!-- ===================== COMIENZA VIDEO RESPONSIVE ===================== -->
+
+
+     <div class="video-box"
+     data-video="j1L01odY4A4"         
+     style="position:relative;max-width:800px;margin:auto;cursor:pointer;"
+     onclick="loadVideo(this)">
+
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+
+    <!-- Miniatura -->
+    <img src="https://img.youtube.com/vi/j1L01odY4A4/hqdefault.jpg"    
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Botón Play -->
+    <div class="play-button"></div>
+
+  </div>
+
+</div>
+
+
+
+<style>
+.play-button {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:videopulse 1.5s infinite;
+}
+
+.play-button::before {
+  content:'';
+  width:0;
+  height:0;
+  border-left:25px solid white;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+}
+
+@keyframes videopulse {
+  0% { transform:translate(-50%,-50%) scale(1); }
+  50% { transform:translate(-50%,-50%) scale(1.1); }
+  100% { transform:translate(-50%,-50%) scale(1); }
+}
+
+/* Fade-in */
+.fade-in {
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+
+.fade-in.show {
+  opacity:1;
+}
+
+
+</style>
+
+
+
+<script>
+function loadVideo(el) {
+
+  const videoId = el.getAttribute("data-video");
+
+  el.innerHTML = `
+   <div style="position:relative;padding-bottom:56.25%;height:0;">
+
+  <iframe
+    class="ytvideo fade-in"
+    src="https://www.youtube.com/embed/${videoId}?controls=1&rel=0&playsinline=1"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+</div>
+  `;
+
+  setTimeout(() => {
+    el.querySelector(".ytvideo").classList.add("show");
+  }, 100);
+}
+</script>
+
+
+
+         <!-- ===================== FIN DEL VIDEO RESPONSIVE ===================== -->
+
+
+
+
+          
            
-            <p> 
+            <p style="margin-top:80px;"> 
             🔐 Seguridad y transparencia del contrato<br>
             El sistema fue configurado para limitar riesgos comunes en este tipo de proyectos:
             <br>
@@ -1228,10 +1325,108 @@ function loadVideo(el) {
             
 
            
-            
-            <div class="img-main-container">
-            <img src="imagenes/desicion.jpeg" alt="Ascensum DAO Nodos"> 
-            </div>
+     <!-- ===================== VIDEO RESPONSIVE ===================== -->
+
+
+     <div class="video-box"
+     data-video="b2vQJcVjHw8"         
+     style="position:relative;max-width:800px;margin:auto;cursor:pointer;"
+     onclick="loadVideo(this)">
+
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+
+    <!-- Miniatura -->
+    <img src="https://img.youtube.com/vi/b2vQJcVjHw8/hqdefault.jpg"    
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Botón Play -->
+    <div class="play-button"></div>
+
+  </div>
+
+</div>
+
+
+
+<style>
+.play-button {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:videopulse 1.5s infinite;
+}
+
+.play-button::before {
+  content:'';
+  width:0;
+  height:0;
+  border-left:25px solid white;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+}
+
+@keyframes videopulse {
+  0% { transform:translate(-50%,-50%) scale(1); }
+  50% { transform:translate(-50%,-50%) scale(1.1); }
+  100% { transform:translate(-50%,-50%) scale(1); }
+}
+
+/* Fade-in */
+.fade-in {
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+
+.fade-in.show {
+  opacity:1;
+}
+
+
+</style>
+
+
+
+<script>
+function loadVideo(el) {
+
+  const videoId = el.getAttribute("data-video");
+
+  el.innerHTML = `
+   <div style="position:relative;padding-bottom:56.25%;height:0;">
+
+  <iframe
+    class="ytvideo fade-in"
+    src="https://www.youtube.com/embed/${videoId}?controls=1&rel=0&playsinline=1"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+</div>
+  `;
+
+  setTimeout(() => {
+    el.querySelector(".ytvideo").classList.add("show");
+  }, 100);
+}
+</script>
+
+
+
+         <!-- ===================== FIN DEL VIDEO RESPONSIVE ===================== -->
+
+
+
+
             
             
             <div style="margin-top:60px; margin-bottom:60px;">
