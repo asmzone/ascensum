@@ -1010,16 +1010,25 @@ function loadVideo(el) {
             Toda esta información es pública y puede comprobarse directamente en la blockchain a través de BscScan
             <br>
             <br>
-            Aqui tienes el contrato de ASM para que puedas comprobarlo por ti mismo, da click en el boton y te llevara directamente a https://bscscan.com.<br>
+            A continuación te facilito el contrato oficial de ASM para que puedas comprobar por ti mismo los datos del proyecto.<br>
+            Al hacer click en el botón, accederás directamente a BscScan, la herramienta más utilizada para consultar y verificar información en la Binance Smart Chain.
+            <br>
+            <br>
+            ℹ️ <b>Nota:</b> En algunos dispositivos móviles, BscScan puede realizar una verificación de seguridad antes de mostrar la información.<br>
+            Si observas el mensaje <b>"Verificación de seguridad en curso"</b>, no te preocupes es normal, espera unos segundos mientras finaliza el proceso.<br>
+            <br>
+
+            Si no estás familiarizado con el proceso de verificacion en BscScan, también tienes un video explicativo que muestra paso a paso cómo se debe realizar y qué información debes observar.
+            <br>
+            <br>
+            Además, dispones de un botón que te llevará a DexScreener, donde podrás consultar información adicional sobre el token, tal como se explica en el video de forma sencilla y simple para que aprendas a verificar toda la informacion por tu cuenta.
             </p> 
             
-            
+             
 
+            <!-- ===================== COMIENZA BOTONES ===================== -->
 
-             <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
-
-
-                   <div style="
+<div style="
 background:linear-gradient(145deg,#111,#1b1b1b);
 padding:25px;
 border-radius:18px;
@@ -1036,7 +1045,7 @@ color:white;
 margin-bottom:18px;
 font-size:22px;
 ">
-📜 Contrato Oficial Ascensum DAO
+📜 Información Oficial Ascensum DAO
 </h3>
 
 <div style="
@@ -1059,19 +1068,26 @@ font-family:monospace;
 
 </div>
 
+<!-- BOTON DEXSCREENER -->
+<button onclick="abrirDex()" class="btnDex">
+📈 Ver Token en DexScreener
+</button>
+
+<!-- ESPACIO -->
+<div style="height:15px;"></div>
+
+<!-- BOTON BSC -->
 <button onclick="abrirContrato()" class="btnContrato">
 🔗 Ver Contrato en BscScan
 </button>
 
 </div>
-
 <style>
 
+.btnDex,
 .btnContrato{
 width:100%;
-max-width:400px;    
-background:linear-gradient(135deg,#46b51f,#2f7e15);
-color:white;
+max-width:400px;
 border:none;
 padding:14px 28px;
 border-radius:12px;
@@ -1079,8 +1095,28 @@ font-size:16px;
 font-weight:bold;
 cursor:pointer;
 transition:all 0.3s ease;
-box-shadow:0 6px 18px rgba(55,139,24,0.35);
 letter-spacing:0.5px;
+color:white;
+}
+
+/* BOTON DEX */
+
+.btnDex{
+background:linear-gradient(135deg,#1f6fb5,#154b7e);
+box-shadow:0 6px 18px rgba(24,92,139,0.35);
+}
+
+.btnDex:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(24,92,139,0.55);
+background:linear-gradient(135deg,#2790e8,#1c5f9e);
+}
+
+/* BOTON BSC */
+
+.btnContrato{
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
 }
 
 .btnContrato:hover{
@@ -1089,6 +1125,7 @@ box-shadow:0 10px 25px rgba(55,139,24,0.55);
 background:linear-gradient(135deg,#52d323,#378B18);
 }
 
+.btnDex:active,
 .btnContrato:active{
 transform:scale(0.97);
 }
@@ -1096,6 +1133,15 @@ transform:scale(0.97);
 </style>
 
 <script>
+
+function abrirDex(){
+
+window.open(
+"https://dexscreener.com/bsc/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81",
+"_blank"
+);
+
+}
 
 function abrirContrato(){
 
@@ -1106,13 +1152,12 @@ window.open(
 
 }
 
+
 </script>
 
+<!-- ===================== FIN BOTONES ===================== -->
 
 
-
-            <!-- ===================== FIN DEL BOTON ENVIAR ===================== -->
-                    
                     
                      
 
