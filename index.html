@@ -1112,7 +1112,109 @@ function loadVideo(el) {
             
 
 
-             <h3><a href="https://bscscan.com/address/0x87Bc4Ae48CDae1127ccF8694F245FF013375cDeb" target="_blank" rel="noopener noreferrer">👉 Da click aqui y podras comprobar cuantos usdt hay en el Tesoro</a></h3>
+             <h3>Este es el contrato del Tesoro de Ascensum</h3>
+
+               <p> 0x87Bc4Ae48CDae1127ccF8694F245FF013375cDeb</p>
+
+            <p style="margin-top:30px; margin-bottom:30px;">
+            Da click en el Boton Verificar Fondos del Tesoro y podras comprobar cuantos usdt hay en la cuenta 👇</p>
+
+
+
+
+
+                  <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
+
+
+                   <div style="
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:25px;
+border-radius:18px;
+text-align:center;
+margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.08);
+width:100%;
+box-sizing:border-box;
+">
+
+<h3 style="
+color:white;
+margin-bottom:18px;
+font-size:22px;
+">
+⭐ Tesoro de Ascensum DAO               <!-- ====== Modificar ===== -->
+</h3>
+
+<div style="
+background:#0d0d0d;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:20px;
+">
+
+<span style="
+color:#FBFF00;
+font-size:15px;
+word-break:break-all;
+line-height:1.6;
+font-family:monospace;
+">
+https://bscscan.com                            <!-- ====== Modificar ===== -->
+</span>
+
+</div>
+
+<button onclick="abrirBscscan()" class="btnContrato">     <!-- ====== Ver ===== -->
+🔗 Verificar Fondos del Tesoro
+</button>
+
+</div>
+
+<style>
+
+.btnContrato{
+width:100%;
+max-width:400px;    
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+letter-spacing:0.5px;
+}
+
+.btnContrato:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
+.btnContrato:active{
+transform:scale(0.97);
+}
+
+</style>
+
+<script>
+
+function abrirBscscan(){
+
+window.open(
+"https://bscscan.com/address/0x87Bc4Ae48CDae1127ccF8694F245FF013375cDeb",
+"_blank"
+);
+
+}
+
+</script>
+
                 
 
             
@@ -1853,7 +1955,7 @@ Reemplazar TU_LINK_AQUI
 <div class="cta-container">
 
     <!-- BOTÓN -->
-    <a href="https://wa.link/tikzvz" target="_blank" rel="noopener noreferrer" class="cta-pro" id="ctaPro">
+    <a href="https://wa.link/eck1xi" target="_blank" rel="noopener noreferrer" class="cta-pro" id="ctaPro">
 
         <!-- TEXTO DEL BOTÓN -->
         <span>Quiero comprar mi primer Nodo y comenzar</span>
@@ -2176,7 +2278,7 @@ function loadVideo(el) {
     <area target="_blank"
           alt="Vas a seguir dudando"
           title="Vas a seguir dudando"
-          href="https://wa.link/tikzvz"
+          href="https://wa.link/eck1xi"
           coords="135,1302,901,1501"
           shape="rect"
           id="areaResponsive">
@@ -2253,7 +2355,7 @@ window.addEventListener("resize", resizeMap);
                
 
 
-                        <!-- ===================== COMIENZA BOTONES ===================== -->
+         <!-- ===================== COMIENZA 3 BOTONES ===================== -->
 
 <div style="
 background:linear-gradient(145deg,#111,#1b1b1b);
@@ -2295,6 +2397,14 @@ font-family:monospace;
 
 </div>
 
+<!-- BOTON DEXSCREENER -->
+<button onclick="abrirDex()" class="btnDex">
+📈 Ver Token en DexScreener
+</button>
+
+<!-- ESPACIO -->
+<div style="height:15px;"></div>
+
 <!-- BOTON BSC -->
 <button onclick="abrirContrato()" class="btnContrato">
 🔗 Ver Contrato en BscScan
@@ -2303,13 +2413,6 @@ font-family:monospace;
 <!-- ESPACIO -->
 <div style="height:15px;"></div>
 
-<!-- BOTON DEXSCREENER -->
-<button onclick="abrirDex()" class="btnDex">
-📈 Ver Token en DexScreener
-</button>
-
-<!-- ESPACIO -->
-<div style="height:15px;"></div>
 
 <!-- BOTON TUTORIAL -->
 <button onclick="abrirTutorial()" class="btnTutorial">
@@ -2320,8 +2423,8 @@ font-family:monospace;
 
 <style>
 
-.btnContrato,
 .btnDex,
+.btnContrato,
 .btnTutorial{
 width:100%;
 max-width:400px;
@@ -2334,19 +2437,6 @@ cursor:pointer;
 transition:all 0.3s ease;
 letter-spacing:0.5px;
 color:white;
-}
-
-/* BOTON BSC */
-
-.btnContrato{
-background:linear-gradient(135deg,#46b51f,#2f7e15);
-box-shadow:0 6px 18px rgba(55,139,24,0.35);
-}
-
-.btnContrato:hover{
-transform:translateY(-3px) scale(1.03);
-box-shadow:0 10px 25px rgba(55,139,24,0.55);
-background:linear-gradient(135deg,#52d323,#378B18);
 }
 
 /* BOTON DEX */
@@ -2362,6 +2452,19 @@ box-shadow:0 10px 25px rgba(24,92,139,0.55);
 background:linear-gradient(135deg,#2790e8,#1c5f9e);
 }
 
+/* BOTON BSC */
+
+.btnContrato{
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+}
+
+.btnContrato:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
 /* BOTON TUTORIAL */
 
 .btnTutorial{
@@ -2375,8 +2478,8 @@ box-shadow:0 10px 25px rgba(230,126,0,0.55);
 background:linear-gradient(135deg,#ffad33,#ff8c00);
 }
 
-.btnContrato:active,
 .btnDex:active,
+.btnContrato:active,
 .btnTutorial:active{
 transform:scale(0.97);
 }
@@ -2385,19 +2488,19 @@ transform:scale(0.97);
 
 <script>
 
-function abrirContrato(){
+function abrirDex(){
 
 window.open(
-"https://bscscan.com/address/0x75f16b49403712b17f7072baea7ab725f89f5644",
+"https://dexscreener.com/bsc/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81",
 "_blank"
 );
 
 }
 
-function abrirDex(){
+function abrirContrato(){
 
 window.open(
-"https://dexscreener.com/bsc/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81",
+"https://bscscan.com/address/0x75f16b49403712b17f7072baea7ab725f89f5644",
 "_blank"
 );
 
@@ -2414,7 +2517,8 @@ window.open(
 
 </script>
 
-<!-- ===================== FIN BOTONES ===================== -->
+<!-- ===================== FIN 3 BOTONES ===================== -->
+
 
 
 
@@ -2549,7 +2653,7 @@ function loadVideo(el) {
             <div class="left">© Copyright 2026 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
             <div class="right">
                 <a href="https://t.me/nodos_ascensum" target="_blank" rel="noopener noreferrer">Telegram</a>
-                <a href="https://wa.link/tikzvz" target="_blank" rel="noopener noreferrer">Whatsapp</a>
+                <a href="https://wa.link/eck1xi" target="_blank" rel="noopener noreferrer">Whatsapp</a>
                 
             </div>
         </div>
@@ -2612,7 +2716,7 @@ function loadVideo(el) {
         setTimeout(() => p.remove(), duration + 120);
       }
     }
-    setInterval(createFirework, 2500 + Math.random() * 1500);
+    setInterval(createFirework, 10000 + Math.random() * 6000);
     </script>
 
 
