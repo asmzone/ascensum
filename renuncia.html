@@ -629,15 +629,193 @@ function loadVideo(el) {
                 <div style="margin-top:80px;">
                 <h2>Contrato del Token ASM</h2>
 
-                <p>
-                Este es el contrato oficial del token ASM:<br>
-                0xc16a37ef0066b641a3b64cf892dfde63ecf25f81<br>
-                <br>
-
-                También puedes acceder directamente a su información pública desde DexScreener:<br>
-                https://dexscreener.com/bsc/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81
-                </p>
+                
+                <h3>Este es el contrato oficial del token ASM:</h3>
                 </div> 
+
+
+  <!-- ===================== COMIENZA BOTON COPIAR ===================== -->
+            
+
+
+
+            <div style="
+background:#111;
+padding:15px;
+border-radius:12px;
+text-align:center;
+margin-top:20px;
+width:100%;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+">
+
+<span id="refContrato" style="
+color:#FBFF00;
+font-size:16px;
+word-break:break-all;
+display:block;
+margin-bottom:15px;
+">
+0xc16a37ef0066b641a3b64cf892dfde63ecf25f81
+</span>
+
+<button onclick="copiarContrato()" style="
+background:#378B18;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+">
+📋 Copiar Contrato
+</button>
+
+<p id="mensajeContrato" style="
+color:#00ff88;
+margin-top:10px;
+display:none;
+font-weight:bold;
+">
+✅ Contrato copiado correctamente
+</p>
+
+</div>
+
+<script>
+function copiarContrato() {
+
+const texto =
+document.getElementById("refContrato").innerText;
+
+navigator.clipboard.writeText(texto);
+
+document.getElementById("mensajeContrato").style.display = "block";
+
+setTimeout(() => {
+document.getElementById("mensajeContrato").style.display = "none";
+}, 2500);
+
+}
+</script>
+
+
+        <!-- ===================== FIN DEL BOTON COPIAR ===================== -->
+        
+
+
+
+
+                 <div style="margin-top:100px;">
+                <h3>También puedes acceder directamente a su información pública desde DexScreener:</h3>
+                <div>
+                
+
+
+
+
+                                <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
+
+
+                   <div style="
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:25px;
+border-radius:18px;
+text-align:center;
+margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.08);
+width:100%;
+box-sizing:border-box;
+">
+
+<h3 style="
+color:white;
+margin-bottom:18px;
+font-size:22px;
+">
+Acceder a Dexscreener               <!-- ====== Modificar ===== -->
+</h3>
+
+<div style="
+background:#0d0d0d;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:20px;
+">
+
+<span style="
+color:#FBFF00;
+font-size:15px;
+word-break:break-all;
+line-height:1.6;
+font-family:monospace;
+">
+https://dexscreener.com                            <!-- ====== Modificar ===== -->
+</span>
+
+</div>
+
+<button onclick="abrirDex()" class="btnDex">     <!-- ====== Ver ===== -->
+🔗 Ingresar Directamente
+</button>
+
+</div>
+
+<style>
+
+.btnDex{
+width:100%;
+max-width:400px;    
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+letter-spacing:0.5px;
+}
+
+.btnDex:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
+.btnDex:active{
+transform:scale(0.97);
+}
+
+</style>
+
+<script>
+
+function abrirDex(){                   
+
+window.open(
+"https://dexscreener.com/bsc/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81",
+"_blank"
+);
+
+}
+
+</script>
+
+
+
+      <!-- ===================== FIN BOTON ENVIAR ===================== -->
+
+
+
 
 
 
@@ -997,18 +1175,25 @@ function loadVideo(el) {
 
 
                 <div style="margin-top:100px;">
-                <h2>🔹 Como Auditar el Contrato de Ascensum</h2>
-                
-
+                <h2>🔹 Cómo Verificar Ascensum en la Blockchain</h2>
                 <p>
-                Este es el contrato de Ascensum DAO<br>
+                Toda la actividad de Ascensum puede comprobarse públicamente en la blockchain de Binance Smart Chain. Cualquier persona puede verificar la información de forma transparente e independiente.<br>
+                <br>                
+                <h3>Contrato Oficial de Ascensum DAO</h3>
                 0x75f16b49403712b17f7072baea7ab725f89f5644
                 <br>
                 <br>
-                1.- Vamos a https://bscscan.com<br>
-                pega el contrato en el buscador y le das enter
+                <h3>Verificación Manual</h3>
+                1. Ingresa a BscScan.<br>
+                2. Copia el contrato de Ascensum DAO.<br>
+                3. Pégalo en el buscador y presiona Enter.<br>
+                4. Podrás consultar la información pública del contrato directamente en la blockchain.
                 </p>
                 </div>
+
+
+                <p style="margin-top:80px;">
+                Imagen 1</p>
 
 
 
@@ -1026,6 +1211,38 @@ function loadVideo(el) {
                 </div>
 
 
+
+
+
+                 <div style="margin-top:80px; margin-bottom:30px;">
+                <h3>Acceso Directo</h3>
+                <p>Si prefieres ahorrar tiempo, puedes utilizar los siguientes accesos directos:
+                <br>
+                <br>
+                📄 Consulta la información pública del contrato oficial.
+                <br>
+                🔍 Observa una transacción registrada directamente en la blockchain (imagen 4).
+                </p>
+                </div>
+
+
+     <div class="btn-group">
+    <a href="https://bscscan.com/address/0x75f16b49403712b17f7072baea7ab725f89f5644"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="btn btn-primary">
+       📄 Ver Contrato de Ascensum en BscScan
+    </a>
+        <br>
+        <br>
+    <a href="https://bscscan.com/tx/0x380606954c7aa22578c1b9e60d458901c5b6fb0c31440ab2b57fa3781dfb3ffd"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="btn btn-success">
+       🔍 Ver una Compra Real de Nodo
+    </a>
+
+</div>
 
 
 
@@ -1049,7 +1266,8 @@ function loadVideo(el) {
 
 
 
-
+                <p style="margin-top:80px;">
+                Imagen 2</p>
                 <div style="margin-top:60px; margin-bottom:80px;">
 
     <img src="imagenes/bscscan_2.png"
@@ -1081,7 +1299,8 @@ function loadVideo(el) {
 
 
 
-
+                <p style="margin-top:80px;">
+                Imagen 3</p>
                 <div style="margin-top:40px; margin-bottom:80px;">
 
     <img src="imagenes/bscscan_3.png"
@@ -1124,6 +1343,9 @@ function loadVideo(el) {
 
 
 
+                <p style="margin-top:80px;">
+                Imagen 4</p>
+
                 <div style="margin-top:40px; margin-bottom:80px;">
 
     <img src="imagenes/bscscan_4.png"
@@ -1159,6 +1381,9 @@ function loadVideo(el) {
                 </p>
                 
 
+
+                <p style="margin-top:80px;">
+                Imagen 5</p>
 
                 <div style="margin-top:40px; margin-bottom:80px;">
 
@@ -1362,7 +1587,7 @@ Reemplazar TU_LINK_AQUI
 <div class="cta-container">
 
     <!-- BOTÓN -->
-    <a href="https://wa.link/tikzvz" target="_blank" rel="noopener noreferrer" class="cta-pro" id="ctaPro">
+    <a href="https://wa.link/eck1xi" target="_blank" rel="noopener noreferrer" class="cta-pro" id="ctaPro">
 
         <!-- TEXTO DEL BOTÓN -->
         <span>Quiero comprar mi primer Nodo y comenzar</span>
@@ -1796,7 +2021,7 @@ function loadVideo(el) {
             <div class="left">© Copyright 2026 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
             <div class="right">
                 <a href="https://t.me/nodos_ascensum" target="_blank" rel="noopener noreferrer">Telegram</a>
-                <a href="https://wa.link/tikzvz" target="_blank" rel="noopener noreferrer">Whatsapp</a>
+                <a href="https://wa.link/eck1xi" target="_blank" rel="noopener noreferrer">Whatsapp</a>
                 
             </div>
         </div>
@@ -1859,7 +2084,7 @@ function loadVideo(el) {
         setTimeout(() => p.remove(), duration + 120);
       }
     }
-    setInterval(createFirework, 2500 + Math.random() * 1500);
+    setInterval(createFirework, 10000 + Math.random() * 6000);
     </script>
 
 </body>
