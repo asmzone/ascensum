@@ -610,6 +610,232 @@ function loadVideo(el) {
 
 
 
+                            <div style="margin-bottom:10px;">
+                <h2>Estás a una decisión de cambiar tu posición en el mundo cripto</h2>
+                </div>
+                
+
+                <p style="text-align:center; font-size:18px; line-height:1.8; max-width:950px; margin:auto;">
+
+
+                <br>
+                ¿Estás listo para dar el siguiente paso?<br>
+                 Haz click abajo y asegura tu Nodo ahora.<br>
+                </p>
+                
+                
+
+
+<!-- ===================================================== -->
+<!-- ========== COMIENZA BOTÓN COMPRAR NODO ============== -->
+<!-- ===================================================== -->
+
+<!--
+PERSONALIZACIÓN RÁPIDA
+
+CAMBIAR POSICIÓN:
+center = centro
+left = izquierda
+right = derecha
+
+CAMBIAR COLOR:
+Busca:
+background: linear-gradient(...)
+
+CAMBIAR TAMAÑO:
+padding: 16px 30px;
+font-size: 18px;
+
+CAMBIAR TEXTO:
+Quiero vender Nodos Ascensum
+
+CAMBIAR LINK:
+Reemplazar TU_LINK_AQUI
+
+-->
+
+
+<!-- CONTENEDOR DEL BOTÓN -->
+<div class="cta-container">
+
+    <!-- BOTÓN -->
+    <a href="https://wa.link/eck1xi" target="_blank" rel="noopener noreferrer" class="cta-pro">
+
+        <!-- TEXTO DEL BOTÓN -->
+        <span>Quiero comprar mi primer Nodo y comenzar</span>
+
+        <!-- FLECHA -->
+        <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"
+                  stroke="white"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+    </a>
+
+</div>
+
+<style>
+
+/* ===================================================== */
+/* ================= POSICIÓN BOTÓN ==================== */
+/* ===================================================== */
+
+.cta-container {
+
+    /* CAMBIAR:
+       center = centro
+       left = izquierda
+       right = derecha
+    */
+
+    text-align: center;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* ===================================================== */
+/* ==================== BOTÓN ========================== */
+/* ===================================================== */
+
+.cta-pro {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    /* TAMAÑO BOTÓN */
+    padding: 16px 30px;
+
+    /* TAMAÑO TEXTO */
+    font-size: 18px;
+
+    font-weight: 600;
+    color: #121211;
+
+    /* COLOR BOTÓN */
+    background: linear-gradient(135deg, #00c853, #00e676);
+
+    border-radius: 14px;
+    text-decoration: none;
+
+    /* SOMBRA */
+    box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: pulse 2.5s infinite;
+}
+
+/* ===================================================== */
+/* ===================== HOVER ========================= */
+/* ===================================================== */
+
+.cta-pro:hover {
+
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow: 0 15px 35px rgba(0, 200, 83, 0.6);
+}
+
+/* ===================================================== */
+/* ===================== CLICK ========================= */
+/* ===================================================== */
+
+.cta-pro:active {
+    transform: scale(0.96);
+}
+
+/* ===================================================== */
+/* ================= FLECHA ANIMADA ==================== */
+/* ===================================================== */
+
+.cta-pro .arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-pro:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ===================================================== */
+/* ================= EFECTO PULSE ====================== */
+/* ===================================================== */
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 200, 83, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+    }
+}
+
+/* ===================================================== */
+/* ============== APARECER CON SCROLL ================= */
+/* ===================================================== */
+
+.cta-pro.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
+
+<script>
+
+/* ===================================================== */
+/* ========= MOSTRAR BOTÓN AL HACER SCROLL ============ */
+/* ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+const botones = document.querySelectorAll(".cta-pro");
+
+function showOnScroll() {
+
+    const trigger = window.innerHeight * 0.8;
+
+    botones.forEach(btn => {
+
+        const rect = btn.getBoundingClientRect();
+
+        if (rect.top < trigger) {
+            btn.classList.add("visible");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", showOnScroll);
+
+showOnScroll();
+});
+
+</script>
+
+        
+
+
+        <!-- ===================== FIN DEL BOTON COMPRAR NODO ===================== -->
+
+
+
+
+
+
 
                 <div style="margin-top:80px;">
                 <h2>🔹 Cómo Auditar el Token ASM en DexScreener</h2>
@@ -634,78 +860,79 @@ function loadVideo(el) {
                 </div> 
 
 
-  <!-- ===================== COMIENZA BOTON COPIAR ===================== -->
-            
 
 
 
-            <div style="
-background:#111;
-padding:15px;
-border-radius:12px;
-text-align:center;
-margin-top:20px;
-width:100%;
-max-width:700px;
-margin-left:auto;
-margin-right:auto;
-">
 
-<span id="refContrato" style="
-color:#FBFF00;
-font-size:16px;
-word-break:break-all;
-display:block;
-margin-bottom:15px;
-">
-0xc16a37ef0066b641a3b64cf892dfde63ecf25f81
-</span>
-
-<button onclick="copiarContrato()" style="
-background:#378B18;
-color:white;
-border:none;
-padding:12px 25px;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
-font-weight:bold;
-transition:0.3s;
-">
-📋 Copiar Contrato
-</button>
-
-<p id="mensajeContrato" style="
-color:#00ff88;
-margin-top:10px;
-display:none;
-font-weight:bold;
-">
-✅ Contrato copiado correctamente
-</p>
-
-</div>
-
-<script>
-function copiarContrato() {
-
-const texto =
-document.getElementById("refContrato").innerText;
-
-navigator.clipboard.writeText(texto);
-
-document.getElementById("mensajeContrato").style.display = "block";
-
-setTimeout(() => {
-document.getElementById("mensajeContrato").style.display = "none";
-}, 2500);
-
-}
-</script>
+                <!-- ===================== COMIENZA BOTON COPIAR ===================== --> 
 
 
-        <!-- ===================== FIN DEL BOTON COPIAR ===================== -->
-        
+                <div style=" 
+                background:#111; 
+                padding:15px; 
+                border-radius:12px; 
+                text-align:center; 
+                margin-top:20px; 
+                "> 
+
+                <span id="refContrato" style=" 
+                color:#FBFF00; 
+                font-size:16px; 
+                word-break:break-all; 
+                display:block; 
+                margin-bottom:15px; 
+                "> 
+                0xc16a37ef0066b641a3b64cf892dfde63ecf25f81 
+                </span> 
+
+                    
+                <button onclick="copiarContrato()" style=" 
+                background:#378B18; 
+                color:white; 
+                border:none; 
+                padding:12px 25px; 
+                border-radius:8px; 
+                font-size:16px; 
+                cursor:pointer; 
+                font-weight:bold; 
+                transition:0.3s; 
+                "> 
+                📋 Copiar Contrato 
+                </button> 
+
+                <p id="mensajeCopiado" style=" 
+                color:#00ff88; 
+                margin-top:10px; 
+                display:none; 
+                font-weight:bold; 
+                "> 
+                ✅ Contrato copiado correctamente 
+                </p> 
+
+                </div> 
+
+                <script> 
+                function copiarContrato() { 
+
+                const texto = 
+                document.getElementById("refContrato").innerText; 
+                
+                navigator.clipboard.writeText(texto); 
+
+                document.getElementById("mensajeCopiado").style.display = "block"; 
+
+                setTimeout(() => { 
+                document.getElementById("mensajeCopiado").style.display = "none"; 
+                }, 2500); 
+
+                } 
+                </script> 
+
+
+
+
+                <!--===================== FIN DEL BOTON COPIAR ===================== -->
+
 
 
 
@@ -762,7 +989,7 @@ https://dexscreener.com                            <!-- ====== Modificar ===== -
 </div>
 
 <button onclick="abrirDex()" class="btnDex">     <!-- ====== Ver ===== -->
-🔗 Ingresar Directamente
+🔗 Ingresar al Dex
 </button>
 
 </div>
@@ -770,7 +997,7 @@ https://dexscreener.com                            <!-- ====== Modificar ===== -
 <style>
 
 .btnDex{
-width:100%;
+width:30%;                       
 max-width:400px;    
 background:linear-gradient(135deg,#46b51f,#2f7e15);
 color:white;
@@ -1174,6 +1401,234 @@ window.open(
                 <!-- ===================== TERMINA LINEA ===================== -->
 
 
+                
+
+                            <div style="margin-bottom:10px;">
+                <h2>Estás a una decisión de cambiar tu posición en el mundo cripto</h2>
+                </div>
+                
+
+                <p style="text-align:center; font-size:18px; line-height:1.8; max-width:950px; margin:auto;">
+
+
+                <br>
+                ¿Estás listo para dar el siguiente paso?<br>
+                 Haz click abajo y asegura tu Nodo ahora.<br>
+                </p>
+                
+                
+
+
+<!-- ===================================================== -->
+<!-- ========== COMIENZA BOTÓN COMPRAR NODO ============== -->
+<!-- ===================================================== -->
+
+<!--
+PERSONALIZACIÓN RÁPIDA
+
+CAMBIAR POSICIÓN:
+center = centro
+left = izquierda
+right = derecha
+
+CAMBIAR COLOR:
+Busca:
+background: linear-gradient(...)
+
+CAMBIAR TAMAÑO:
+padding: 16px 30px;
+font-size: 18px;
+
+CAMBIAR TEXTO:
+Quiero vender Nodos Ascensum
+
+CAMBIAR LINK:
+Reemplazar TU_LINK_AQUI
+
+-->
+
+
+<!-- CONTENEDOR DEL BOTÓN -->
+<div class="cta-container">
+
+    <!-- BOTÓN -->
+    <a href="https://wa.link/eck1xi" target="_blank" rel="noopener noreferrer" class="cta-pro">
+
+        <!-- TEXTO DEL BOTÓN -->
+        <span>Quiero comprar mi primer Nodo y comenzar</span>
+
+        <!-- FLECHA -->
+        <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"
+                  stroke="white"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+    </a>
+
+</div>
+
+<style>
+
+/* ===================================================== */
+/* ================= POSICIÓN BOTÓN ==================== */
+/* ===================================================== */
+
+.cta-container {
+
+    /* CAMBIAR:
+       center = centro
+       left = izquierda
+       right = derecha
+    */
+
+    text-align: center;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* ===================================================== */
+/* ==================== BOTÓN ========================== */
+/* ===================================================== */
+
+.cta-pro {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    /* TAMAÑO BOTÓN */
+    padding: 16px 30px;
+
+    /* TAMAÑO TEXTO */
+    font-size: 18px;
+
+    font-weight: 600;
+    color: #121211;
+
+    /* COLOR BOTÓN */
+    background: linear-gradient(135deg, #00c853, #00e676);
+
+    border-radius: 14px;
+    text-decoration: none;
+
+    /* SOMBRA */
+    box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: pulse 2.5s infinite;
+}
+
+/* ===================================================== */
+/* ===================== HOVER ========================= */
+/* ===================================================== */
+
+.cta-pro:hover {
+
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow: 0 15px 35px rgba(0, 200, 83, 0.6);
+}
+
+/* ===================================================== */
+/* ===================== CLICK ========================= */
+/* ===================================================== */
+
+.cta-pro:active {
+    transform: scale(0.96);
+}
+
+/* ===================================================== */
+/* ================= FLECHA ANIMADA ==================== */
+/* ===================================================== */
+
+.cta-pro .arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-pro:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ===================================================== */
+/* ================= EFECTO PULSE ====================== */
+/* ===================================================== */
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 200, 83, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+    }
+}
+
+/* ===================================================== */
+/* ============== APARECER CON SCROLL ================= */
+/* ===================================================== */
+
+.cta-pro.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
+
+<script>
+
+/* ===================================================== */
+/* ========= MOSTRAR BOTÓN AL HACER SCROLL ============ */
+/* ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+const botones = document.querySelectorAll(".cta-pro");
+
+function showOnScroll() {
+
+    const trigger = window.innerHeight * 0.8;
+
+    botones.forEach(btn => {
+
+        const rect = btn.getBoundingClientRect();
+
+        if (rect.top < trigger) {
+            btn.classList.add("visible");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", showOnScroll);
+
+showOnScroll();
+});
+
+</script>
+
+        
+
+
+        <!-- ===================== FIN DEL BOTON COMPRAR NODO ===================== -->
+
+
+
+
+
+
                 <div style="margin-top:100px;">
                 <h2>🔹 Cómo Verificar Ascensum en la Blockchain</h2>
                 <p>
@@ -1539,10 +1994,10 @@ window.open(
 
 
 
-                <div style="margin-top:80px;">
+            <div style="margin-bottom:10px;">
                 <h2>Estás a una decisión de cambiar tu posición en el mundo cripto</h2>
-
                 </div>
+                
 
                 <p style="text-align:center; font-size:18px; line-height:1.8; max-width:950px; margin:auto;">
 
@@ -1551,12 +2006,12 @@ window.open(
                 ¿Estás listo para dar el siguiente paso?<br>
                  Haz click abajo y asegura tu Nodo ahora.<br>
                 </p>
-
+                
                 
 
 
 <!-- ===================================================== -->
-<!-- ================= BOTÓN CTA PRO ===================== -->
+<!-- ========== COMIENZA BOTÓN COMPRAR NODO ============== -->
 <!-- ===================================================== -->
 
 <!--
@@ -1583,11 +2038,12 @@ Reemplazar TU_LINK_AQUI
 
 -->
 
+
 <!-- CONTENEDOR DEL BOTÓN -->
 <div class="cta-container">
 
     <!-- BOTÓN -->
-    <a href="https://wa.link/eck1xi" target="_blank" rel="noopener noreferrer" class="cta-pro" id="ctaPro">
+    <a href="https://wa.link/eck1xi" target="_blank" rel="noopener noreferrer" class="cta-pro">
 
         <!-- TEXTO DEL BOTÓN -->
         <span>Quiero comprar mi primer Nodo y comenzar</span>
@@ -1729,21 +2185,27 @@ Reemplazar TU_LINK_AQUI
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    const btn = document.getElementById("ctaPro");
+const botones = document.querySelectorAll(".cta-pro");
 
-    function showOnScroll() {
+function showOnScroll() {
 
-        const trigger = window.innerHeight * 0.8;
+    const trigger = window.innerHeight * 0.8;
+
+    botones.forEach(btn => {
+
         const rect = btn.getBoundingClientRect();
 
         if (rect.top < trigger) {
             btn.classList.add("visible");
         }
-    }
 
-    window.addEventListener("scroll", showOnScroll);
+    });
 
-    showOnScroll();
+}
+
+window.addEventListener("scroll", showOnScroll);
+
+showOnScroll();
 });
 
 </script>
@@ -1751,7 +2213,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
 
 
-        <!-- ===================== FIN DEL BOTON ===================== -->
+        <!-- ===================== FIN DEL BOTON COMPRAR NODO ===================== -->
 
 
 
