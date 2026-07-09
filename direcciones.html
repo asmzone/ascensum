@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Direcciones</title>
+    <link rel="icon" type="image/png" href="imagenes/pets_universe.png">
+
+    <style>
+        /* ======= RESET / SEGURIDAD LAYOUT ======= */
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            /* evita desplazamiento lateral */
+            -webkit-text-size-adjust: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        img,
+        iframe,
+        embed,
+        object,
+        video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===================== ENCABEZADO ===================== */
+        .top-bar {
+            position: relative;
+            height: 40px;
+        }
+
+        .green-bar {
+            background-color: #3a8308;
+            height: 110px;
+            width: 100%;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000;
+            border-radius: 25px;
+            width: 95%;
+            max-width: 1200px;
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 999;
+            transition: all 0.4s ease;
+            box-sizing: border-box;
+        }
+
+        .nav-bar.scrolled {
+            min-height: 80px;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            max-height: 60px;
+            width: auto;
+            transition: max-height .3s ease;
+        }
+
+        .nav-bar.scrolled .logo img {
+            max-height: 50px;
+        }
+
+        .logo-text {
+            color: yellow;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: font-size .3s ease;
+            white-space: nowrap;
+        }
+
+        .logo-text:hover {
+            color: #a8e6a3;
+        }
+
+        .nav-bar.scrolled .logo-text {
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: yellow;
+            text-decoration: none;
+            font-size: 0.98rem;
+            transition: color .3s;
+        }
+
+        .nav-links a:hover {
+            color: #a8e6a3;
+        }
+
+        /* ===================== CONTENIDO PRINCIPAL ===================== */
+        main {
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 900px;
+            width: 100%;
+            line-height: 1.4;
+            font-size: 18px;
+            margin-top: 120px;
+            /* espacio por la barra fija */
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+            /* evita desbordes por links largos */
+            word-break: break-word;
+        }
+
+        main a {
+            color: red;
+            text-decoration: none;
+            transition: color .3s;
+        }
+
+        main a:hover {
+            color: #3a8308;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        /* ===================== VIDEO RESPONSIVE ===================== */
+        .video-container {
+            text-align: center;
+            margin: 40px 0;
+            padding: 0 10px;
+            /* evita que el iframe quede pegado al borde en pantallas pequeñas */
+            box-sizing: border-box;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            border: 0;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* ===================== PIE DE PÁGINA ===================== */
+        .footer-top-green {
+            background-color: #3a8308;
+            height: 20px;
+            width: 100%;
+        }
+
+        .footer-black {
+            background-color: #000;
+            min-height: 95px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        .footer-black div {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .footer-black .left {
+            color: yellow;
+            font-size: 16px;
+        }
+
+        .footer-black .right {
+            text-align: right;
+        }
+
+        .footer-black .right a {
+            color: yellow;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        .footer-black .right a:hover {
+            color: #a8e6a3;
+        }
+
+        .footer-bottom-green {
+            background-color: #3a8308;
+            height: 25px;
+            width: 100%;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+                gap: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+            }
+
+            main {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            .video-container {
+                margin: 20px 0;
+                padding: 0 8px;
+            }
+
+            .footer-black {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-black .right {
+                margin-top: 10px;
+                text-align: center;
+            }
+        }
+
+        .img-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.img-main-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-main-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+        /* Ocultar barras en celular horizontal */
+@media screen and (max-width:1000px) and (orientation:landscape) {
+
+    .nav-bar,
+    .green-bar {
+        display:none !important;
+    }
+
+}
+
+@media screen and (max-width:1000px) and (orientation:landscape) {
+
+  .video-box {
+      max-width: 75% !important;
+  }
+
+}
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ===================== ENCABEZADO ===================== -->
+  <div class="top-bar">
+    <div class="green-bar"></div>
+    <div class="nav-bar">
+      <div class="logo-container">
+
+        <a href="" target="_blank" class="logo">
+          <img src="imagenes/Pets_Concilium.png" alt="Logo Concilium">
+        </a>
+
+
+
+        <a href="" target="_blank" class="logo-text">Criptovision Marketing Global Ecom</a>
+
+      </div>
+      <div class="nav-links">
+        
+        <a href="academia.html" target="_blank">Academia</a>
+        <a href="index.html" target="_blank">Ascensum Dao</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  
+    <main>
+        
+        <h2>Aqui tienes toda la informacion de Ascensum DAO</h2>
+
+
+
+        <div style="margin-top:60px;">
+        <h3>Este es el contrato del Tesoro de Ascensum</h3>
+
+               <p>0x87Bc4Ae48CDae1127ccF8694F245FF013375cDeb</p>
+
+            <p style="margin-top:30px; margin-bottom:30px;">
+            Da click en el Boton Verificar Fondos del Tesoro y podras comprobar cuantos usdt hay en la cuenta 👇</p>
+        </div>
+
+
+
+
+
+                  <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
+
+
+                   <div style="
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:25px;
+border-radius:18px;
+text-align:center;
+margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.08);
+width:100%;
+box-sizing:border-box;
+">
+
+<h3 style="
+color:white;
+margin-bottom:18px;
+font-size:22px;
+">
+⭐ Tesoro de Ascensum DAO               <!-- ====== Modificar ===== -->
+</h3>
+
+<div style="
+background:#0d0d0d;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:20px;
+">
+
+<span style="
+color:#FBFF00;
+font-size:15px;
+word-break:break-all;
+line-height:1.6;
+font-family:monospace;
+">
+https://bscscan.com                            <!-- ====== Modificar ===== -->
+</span>
+
+</div>
+
+<button onclick="abrirBscscan1()" class="btnTesoro">     <!-- ====== Ver ===== -->
+🔗 Verificar Fondos del Tesoro
+</button>
+
+</div>
+
+<style>
+
+.btnTesoro{
+width:100%;
+max-width:400px;    
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+letter-spacing:0.5px;
+}
+
+.btnTesoro:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
+.btnTesoro:active{
+transform:scale(0.97);
+}
+
+</style>
+
+<script>
+
+function abrirBscscan1(){
+
+window.open(
+"https://bscscan.com/address/0x87Bc4Ae48CDae1127ccF8694F245FF013375cDeb",
+"_blank"
+);
+
+}
+
+</script>
+
+
+
+         <!-- ===================== FIN BOTON ENVIAR ===================== -->
+
+
+
+
+         <div style="margin-top:80px;">
+         <h3>♻️ Este es el contrato de la Billetera del Robot de Estabilización ASM👇</h3>
+
+               <p>0x92a3EdBa7d5D151C89F807bAbf93d25A3Ba2d683</p>
+
+            <p style="margin-top:30px; margin-bottom:30px;">
+            Da click en el Boton Verificar Fondos del Robot y podras comprobar cuantos usdt hay en la cuenta</p>
+        </div>
+
+
+
+
+         <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
+
+
+                   <div style="
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:25px;
+border-radius:18px;
+text-align:center;
+margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.08);
+width:100%;
+box-sizing:border-box;
+">
+
+<h3 style="
+color:white;
+margin-bottom:18px;
+font-size:22px;
+">
+⭐ Robot de Estabilización ASM               <!-- ====== Modificar ===== -->
+</h3>
+
+<div style="
+background:#0d0d0d;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:20px;
+">
+
+<span style="
+color:#FBFF00;
+font-size:15px;
+word-break:break-all;
+line-height:1.6;
+font-family:monospace;
+">
+https://bscscan.com                            <!-- ====== Modificar ===== -->
+</span>
+
+</div>
+
+<button onclick="abrirBscscan2()" class="btnRobot">     <!-- ====== Modificar ===== -->
+🔗 Verificar Fondos del Robot
+</button>
+
+</div>
+
+<style>
+
+.btnRobot{
+width:100%;
+max-width:400px;    
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+letter-spacing:0.5px;
+}
+
+.btnRobot:hover{                                            
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
+.btnRobot:active{
+transform:scale(0.97);
+}
+
+</style>
+
+<script>
+
+function abrirBscscan2(){
+
+window.open(
+"https://bscscan.com/address/0x92a3EdBa7d5D151C89F807bAbf93d25A3Ba2d683",
+"_blank"
+);
+
+}
+
+</script>
+
+
+
+         <!-- ===================== FIN BOTON ENVIAR ===================== -->
+
+
+
+
+
+
+             <p style="margin-top:100px;">
+            A continuación tienes el contrato oficial de ASM para que puedas comprobar por ti mismo los datos del proyecto.<br>
+            <br>
+            0x75F16B49403712b17f7072BAEa7ab725f89f5644<br>
+            <br>
+            Al hacer click en el botón, accederás directamente a BscScan, la herramienta más utilizada para consultar y verificar información en la Binance Smart Chain.
+            <br>
+            <br>
+
+
+
+
+                 <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
+
+
+                   <div style="
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:25px;
+border-radius:18px;
+text-align:center;
+margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.08);
+width:100%;
+box-sizing:border-box;
+">
+
+<h3 style="
+color:white;
+margin-bottom:18px;
+font-size:22px;
+">
+♻️ Contrato Master Ascensum Dao               <!-- ====== Modificar ===== -->
+</h3>
+
+<div style="
+background:#0d0d0d;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:20px;
+">
+
+<span style="
+color:#FBFF00;
+font-size:15px;
+word-break:break-all;
+line-height:1.6;
+font-family:monospace;
+">
+https://bscscan.com                            <!-- ====== Modificar ===== -->
+</span>
+
+</div>
+
+<button onclick="abrirBscscan3()" class="btnMaster">     <!-- ====== Ver ===== -->
+Contrato Ascensum Dao (Nodos)
+</button>
+
+</div>
+
+<style>
+
+.btnMaster{
+width:100%;
+max-width:400px;    
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+letter-spacing:0.5px;
+}
+
+.btnMaster:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
+.btnMaster:active{
+transform:scale(0.97);
+}
+
+</style>
+
+<script>
+
+function abrirBscscan3(){
+
+window.open(
+"https://bscscan.com/address/0x75F16B49403712b17f7072BAEa7ab725f89f5644",
+"_blank"
+);
+
+}
+
+</script>
+
+
+
+         <!-- ===================== FIN BOTON ENVIAR ===================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+            <p style="margin-top:100px;">
+           Este es el contrato del token ASM<br>
+           0x707F0f4a39a4a26239F7D00463B15AB5656861f9<br>
+           <br>
+           Puedes comprobar el valor actual del token ASM en Dexscreener dando click en el siguiente Boton:
+           <br> 
+
+                
+         👉 <b>Dexscreener</b>.
+            </p>
+                    
+        
+
+
+
+
+
+          <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
+
+
+                   <div style="
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:25px;
+border-radius:18px;
+text-align:center;
+margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.08);
+width:100%;
+box-sizing:border-box;
+">
+
+<h3 style="
+color:white;
+margin-bottom:18px;
+font-size:22px;
+">
+⭐ Valor actual de ASM ⭐
+</h3>
+
+<div style="
+background:#0d0d0d;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:20px;
+">
+
+<span style="
+color:#FBFF00;
+font-size:15px;
+word-break:break-all;
+line-height:1.6;
+font-family:monospace;
+">
+https://www.dexscreener.com
+</span>
+
+</div>
+
+<button onclick="abrirDexscreener()" class="btnContrato">
+🔗 Valor actual de ASM
+</button>
+
+</div>
+
+<style>
+
+.btnContrato{
+width:100%;
+max-width:400px;    
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+letter-spacing:0.5px;
+}
+
+.btnContrato:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
+.btnContrato:active{
+transform:scale(0.97);
+}
+
+</style>
+
+<script>
+
+function abrirDexscreener(){
+
+window.open(
+"https://dexscreener.com/bsc/0x707F0f4a39a4a26239F7D00463B15AB5656861f9",
+"_blank"
+);
+
+}
+
+</script>
+
+
+
+
+            <!-- ===================== FIN DEL BOTON ENVIAR ===================== -->
+
+
+
+
+
+
+            <p style="margin-top:100px;">
+            A continuación tienes el Hash de una compra real de un Nodo ASM para que puedas comprobar por ti mismo como funciona el proyecto.<br>
+            <br>
+            0x380606954c7aa22578c1b9e60d458901c5b6fb0c31440ab2b57fa3781dfb3ffd<br>
+            <br>
+            Al hacer click en el botón, accederás directamente a BscScan, la herramienta más utilizada para consultar y verificar información en la Binance Smart Chain.
+            <br>
+            <br>
+            
+            
+           
+
+               
+                      <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
+
+
+                   <div style="
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:25px;
+border-radius:18px;
+text-align:center;
+margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.08);
+width:100%;
+box-sizing:border-box;
+">
+
+<h3 style="
+color:white;
+margin-bottom:18px;
+font-size:22px;
+">
+⭐ Verificar compra real de un Nodo ASM               <!-- ====== Modificar ===== -->
+</h3>
+
+<div style="
+background:#0d0d0d;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:20px;
+">
+
+<span style="
+color:#FBFF00;
+font-size:15px;
+word-break:break-all;
+line-height:1.6;
+font-family:monospace;
+">
+https://bscscan.com                            <!-- ====== Modificar ===== -->
+</span>
+
+</div>
+
+<button onclick="abrirBscscan()" class="btnContrato">     <!-- ====== Ver ===== -->
+🔗 Verificar compra de un Nodo
+</button>
+
+</div>
+
+<style>
+
+.btnContrato{
+width:100%;
+max-width:400px;    
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+letter-spacing:0.5px;
+}
+
+.btnContrato:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
+.btnContrato:active{
+transform:scale(0.97);
+}
+
+</style>
+
+<script>
+
+function abrirBscscan(){
+
+window.open(
+"https://bscscan.com/tx/0x380606954c7aa22578c1b9e60d458901c5b6fb0c31440ab2b57fa3781dfb3ffd",
+"_blank"
+);
+
+}
+
+</script>
+
+
+
+         <!-- ===================== FIN BOTON ENVIAR ===================== -->
+
+
+
+
+
+
+
+            <div style="margin-top:80px;">
+         <h3>Este es mi link de referencia y el que debes utilizar para comprar tus Nodos👇</h3>
+
+            <p>https://dao.ascensum.io/buy?ref=0xB828B26f97245EE744F75Bb3851905C89B0c07A0&index=0
+            <br>
+            <br>
+            Este link te permitira ingresar a mi equipo, recibir toda la informacion de Ascensum y mi apoyo en todo momento para solucionar las consultas que vayan surgiendo a traves del tiempo.
+            </p>
+            </div>
+
+            
+        
+
+              <!-- ===================== COMIENZA BOTON COPIAR ===================== -->
+            
+
+
+
+            <div style="
+background:#111;
+padding:15px;
+border-radius:12px;
+text-align:center;
+margin-top:20px;
+">
+
+<span id="refLink" style="
+color:#FBFF00;
+font-size:16px;
+word-break:break-all;
+display:block;
+margin-bottom:15px;
+">
+https://dao.ascensum.io/buy?ref=0xB828B26f97245EE744F75Bb3851905C89B0c07A0&index=0
+</span>
+
+<button onclick="copiarLink()" style="
+background:#378B18;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+">
+📋 Copiar Link
+</button>
+
+<p id="mensajeCopiado" style="
+color:#00ff88;
+margin-top:10px;
+display:none;
+font-weight:bold;
+">
+✅ Link copiado correctamente
+</p>
+
+</div>
+
+<script>
+function copiarLink() {
+
+const texto =
+document.getElementById("refLink").innerText;
+
+navigator.clipboard.writeText(texto);
+
+document.getElementById("mensajeCopiado").style.display = "block";
+
+setTimeout(() => {
+document.getElementById("mensajeCopiado").style.display = "none";
+}, 2500);
+
+}
+</script>
+
+
+        <!-- ===================== FIN DEL BOTON COPIAR ===================== -->
+        
+        
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+                
+
+
+
+
+
+
+
+
+               
+
+
+
+
+   
+
+
+
+
+
+
+            <div style="margin-bottom:80px;"></div>
+            </main>
+
+    
+
+    <!-- PIE DE PÁGINA -->
+    <section>
+        <div class="footer-top-green"></div>
+        <div class="footer-black">
+            <div class="left">© Copyright 2026 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
+            <div class="right">
+                <a href="https://t.me/nodos_ascensum" target="_blank" rel="noopener noreferrer">Telegram</a>
+                <a href="https://wa.link/eck1xi" target="_blank" rel="noopener noreferrer">Whatsapp</a>
+                
+            </div>
+        </div>
+        <div class="footer-bottom-green"></div>
+    </section>
+
+
+
+
+    <!-- JS SCROLL EFECTO -->
+    <script>
+        window.addEventListener("scroll", function() {
+      const nav = document.querySelector(".nav-bar");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+    </script>
+
+
+
+
+    <!-- FUEGOS ARTIFICIALES (sin causar overflow) -->
+
+ <style>
+        .firework-star {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.9;
+            mix-blend-mode: screen;
+            box-shadow: 0 0 15px white, 0 0 30px white;
+            z-index: 1000;
+        }
+    </style>
+
+    
+    <script>
+        const fwColors = ['gold', 'white', '#ffd700', '#ffa500'];
+    function createFirework() {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight * 0.4;
+      const particleCount = 30 + Math.floor(Math.random() * 40);
+
+      for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.classList.add('firework-star');
+        p.style.left = `${x}px`;
+        p.style.top = `${y}px`;
+        const color = fwColors[Math.floor(Math.random() * fwColors.length)];
+        p.style.backgroundColor = color;
+        p.style.boxShadow = `0 0 15px ${color}, 0 0 30px ${color}`;
+        document.body.appendChild(p);
+
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = 120 + Math.random() * 100;
+        const duration = 1500 + Math.random() * 1200;
+
+        setTimeout(() => {
+          p.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
+          const dx = radius * Math.cos(angle);
+          const dy = radius * Math.sin(angle);
+          p.style.transform = `translate(${dx}px, ${dy}px) scale(0)`;
+          p.style.opacity = 0;
+        }, 50);
+
+        setTimeout(() => p.remove(), duration + 120);
+      }
+    }
+    setInterval(createFirework, 10000 + Math.random() * 6000);
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
