@@ -443,13 +443,89 @@ background:linear-gradient(to right, transparent, #00c3ff, transparent);
 
 
 
-<p>
-El siguiente es tu link de referencia personal.<br>
-Es el link que tu cliente debe utilizar para comprar sus Nodos y para que las comisiones queden correctamente asociadas a tu cuenta.
-<br>
-<br>
-Además, este link le permitirá ingresar a mi equipo, recibir toda la información necesaria sobre Ascensum y contar con mi apoyo para resolver cualquier duda o inconveniente que pueda surgir.
+        <p style="margin-bottom:40px;">
+        El siguiente es tu link de referencia personal.<br>
+        Es el link que tu cliente debe utilizar para comprar sus Nodos y para que las comisiones queden correctamente asociadas a tu cuenta.
+        </p>
+
+
+
+
+
+ <!-- ===================== COMIENZA BOTON COPIAR ===================== -->
+            
+
+
+
+            <div style="
+background:#111;
+padding:15px;
+border-radius:12px;
+text-align:center;
+margin-top:20px;
+">
+
+<span id="refLink" style="
+color:#FBFF00;
+font-size:16px;
+word-break:break-all;
+display:block;
+margin-bottom:15px;
+">
+https://dao.ascensum.io/buy?ref=0xB828B26f97245EE744F75Bb3851905C89B0c07A0&index=0
+</span>
+
+<button onclick="copiarLink()" style="
+background:#378B18;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+">
+📋 Copiar Link
+</button>
+
+<p id="mensajeCopiado" style="
+color:#00ff88;
+margin-top:10px;
+display:none;
+font-weight:bold;
+">
+✅ Link copiado correctamente
 </p>
+
+</div>
+
+<script>
+function copiarLink() {
+
+const texto =
+document.getElementById("refLink").innerText;
+
+navigator.clipboard.writeText(texto);
+
+document.getElementById("mensajeCopiado").style.display = "block";
+
+setTimeout(() => {
+document.getElementById("mensajeCopiado").style.display = "none";
+}, 2500);
+
+}
+</script>
+
+
+        <!-- ===================== FIN DEL BOTON COPIAR ===================== -->
+
+
+
+
+        <p style="margin-top:60px;">
+        Además, este link le permitirá ingresar a mi equipo, recibir toda la información necesaria sobre Ascensum y contar con mi apoyo para resolver cualquier duda o inconveniente que pueda surgir.
+        </p>
 
 
 <div style="margin-top:60px;">
