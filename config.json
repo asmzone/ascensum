@@ -1,0 +1,38 @@
+{
+    "version": "2.0",
+
+    "vendedor": {
+        "nombre": "Diego",
+        "pais": "Argentina",
+        "idioma": "es"
+    },
+
+    "whatsapp": {
+        "comprar": "eck1xi",
+        "ayuda": "2nvi78",
+        "contacto": "eck1xi",
+        "alternativo": ""
+    },
+
+    "telegram": {
+        "contacto": "nodos_ascensum",
+        "alternativo": ""
+    },
+
+    "blockchain": {
+    "wallet": "0xb828b26f97245ee744f75bb3851905c89b0c07a0"
+    },
+
+    "redes": {
+        "facebook": "",
+        "instagram": "",
+        "youtube": "",
+        "x": "",
+        "tiktok": "",
+        "linkedin": "",
+        "discord": "",
+        "github": "",
+        "sitioWeb": "",
+        "email": ""
+    }
+}
