@@ -311,7 +311,7 @@
       <div class="nav-links">
         
 
-        <a href="https://wa.link/eck1xi" target="_blank">Contacto</a>
+        <a href="#" target="_blank" class="asm-link-whatsapp">Contacto</a>
         <a href="index.html" target="_blank">Ascensum Dao</a>
       </div>
     </div>
@@ -329,6 +329,10 @@
 <section class="academy-section">
 
     <h2>🎓 Academia Ascensum</h2>
+
+    <p>
+    La Academia Ascensum está diseñada para que cualquier persona pueda comprender cada aspecto del ecosistema Ascensum de forma didáctica, sencilla y práctica, sin importar su nivel de conocimientos.
+    </p>
 
     <div class="video-container">
         <iframe
@@ -348,7 +352,33 @@
 <div class="playlist">
 
 
+
+        <!-- Comienza Boton Blockchain  -->
+
+
+
+    <button class="category-btn">
+        ⛓️ Blockchain
+    </button>
+
+    <div class="category-content">
+
+        <button class="video-btn"
+            data-video="vnu9cksi1sw"
+            data-title="Que es la Blockchain"
+            data-description="La Blockchain es una tecnología que permite registrar información de forma segura, transparente e inalterable. Además, hace posible el funcionamiento de los contratos inteligentes, que ejecutan automáticamente acuerdos y procesos sin necesidad de intermediarios.">
+
+            ▶ Que es la Blockchain
+
+        </button>
+
+    </div>
+
+      <!-- Termina Boton Blockchain  -->
+
+
     
+
     <!-- Comienza Boton Comunidad  -->
 
 
@@ -493,7 +523,7 @@
 
     <div class="category-content">
 
-            <!-- Comienza Boton El Tesoro de Ascensum -->
+                        <!-- Comienza Boton El Tesoro de Ascensum -->
 
             <button class="video-btn"
             data-video="b2vQJcVjHw8"
@@ -505,6 +535,8 @@
         </button>
 
             <!-- Termina Boton El Tesoro de Ascensum -->
+
+
 
             <!-- Comienza Boton Fondo Comun -->
 
@@ -518,11 +550,82 @@
         </button>
         
                 <!-- Termina Boton Fondo Comun  -->
+
+
+
+                <!-- Comienza Boton como Votar -->
+
+        <button class="video-btn"
+            data-video="rJx4a0SBEaQ"
+            data-title="Aprende a votar los proyectos del Tesoro Ascensum"
+            data-description="En este video aprenderás, paso a paso, cómo acceder al centro de votaciones y participar correctamente en el proceso de votación.">
+
+            ▶ Aprende a votar los proyectos del Tesoro Ascensum
+
+        </button>
+        
+                <!-- Termina Boton como Votar  -->
+
+
+                <!-- Comienza Boton Votacion en vivo -->
+
+        <button class="video-btn"
+            data-video="JbJmN5fbDj4"
+            data-title="Votación real del Tesoro Ascensum"
+            data-description="Conoce, en apenas un minuto, cómo se desarrolla una votación del Tesoro Ascensum y cómo la comunidad participa en la toma de decisiones.">
+
+            ▶ Votación real del Tesoro Ascensum 
+
+        </button>
+        
+                <!-- Termina Boton Votacion en vivo  -->
+
+
+
+                 <!-- Comienza Boton Prestamo para Nodo -->
+
+        <button class="video-btn"
+            data-video="QhMzlIZSSUk"
+            data-title="Como obtener el Prestamo Ascensum para comprar tu 5to Nodo"
+            data-description="En este video Maximo Perlippe te explica detalladamente como puedes acceder a un Prestamo del Tesoro de Ascensum para que puedas comprar tu quinto nodo o un nodo superior">
+
+            ▶ Como obtener el Prestamo Ascensum para comprar tu 5to Nodo 
+
+        </button>
+        
+                <!-- Termina Boton Prestamo para Nodo  -->
         </div>
 
 
 
         <!-- Termina Boton Tesoro  -->
+
+        
+
+
+                    <!-- Comienza Boton Triflux -->
+
+                <button class="category-btn">
+        💰 Triflux
+         </button>
+
+         <div class="category-content">
+
+        <button class="video-btn"
+            data-video="ZQXM0hR3piw"
+            data-title="Que es Triflux?"
+            data-description="Triflux es el motor matematico de nuestro ecosistema, el motor de ingenieria financiera que hace posible la redistrubucion de la riqueza de manera justa, transparente y completamente automatizada.">
+
+            ▶ Que es Triflux? 
+
+        </button>
+        
+        </div>
+                <!-- Termina Boton Triflux  -->
+
+
+
+
 
         <!-- Comienza Boton SEGURIDAD  -->
 
@@ -586,6 +689,7 @@
 
     <div class="category-content">
 
+
         <button class="video-btn"
             data-video="bcqoqtuxgms"
             data-title="Testimonios"
@@ -595,7 +699,6 @@
 
         </button>
 
-
         <button class="video-btn"
             data-video="dOf8U8s3wBQ"
             data-title="Maximo Perlippe"
@@ -604,7 +707,6 @@
             ▶ Maximo Perlippe
 
         </button>
-
 
         <button class="video-btn"
             data-video="GQ6fkUF63Tg"
@@ -903,8 +1005,10 @@ categoryButtons.forEach(button => {
                 
 
 
+                
+
                 <!-- ===================================================== -->
-<!-- ================= BOTÓN CTA PRO ===================== -->
+<!-- ========== COMIENZA BOTÓN COMPRAR NODO ============== -->
 <!-- ===================================================== -->
 
 <!--
@@ -931,11 +1035,16 @@ Reemplazar TU_LINK_AQUI
 
 -->
 
+
 <!-- CONTENEDOR DEL BOTÓN -->
 <div class="cta-container">
 
+
     <!-- BOTÓN -->
-    <a href="https://wa.link/eck1xi" target="_blank" rel="noopener noreferrer" class="cta-pro" id="ctaPro">
+    <a target="_blank"
+   rel="noopener noreferrer"
+   class="cta-pro asm-link-comprar">
+
 
         <!-- TEXTO DEL BOTÓN -->
         <span>Quiero comprar mi primer Nodo y comenzar</span>
@@ -1077,21 +1186,27 @@ Reemplazar TU_LINK_AQUI
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    const btn = document.getElementById("ctaPro");
+const botones = document.querySelectorAll(".cta-pro");
 
-    function showOnScroll() {
+function showOnScroll() {
 
-        const trigger = window.innerHeight * 0.8;
+    const trigger = window.innerHeight * 0.8;
+
+    botones.forEach(btn => {
+
         const rect = btn.getBoundingClientRect();
 
         if (rect.top < trigger) {
             btn.classList.add("visible");
         }
-    }
 
-    window.addEventListener("scroll", showOnScroll);
+    });
 
-    showOnScroll();
+}
+
+window.addEventListener("scroll", showOnScroll);
+
+showOnScroll();
 });
 
 </script>
@@ -1099,7 +1214,13 @@ document.addEventListener("DOMContentLoaded", function() {
         
 
 
-        <!-- ===================== FIN DEL BOTON ===================== -->
+        <!-- ===================== FIN DEL BOTON COMPRAR NODO ===================== -->
+
+
+
+
+
+
 
 
          <hr style="margin-top:60px; margin-bottom:60px;">
@@ -1113,8 +1234,8 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="footer-black">
       <div class="left">© Copyright 2026 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
       <div class="right">
-        <a href="https://t.me/nodos_ascensum" target="_blank">Telegram</a>
-        <a href="https://wa.link/eck1xi" target="_blank">Whatsapp</a>
+        <a href="#" target="_blank" class="asm-link-telegram">Telegram</a>
+        <a href="#" target="_blank" class="asm-link-whatsapp">Whatsapp</a>
         
       </div>
     </div>
@@ -1134,19 +1255,7 @@ document.addEventListener("DOMContentLoaded", function() {
   </script>
 
 <!-- FUEGOS ARTIFICIALES (sin causar overflow) -->
-    <style>
-        .firework-star {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0.9;
-            mix-blend-mode: screen;
-            box-shadow: 0 0 15px white, 0 0 30px white;
-            z-index: 1000;
-        }
-    </style>
+
 
     <script>
         const fwColors = ['gold', 'white', '#ffd700', '#ffa500'];
@@ -1182,6 +1291,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     setInterval(createFirework, 10000 + Math.random() * 6000);
     </script>
+
+
+
+
+    <script src="../sistema/CONFIG.js"></script>
+    <script src="../sistema/02-ENLACES.js"></script>
+    <script src="../sistema/04-FUEGOS.js"></script>
+
 
 
 </body>
